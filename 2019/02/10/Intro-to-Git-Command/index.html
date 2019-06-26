@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+  
+    <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>introduction to git command | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="GitCreating repository git init: creat a repository git add File_Name: add “File_Name” to repository git add . : add all files  git commit -m &amp;quot;message&amp;quot;: commit changes and tell others what c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Introduction to Git Command">
+<meta property="og:url" content="http://yoursite.com/2019/02/10/Intro-to-Git-Command/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="GitCreating repository git init: creat a repository git add File_Name: add “File_Name” to repository git add . : add all files  git commit -m &amp;quot;message&amp;quot;: commit changes and tell others what c">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://cdn.liaoxuefeng.com/cdn/files/attachments/001384907702917346729e9afbf4127b6dfbae9207af016000/0">
+<meta property="og:updated_time" content="2019-06-26T13:24:20.984Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Introduction to Git Command">
+<meta name="twitter:description" content="GitCreating repository git init: creat a repository git add File_Name: add “File_Name” to repository git add . : add all files  git commit -m &amp;quot;message&amp;quot;: commit changes and tell others what c">
+<meta name="twitter:image" content="https://cdn.liaoxuefeng.com/cdn/files/attachments/001384907702917346729e9afbf4127b6dfbae9207af016000/0">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+  
+    <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+  <!-- Google Adsense -->
+  
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-0123456789ABCDEF",
+          enable_page_level_ads: true
+      });
+  </script>
+  
+</head>
+</html>
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Categories"; 
+
+  themeMenus["/tags"] = "Tags"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Hexo" rel="home"> Hexo </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Intro-to-Git-Command" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Introduction to Git Command
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/02/10/Intro-to-Git-Command/" class="article-date">
+	  <time datetime="2019-02-09T16:00:00.000Z" itemprop="datePublished">February 10, 2019</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><h2 id="Creating-repository"><a href="#Creating-repository" class="headerlink" title="Creating repository"></a><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013743256916071d599b3aed534aaab22a0db6c4e07fd0000" target="_blank" rel="noopener">Creating repository</a></h2><ul>
+<li><code>git init</code>: creat a repository</li>
+<li><code>git add File_Name</code>: add “File_Name” to repository</li>
+<li><code>git add .</code> : add all files </li>
+<li><code>git commit -m &quot;message&quot;</code>: commit changes and tell others what changes have been made </li>
+</ul>
+<hr>
+<h2 id="Way-back-Machine"><a href="#Way-back-Machine" class="headerlink" title="Way-back Machine"></a><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013743858312764dca7ad6d0754f76aa562e3789478044000" target="_blank" rel="noopener">Way-back Machine</a></h2><ul>
+<li><code>git status</code>: tell you which files have been changed </li>
+<li><code>git diff</code>: check what content exactly has been changed in each file</li>
+</ul>
+<h3 id="Time-Travelling"><a href="#Time-Travelling" class="headerlink" title="Time Travelling"></a><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013744142037508cf42e51debf49668810645e02887691000" target="_blank" rel="noopener">Time Travelling</a></h3><ul>
+<li><p>commitID: git uses commit ID, a hex number calculated by SHA1 to record your commit history</p>
+</li>
+<li><p>HEAD: HEAD is the current version, HEAD^ is the previous, HEAD^^ is the one before the previous, HEAD~100 is the last 100.</p>
+</li>
+<li><p><code>git log</code>: check the commit history</p>
+</li>
+<li><p><code>git reflog</code>: check the command history</p>
+</li>
+<li><p><code>git reset --hard CommitID</code> : Going back to the “Commit ID” version</p>
+<p>(e.g. <code>git reset --hard HEAD^</code> : going back to the previous version)</p>
+</li>
+<li><p>When you go back, the “future version” will no longer appear in “<code>git log</code>“. However, you can use “<code>git reflog</code>“ to trace “commit ID” from the future</p>
+</li>
+</ul>
+<p><img src="https://cdn.liaoxuefeng.com/cdn/files/attachments/001384907702917346729e9afbf4127b6dfbae9207af016000/0" alt="Working Directory and Repository"></p>
+<h3 id="Undo-Changes"><a href="#Undo-Changes" class="headerlink" title="Undo Changes"></a><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001374831943254ee90db11b13d4ba9a73b9047f4fb968d000" target="_blank" rel="noopener">Undo Changes</a></h3><ol>
+<li><p>messed up with working directory: use <code>git checkout -- File_Name</code> to discard changes in working directory and make “File_Name” to go back to the latest “committed” or “added” version</p>
+</li>
+<li><p>messed up with working directory and added it to stage: use <code>git reset HEAD File_Name</code> to discard changes in stage but keep “File_Name” in working directory changed, therefore going back to situation 1</p>
+</li>
+<li><p>committed the mess to master branch: use the <em>Time Traveling</em> technique in the previous section</p>
+</li>
+</ol>
+<h3 id="Deleting-Files"><a href="#Deleting-Files" class="headerlink" title="Deleting Files"></a><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013758392816224cafd33c44b4451887cc941e6716805c000" target="_blank" rel="noopener">Deleting Files</a></h3><p>If you want to delete files that are already committed to the master branch:</p>
+<ol>
+<li>delete the file in working directory: <code>rm File_Name</code></li>
+<li>delete the file from git / restore the file<ol>
+<li>delete the file from git: <code>git rm File_Name</code> &amp; <code>git commit</code></li>
+<li>restore the file: <code>git checkout -- File_Name</code></li>
+</ol>
+</li>
+</ol>
+<hr>
+<h2 id="Managing-Branch"><a href="#Managing-Branch" class="headerlink" title="Managing Branch"></a>Managing Branch</h2><h3 id="Creating-and-Deleting-Branch"><a href="#Creating-and-Deleting-Branch" class="headerlink" title="Creating and Deleting Branch"></a><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375840038939c291467cc7c747b1810aab2fb8863508000" target="_blank" rel="noopener">Creating and Deleting Branch</a></h3><ul>
+<li>查看分支：<code>git branch</code></li>
+<li>创建分支：<code>git branch &lt;name&gt;</code></li>
+<li>切换分支：<code>git checkout &lt;name&gt;</code></li>
+<li>合并某分支到当前分支：<code>git merge &lt;name&gt;</code></li>
+<li>删除分支：<code>git branch -d &lt;name&gt;</code></li>
+</ul>
+<h3 id="Solving-Conflicts"><a href="#Solving-Conflicts" class="headerlink" title="Solving Conflicts"></a><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375840202368c74be33fbd884e71b570f2cc3c0d1dcf000" target="_blank" rel="noopener">Solving Conflicts</a></h3>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/WeChanQR.png',
+  alipayImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/AliPayQR.jpg'
+});
+</script>
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/02/09/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article" style="overflow-y: scroll; max-width: 28%;">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Git"><span class="nav-number">1.</span> <span class="nav-text">Git</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Creating-repository"><span class="nav-number">1.1.</span> <span class="nav-text">Creating repository</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Way-back-Machine"><span class="nav-number">1.2.</span> <span class="nav-text">Way-back Machine</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Time-Travelling"><span class="nav-number">1.2.1.</span> <span class="nav-text">Time Travelling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Undo-Changes"><span class="nav-number">1.2.2.</span> <span class="nav-text">Undo Changes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deleting-Files"><span class="nav-number">1.2.3.</span> <span class="nav-text">Deleting Files</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Managing-Branch"><span class="nav-number">1.3.</span> <span class="nav-text">Managing Branch</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Creating-and-Deleting-Branch"><span class="nav-number">1.3.1.</span> <span class="nav-text">Creating and Deleting Branch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solving-Conflicts"><span class="nav-number">1.3.2.</span> <span class="nav-text">Solving Conflicts</span></a></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2019 Hexo All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="https://dnqof95d40fo6.cloudfront.net/atw7f8.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
