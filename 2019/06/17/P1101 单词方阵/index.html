@@ -22,7 +22,7 @@
     <meta name="description" content>
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Introduction to Git Command · Harmonyano&#39;s Blog</title>
+    <title>P1101 单词方阵 · Harmonyano&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/" >Harmonyano&#39;s Blog</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">Introduction to Git Command</a>
+                <a href="#" class="post-name">P1101 单词方阵</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Introduction to Git Command
+            P1101 单词方阵
             <!-- 404 -->
             
         </h1>
@@ -266,14 +266,14 @@ height:50vh;
                 
                     <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Git">Git</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "NOI">NOI</a>
     
 </div>
                 
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2019/02/10</span>
+                    <span class="post-intro-time">2019/06/17</span>
                     
                     <span class="shareWrapper">
                         <span class="iconfont-archer shareIcon">&#xe71d;</span>
@@ -392,61 +392,12 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h2 id="Creating-repository"><a href="#Creating-repository" class="headerlink" title="Creating repository"></a><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013743256916071d599b3aed534aaab22a0db6c4e07fd0000" target="_blank" rel="noopener">Creating repository</a></h2><ul>
-<li><code>git init</code>: creat a repository</li>
-<li><code>git add File_Name</code>: add “File_Name” to repository</li>
-<li><code>git add .</code> : add all files </li>
-<li><code>git commit -m &quot;message&quot;</code>: commit changes and tell others what changes have been made </li>
-</ul>
-<a id="more"></a>
+        <p>题目来源：<a href="https://www.luogu.org/problemnew/show/P1101" target="_blank" rel="noopener">洛谷P1101 单词方阵</a></p>
+<hr>
+<p><code>dir</code> 这个数组是很好用的，不需要为8个方向特意写8个不同的函数，只需要写一个函数但是改变取哪一个<code>dir[i]</code>来判定哪一个方向符合条件就行了<a id="more"></a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">char</span> matrix[<span class="number">103</span>][<span class="number">103</span>], yizhong[<span class="number">8</span>]=<span class="string">"yizhong"</span>; <span class="keyword">bool</span> mark[<span class="number">103</span>][<span class="number">103</span>];</span><br><span class="line"><span class="comment">/// matrix 存储每个位置的字母，yizhong 存储我们要找的字符串 "yizhong"，mark存储这个位置符不符合要求，最后要不要被变成 "*" 输出</span></span><br><span class="line"><span class="keyword">int</span> dir[<span class="number">8</span>][<span class="number">2</span>]=&#123;&#123;<span class="number">0</span>,<span class="number">1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">1</span>,<span class="number">-1</span>&#125;,&#123;<span class="number">0</span>,<span class="number">-1</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">-1</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">1</span>&#125;&#125;;</span><br><span class="line"><span class="comment">/// dir[8] 存储了8个方向，dir[i][0] 是x轴坐标，dir[i][1] 是y轴坐标</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span>,<span class="keyword">int</span>)</span></span>; <span class="comment">/// 这个题虽然放在dfs里面但是因为这个字符串的方向是固定的，不会拐弯抹角，所以好像和dfs没什么关系</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++) <span class="built_in">cin</span>&gt;&gt;matrix[i][j];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++) dfs(i,j);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(mark[i][j]) <span class="built_in">cout</span>&lt;&lt;matrix[i][j];</span><br><span class="line">            <span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;<span class="string">"*"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">8</span>;i++)&#123; <span class="comment">///对于任意一个点，我们都看看它周围八个方向各自符不符合条件</span></span><br><span class="line">        <span class="keyword">int</span> j=<span class="number">0</span>;<span class="keyword">bool</span> flag=<span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">while</span>(j&lt;<span class="number">7</span>)&#123; <span class="comment">///分别检视每一个字符 与 yizhong 是否匹配</span></span><br><span class="line">            <span class="keyword">if</span>(matrix[x+j*dir[i][<span class="number">0</span>]][y+j*dir[i][<span class="number">1</span>]] != yizhong[j])&#123; <span class="comment">///非常精髓</span></span><br><span class="line">                flag=<span class="literal">false</span>; <span class="keyword">break</span>; <span class="comment">/// 不匹配，flag=false</span></span><br><span class="line">            &#125;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag)&#123; <span class="comment">///匹配的话就记录下来它们是符合要求的，最后直接输出当前位置的字符</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">7</span>;j++)</span><br><span class="line">                mark[x+j*dir[i][<span class="number">0</span>]][y+j*dir[i][<span class="number">1</span>]]=<span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<hr>
-<h2 id="Way-back-Machine"><a href="#Way-back-Machine" class="headerlink" title="Way-back Machine"></a><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013743858312764dca7ad6d0754f76aa562e3789478044000" target="_blank" rel="noopener">Way-back Machine</a></h2><ul>
-<li><code>git status</code>: tell you which files have been changed </li>
-<li><code>git diff</code>: check what content exactly has been changed in each file</li>
-</ul>
-<h3 id="Time-Travelling"><a href="#Time-Travelling" class="headerlink" title="Time Travelling"></a><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013744142037508cf42e51debf49668810645e02887691000" target="_blank" rel="noopener">Time Travelling</a></h3><ul>
-<li><p>commitID: git uses commit ID, a hex number calculated by SHA1 to record your commit history</p>
-</li>
-<li><p>HEAD: HEAD is the current version, HEAD^ is the previous, HEAD^^ is the one before the previous, HEAD~100 is the last 100.</p>
-</li>
-<li><p><code>git log</code>: check the commit history</p>
-</li>
-<li><p><code>git reflog</code>: check the command history</p>
-</li>
-<li><p><code>git reset --hard CommitID</code> : Going back to the “Commit ID” version</p>
-<p>(e.g. <code>git reset --hard HEAD^</code> : going back to the previous version)</p>
-</li>
-<li><p>When you go back, the “future version” will no longer appear in “<code>git log</code>“. However, you can use “<code>git reflog</code>“ to trace “commit ID” from the future</p>
-</li>
-</ul>
-<p><img src="https://cdn.liaoxuefeng.com/cdn/files/attachments/001384907702917346729e9afbf4127b6dfbae9207af016000/0" alt="Working Directory and Repository"></p>
-<h3 id="Undo-Changes"><a href="#Undo-Changes" class="headerlink" title="Undo Changes"></a><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001374831943254ee90db11b13d4ba9a73b9047f4fb968d000" target="_blank" rel="noopener">Undo Changes</a></h3><ol>
-<li><p>messed up with working directory: use <code>git checkout -- File_Name</code> to discard changes in working directory and make “File_Name” to go back to the latest “committed” or “added” version</p>
-</li>
-<li><p>messed up with working directory and added it to stage: use <code>git reset HEAD File_Name</code> to discard changes in stage but keep “File_Name” in working directory changed, therefore going back to situation 1</p>
-</li>
-<li><p>committed the mess to master branch: use the <em>Time Traveling</em> technique in the previous section</p>
-</li>
-</ol>
-<h3 id="Deleting-Files"><a href="#Deleting-Files" class="headerlink" title="Deleting Files"></a><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013758392816224cafd33c44b4451887cc941e6716805c000" target="_blank" rel="noopener">Deleting Files</a></h3><p>If you want to delete files that are already committed to the master branch:</p>
-<ol>
-<li>delete the file in working directory: <code>rm File_Name</code></li>
-<li>delete the file from git / restore the file<ol>
-<li>delete the file from git: <code>git rm File_Name</code> &amp; <code>git commit</code></li>
-<li>restore the file: <code>git checkout -- File_Name</code></li>
-</ol>
-</li>
-</ol>
-<hr>
-<h2 id="Managing-Branch"><a href="#Managing-Branch" class="headerlink" title="Managing Branch"></a>Managing Branch</h2><h3 id="Creating-and-Deleting-Branch"><a href="#Creating-and-Deleting-Branch" class="headerlink" title="Creating and Deleting Branch"></a><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375840038939c291467cc7c747b1810aab2fb8863508000" target="_blank" rel="noopener">Creating and Deleting Branch</a></h3><ul>
-<li>查看分支：<code>git branch</code></li>
-<li>创建分支：<code>git branch &lt;name&gt;</code></li>
-<li>切换分支：<code>git checkout &lt;name&gt;</code></li>
-<li>合并某分支到当前分支：<code>git merge &lt;name&gt;</code></li>
-<li>删除分支：<code>git branch -d &lt;name&gt;</code></li>
-</ul>
-<h3 id="Solving-Conflicts"><a href="#Solving-Conflicts" class="headerlink" title="Solving Conflicts"></a><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375840202368c74be33fbd884e71b570f2cc3c0d1dcf000" target="_blank" rel="noopener">Solving Conflicts</a></h3>
+
     </article>
     <!-- license  -->
     
@@ -455,16 +406,16 @@ height:50vh;
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href= "/2019/05/30/P1309 瑞士轮/" title= "P1309 瑞士轮">
-                    <div class="nextTitle">P1309 瑞士轮</div>
+                <a href= "/2019/06/26/P1019 单词接龙/" title= "P1019 单词接龙">
+                    <div class="nextTitle">P1019 单词接龙</div>
                 </a>
             
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2019/02/09/hello-world/" title= "Hello World">
-                    <div class="prevTitle">Hello World</div>
+                <a href= "/2019/06/16/P1219 八皇后/" title= "P1219 八皇后">
+                    <div class="prevTitle">P1219 八皇后</div>
                 </a>
             
         </li>
@@ -579,7 +530,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Creating-repository"><span class="toc-number">1.</span> <span class="toc-text">Creating repository</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Way-back-Machine"><span class="toc-number">2.</span> <span class="toc-text">Way-back Machine</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Time-Travelling"><span class="toc-number">2.1.</span> <span class="toc-text">Time Travelling</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Undo-Changes"><span class="toc-number">2.2.</span> <span class="toc-text">Undo Changes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deleting-Files"><span class="toc-number">2.3.</span> <span class="toc-text">Deleting Files</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Managing-Branch"><span class="toc-number">3.</span> <span class="toc-text">Managing Branch</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Creating-and-Deleting-Branch"><span class="toc-number">3.1.</span> <span class="toc-text">Creating and Deleting Branch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solving-Conflicts"><span class="toc-number">3.2.</span> <span class="toc-text">Solving Conflicts</span></a></li></ol></li></ol>
+        
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
