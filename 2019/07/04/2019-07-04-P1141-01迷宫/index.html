@@ -22,7 +22,7 @@
     <meta name="description" content>
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Harmonyano&#39;s Blog</title>
+    <title>P1141 01迷宫 · Harmonyano&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -77,6 +77,8 @@
 
     <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
@@ -201,14 +203,23 @@
 </head>
 
     
-        <body class="home-body">
+        <body class="post-body">
     
     
-<header class="header index-header">
+<header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Harmonyano&#39;s Blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">P1141 01迷宫</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>Harmonyano's Blog</a>
 </header>
@@ -227,17 +238,17 @@ height:50vh;
     <!-- 主页  -->
     
     
-    <!-- 文章页  -->
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/index-bg.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Harmonyano's Blog
-            <!-- 文章页  -->
+            P1141 01迷宫
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
@@ -245,12 +256,40 @@ height:50vh;
             <!-- 主页副标题  -->
             
             
-                Die Proletarier haben nichts in ihr zu verlieren als ihre Ketten. Sie haben eine Welt zu gewinnen.
-            
-            <!-- 文章页  -->
+            <!-- 404 -->
             
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "NOI">NOI</a>
+    
+</div>
+                
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/07/04</span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -351,429 +390,64 @@ height:50vh;
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/07/07/2019-07-07-P1162-填涂颜色/" >
-            
-                <span>P1162 填涂颜色</span>
-        </a>
-        <div class="abstract-content">
-            <p>题目来源：<a href="https://www.luogu.org/problemnew/show/P1162" target="_blank" rel="noopener">洛谷P1162 填涂颜色</a></p>
-<hr>
-<ol>
-<li>如果被包围的部分没什么特点，那么就可以看看其他部分有没有什么特点，本题中就是可以从外围开始搜索，搜到墙就停下，最后没被搜到的部分就是被墙包围的部分</li>
-<li>为了防止外围起点就是墙，或者是外围的0被墙分为好几部分导致我们无法搜索到被分割的部分，可以多开一圈数组，使得外围相互连接起来，确保不被包围的0一定可以被搜到</li>
-</ol>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/07</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "NOI">NOI</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/07/04/2019-07-04-P1141-01迷宫/" >
-            
-                <span>P1141 01迷宫</span>
-        </a>
-        <div class="abstract-content">
-            <p>题目来源：<a href="https://www.luogu.org/problemnew/show/P1141" target="_blank" rel="noopener">洛谷P1141 01迷宫</a></p>
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>题目来源：<a href="https://www.luogu.org/problemnew/show/P1141" target="_blank" rel="noopener">洛谷P1141 01迷宫</a></p>
 <hr>
 <h2 id="BFS找连通块"><a href="#BFS找连通块" class="headerlink" title="BFS找连通块"></a>BFS找连通块</h2><ol>
 <li><p>连通块肯定还是<strong>DFS</strong>找得快，因为一开始不知道什么是连通块所以写了个BFS</p>
 </li>
 <li><p>搜索<strong>连通块</strong>不需要记录从某一个点出发最远能到达哪个点（BFS搜索最短距离），只需要记录从某一个点出发一共经过了多少个符合条件的点就行了（BFS搜索连通块），因为如果A和B联通，B和C联通，那么A和C必然联通，所以一次搜索能达到的所有点必定在同一个连通块内</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/04</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "NOI">NOI</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/07/02/2019-07-02-P1118-Backward-Digital-Sums/" >
-            
-                <span>P1118 Backward Digital Sums</span>
-        </a>
-        <div class="abstract-content">
-            <p>题目来源：<a href="https://www.luogu.org/problemnew/show/P1118" target="_blank" rel="noopener">洛谷P1118 数字三角形</a></p>
-<hr>
-<h2 id="暴力搜索"><a href="#暴力搜索" class="headerlink" title="暴力搜索"></a>暴力搜索</h2><p>看到题目的第一眼想的就是直接搜，发现不少TLE，我还减了不少枝…</p>
-<p>超时，只有20分，通过几个运行结果来看，写法应该对了，只是全都TLE而已</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/02</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "NOI">NOI</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/06/26/P1019 单词接龙/" >
-            
-                <span>P1019 单词接龙</span>
-        </a>
-        <div class="abstract-content">
-            <p>题目来源：<a href="https://www.luogu.org/problemnew/show/P1019" target="_blank" rel="noopener">洛谷P1019 单词接龙</a></p>
-<hr>
-<p>调了好几天，最后请教了醉神(@magolor)，十分钟给我调好了…</p>
-<ol>
-<li>这个程序一个问题就是循环根本就不会吧<code>dict</code>全循环一遍，那可能就是初始化出了问题： <code>m=pointer</code> 的位置，当时记得应该写一个副本 <code>m</code> 代替 <code>pointer</code> 被改变，但是写着写着忘了 <code>m</code> 具体应该在哪被初始化了，问题就出现在这</li>
-<li>回溯的状态：一定要明确回溯应当回溯到具体那个状态，是<code>ans_temp</code>已经被改变的状态吗？还是未改变的状态？本题中是<code>ans_temp</code>未改变的状态</li>
+<a id="more"></a>
+</li>
+<li><p>如果对于每个查询我们都搜索一遍的话肯定会超时，所以我们用<code>vis</code>数组记录下来一次搜索中所有经过的点所在的（必定是同一个）连通块的序号，<code>ans</code>数组记录相应序号的连通块中共有几个点，下次如果询问的点已经被搜索过就可以免去搜索直接输出答案了。</p>
+</li>
+<li><p>程序向本来被封死的地方走了一步，可能是<strong>初始化</strong>的问题。初始化就别用那些花里胡哨的句子了，还是老老实实写<code>for</code>循环吧，反正时间空间够用，别的句子太容易出错</p>
+</li>
+<li><p>莫名其妙输出来几十万的数据，估计是爆内存了，数组一定要根据题目要求<strong>开得足够大</strong></p>
+</li>
 </ol>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/26</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "NOI">NOI</a>
-    
-</div>
-            
-        </div>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> x,y;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">int</span> m,n,question[<span class="number">100005</span>][<span class="number">2</span>],dir[<span class="number">4</span>][<span class="number">2</span>]=&#123;&#123;<span class="number">1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">0</span>,<span class="number">1</span>&#125;,&#123;<span class="number">0</span>,<span class="number">-1</span>&#125;&#125;,vis[<span class="number">1003</span>][<span class="number">1003</span>],ans[<span class="number">100005</span>],connect=<span class="number">1</span>; <span class="keyword">bool</span> maze[<span class="number">1003</span>][<span class="number">1003</span>];</span><br><span class="line"><span class="comment">///question 存储了每组询问的起点坐标</span></span><br><span class="line"><span class="comment">///vis = 0 代表这个点没走过，现在不在任何一个连通块里面；vis = x (x&gt;0) 代表这个点走过了，并且在x号连通块里面；这个数组一定要开大，只开到1003是不行的，必须要开到和question一个数量级</span></span><br><span class="line"><span class="comment">///ans 存储每个连通块里面共有几个点</span></span><br><span class="line"><span class="comment">///maze 存储这个迷宫</span></span><br><span class="line"><span class="comment">///connect 代表各个连通块的序号</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bfs</span><span class="params">(<span class="keyword">int</span>, <span class="keyword">int</span>)</span></span>; <span class="function"><span class="keyword">bool</span> <span class="title">legal</span><span class="params">(node, node)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">            <span class="keyword">char</span> a;</span><br><span class="line">            <span class="built_in">cin</span>&gt;&gt;a;</span><br><span class="line">            <span class="keyword">if</span>(a==<span class="string">'0'</span>) maze[i][j]=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(a==<span class="string">'1'</span>) maze[i][j]=<span class="number">1</span>;</span><br><span class="line">        &#125;<span class="comment">///因为每个输入之间是不空格的，所以用char来输入做一个巧妙的处理</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;question[i][<span class="number">0</span>]&gt;&gt;question[i][<span class="number">1</span>];</span><br><span class="line">    <span class="comment">///初始化最后出了很大问题，还是用最保险的for循环</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">100005</span>;i++) ans[i]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">1003</span>;i++) <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">1003</span>;j++) vis[i][j]=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;bfs(question[i][<span class="number">0</span>],question[i][<span class="number">1</span>])&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">legal</span><span class="params">(node now, node next)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">///这里不需要分情况讨论“如果 now==0 则必须 next==1” 或相反，只需要确保now和next的值不同就行了</span></span><br><span class="line">    <span class="keyword">return</span> maze[now.x][now.y]!=maze[next.x][next.y] &amp;&amp;</span><br><span class="line">    next.x&gt;=<span class="number">1</span> &amp;&amp; next.x&lt;=n &amp;&amp; next.y&gt;=<span class="number">1</span> &amp;&amp; next.y&lt;=n &amp;&amp; vis[next.x][next.y]==<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bfs</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">queue</span> &lt;node&gt; q;</span><br><span class="line">    node start;</span><br><span class="line">    start.x = x; start.y = y;</span><br><span class="line">    <span class="keyword">if</span>(vis[start.x][start.y]==<span class="number">0</span>)&#123;<span class="comment">///如果这个点不在现有的任何一个连通块内，则进入队列，开始bfs</span></span><br><span class="line">        vis[start.x][start.y] = connect;</span><br><span class="line">        q.push(start);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> ans[vis[start.x][start.y]];<span class="comment">///如果这个点在某个连通块内，则直接输出此连通块对应的结果</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">        node now = q.front();</span><br><span class="line">        q.pop();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">4</span>;i++)&#123;</span><br><span class="line">            node next;</span><br><span class="line">            next.x = now.x + dir[i][<span class="number">0</span>];</span><br><span class="line">            next.y = now.y + dir[i][<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(legal(now,next))&#123;</span><br><span class="line">                vis[next.x][next.y] = connect;<span class="comment">///记录下来点next属于连通块connect</span></span><br><span class="line">                ans[connect]++;<span class="comment">///连通块connect中总点数+1</span></span><br><span class="line">                q.push(next);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans[connect++];<span class="comment">///所有属于connect的点都搜完了，返回答案，并使connect++，表示接下来要扫的是新的连通块</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
     </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/06/17/P1101 单词方阵/" >
-            
-                <span>P1101 单词方阵</span>
-        </a>
-        <div class="abstract-content">
-            <p>题目来源：<a href="https://www.luogu.org/problemnew/show/P1101" target="_blank" rel="noopener">洛谷P1101 单词方阵</a></p>
-<hr>
-<p><code>dir</code> 这个数组是很好用的，不需要为8个方向特意写8个不同的函数，只需要写一个函数但是改变取哪一个<code>dir[i]</code>来判定哪一个方向符合条件就行了
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/17</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "NOI">NOI</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/06/16/P1219 八皇后/" >
-            
-                <span>P1219 八皇后</span>
-        </a>
-        <div class="abstract-content">
-            <p>题目来源：<a href="https://www.luogu.org/problemnew/show/P1219" target="_blank" rel="noopener">洛谷P1219 八皇后</a></p>
-<hr>
-<h2 id="我的解法"><a href="#我的解法" class="headerlink" title="我的解法"></a>我的解法</h2><p>自己的程序出现的几个问题：</p>
-<ol>
-<li>对角线表达式太过复杂，各层绝对值都可以简化，应该相信大部分情况下复杂的都是错误的</li>
-<li>不需要记录这一行放没放过棋子，因为我们是按照一行一行的顺序放过来的，上一行必定有棋子，下一行必定无棋子
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/16</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "NOI">NOI</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/06/04/P1031 均分纸牌/" >
-            
-                <span>P1031 均分纸牌</span>
-        </a>
-        <div class="abstract-content">
-            <p>题目来源：<a href="https://www.luogu.org/problemnew/show/P1031" target="_blank" rel="noopener">洛谷P1031 均分纸牌</a></p>
-<hr>
-<h2 id="标解"><a href="#标解" class="headerlink" title="标解"></a>标解</h2><p><strong>注意本题中平均数的运用</strong></p>
-<p>首先，一定要想到每堆排的张数减去平均张数，这样，题目就变成了移动正数，加到负数中，是大家都变成了0，这就意味着成功了60%！！！！（关键）。以例题来说，平均张数为10，原张数变为-1，-2,+7，-4，因为没有为0的数，所以从最左边出发，将-1移动到-2中，变为0，-3，+7,4，再讲-3向右移动……一次类推，直到全为0为止。没移动一次，步数便加1。关键是，负数怎么移动，其实，移动-x张牌，其实就是从另一堆中移动x张牌，步数相同。还有就是要过滤0，如排数为4，4,2,6，则减去平均数后为0,0，-2,2，就要从第三对开始移动。注意有些0是不能过滤的，如1,0,1，-2中的0。还有就是每次移动好都要过滤。如-2，2,1,3，-4，第一步后变为0,0,1,3，-4，可以省略第二堆的移动。
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/04</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "NOI">NOI</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/06/03/P2678 跳石头/" >
-            
-                <span>P2678 跳石头</span>
-        </a>
-        <div class="abstract-content">
-            <p>题目来源：<a href="https://www.luogu.org/problemnew/show/P2678" target="_blank" rel="noopener">洛谷P2678 跳石头</a></p>
-<hr>
-<p>这是一道标准的 “最大值最小”或“最小值最大“ 的题，遇到这种题，我们就可以使用 <strong>贪心+二分查找</strong> 的方法来做</p>
-<h2 id="二分答案-二分查找"><a href="#二分答案-二分查找" class="headerlink" title="二分答案/二分查找"></a>二分答案/二分查找</h2><p>有序（单调）的，有界的就可以用二分法查找。
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/03</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "NOI">NOI</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/05/30/P1090 合并果子/" >
-            
-                <span>P1090 合并果子</span>
-        </a>
-        <div class="abstract-content">
-            <p>题目来源： <a href="https://www.luogu.org/problemnew/show/P1090" target="_blank" rel="noopener">洛谷P1090 合并果子</a></p>
-<hr>
-<h2 id="一维数组做法"><a href="#一维数组做法" class="headerlink" title="一维数组做法"></a>一维数组做法</h2><p>本题是一个简单的 <a href="https://www.cnblogs.com/kubixuesheng/p/4397798.html" target="_blank" rel="noopener">Huffman树</a>。Huffman编码 在 UTF-8 &amp; Unicode 中都有它思想的体现，即出现频率高的编码长度短，出现频率低的编码长度长，用以缩短整体编码长度</p>
-<p>这里我也运用了前面 P1309 的思想：因为每次需要重新排序的时候只有一个数据需要被插入整个数列当中,所以并不需要假定数据无序的 quick sort，反而是线性的排序更快</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/30</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "NOI">NOI</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/05/30/P1309 瑞士轮/" >
-            
-                <span>P1309 瑞士轮</span>
-        </a>
-        <div class="abstract-content">
-            <p>题目来源：<a href="https://www.luogu.org/problemnew/show/P1309" target="_blank" rel="noopener">洛谷P1309 瑞士轮</a></p>
-<hr>
-<ol>
-<li>胜者组和败者组分别是有序的，使用 <em>mergesort</em> 将两个有序同向数组进行归并（严格上来说不是归并排序），大大降低了时间复杂度 = O(n)。如果我们使用 <em>quicksort</em>，则默认整个数据是无序的，对每个数据都重新排序所以会超时
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/30</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "NOI">NOI</a>
-    
-</div>
-            
-        </div>
-    </article>
+    <!-- license  -->
     
     <!-- paginator  -->
-    
-    <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a>
-    </nav>
-    
-</main>
-            <!-- profile -->
+    <ul class="post-paginator">
+        <li class="next">
             
-            <div class="profile">
-    <img class="profile-avatar" alt="avatar" src= /avatar/Ruyi.jpg >
-    <div class="profile-name">Harmonyano</div>
-    
-    <div class="profile-signature">
-        witness me
-    </div>
-    
-    
-    <div class="profile-social">
-        
-    
-        
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2019/07/07/2019-07-07-P1162-填涂颜色/" title= "P1162 填涂颜色">
+                    <div class="nextTitle">P1162 填涂颜色</div>
+                </a>
             
-                <a href="mailto:Harmonyanop@gmail.com" class="iconfont-archer email" title=email ></a>
+        </li>
+        <li class="previous">
             
-        
-    
-        
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2019/07/02/2019-07-02-P1118-Backward-Digital-Sums/" title= "P1118 Backward Digital Sums">
+                    <div class="prevTitle">P1118 Backward Digital Sums</div>
+                </a>
             
-                <a href="//github.com/Harmonyano" class="iconfont-archer github" target="_blank" title=github></a>
-            
-        
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
-        
-            
-                <a href="//twitter.com/Harmonyanop" class="iconfont-archer twitter" target="_blank" title=twitter></a>
-            
-        
     
-        
-            
-                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title=rss></a>
-            
-        
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
     
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
     
 
-    </div>
-    
-    
-    
-        <div class="about-me">
-            <a href = "/about" >ABOUT ME</a>
-        </div>
-    
-</div>
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
             
         </div>
         <footer class="footer footer-unloaded">
@@ -856,6 +530,24 @@ height:50vh;
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#BFS找连通块"><span class="toc-number">1.</span> <span class="toc-text">BFS找连通块</span></a></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -1139,6 +831,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>

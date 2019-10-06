@@ -346,19 +346,83 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2019/07/07/2019-07-07-P1162-填涂颜色/" >
+            
+                <span>P1162 填涂颜色</span>
+        </a>
+        <div class="abstract-content">
+            <p>题目来源：<a href="https://www.luogu.org/problemnew/show/P1162" target="_blank" rel="noopener">洛谷P1162 填涂颜色</a></p>
+<hr>
+<ol>
+<li>如果被包围的部分没什么特点，那么就可以看看其他部分有没有什么特点，本题中就是可以从外围开始搜索，搜到墙就停下，最后没被搜到的部分就是被墙包围的部分</li>
+<li>为了防止外围起点就是墙，或者是外围的0被墙分为好几部分导致我们无法搜索到被分割的部分，可以多开一圈数组，使得外围相互连接起来，确保不被包围的0一定可以被搜到</li>
+</ol>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/07</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "NOI">NOI</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/07/04/2019-07-04-P1141-01迷宫/" >
+            
+                <span>P1141 01迷宫</span>
+        </a>
+        <div class="abstract-content">
+            <p>题目来源：<a href="https://www.luogu.org/problemnew/show/P1141" target="_blank" rel="noopener">洛谷P1141 01迷宫</a></p>
+<hr>
+<h2 id="BFS找连通块"><a href="#BFS找连通块" class="headerlink" title="BFS找连通块"></a>BFS找连通块</h2><ol>
+<li><p>连通块肯定还是<strong>DFS</strong>找得快，因为一开始不知道什么是连通块所以写了个BFS</p>
+</li>
+<li><p>搜索<strong>连通块</strong>不需要记录从某一个点出发最远能到达哪个点（BFS搜索最短距离），只需要记录从某一个点出发一共经过了多少个符合条件的点就行了（BFS搜索连通块），因为如果A和B联通，B和C联通，那么A和C必然联通，所以一次搜索能达到的所有点必定在同一个连通块内</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/04</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "NOI">NOI</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2019/07/02/2019-07-02-P1118-Backward-Digital-Sums/" >
             
                 <span>P1118 Backward Digital Sums</span>
         </a>
         <div class="abstract-content">
-            题目来源：洛谷P1118 数字三角形
-
-暴力搜索看到题目的第一眼想的就是直接搜，发现不少TLE，我还减了不少枝…
-超时，只有20分，通过几个运行结果来看，写法应该对了，只是全都TLE而已
-
-^在c++中不是幂运算，是异或（如果两个相应位为“异”（值不同），则该位结果为1，否则为0。0^0=0; 0^1=1; 1^0=1; 1^1=0）。幂运算用pow(base,power)
-
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253#include&l...
+            <p>题目来源：<a href="https://www.luogu.org/problemnew/show/P1118" target="_blank" rel="noopener">洛谷P1118 数字三角形</a></p>
+<hr>
+<h2 id="暴力搜索"><a href="#暴力搜索" class="headerlink" title="暴力搜索"></a>暴力搜索</h2><p>看到题目的第一眼想的就是直接搜，发现不少TLE，我还减了不少枝…</p>
+<p>超时，只有20分，通过几个运行结果来看，写法应该对了，只是全都TLE而已</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -817,9 +881,17 @@
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 10
+        Total : 12
         </div>
         <!-- search  -->
         
@@ -832,6 +904,16 @@
     
     <div class="archive-year"> 2019 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/07</span><a class="archive-post-title" href= "/2019/07/07/2019-07-07-P1162-填涂颜色/" >P1162 填涂颜色</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/04</span><a class="archive-post-title" href= "/2019/07/04/2019-07-04-P1141-01迷宫/" >P1141 01迷宫</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -888,9 +970,9 @@
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
-    
         <span class="sidebar-tag-name" data-tags="NOI"><span class="iconfont-archer">&#xe606;</span>NOI</span>
+    
+        <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
