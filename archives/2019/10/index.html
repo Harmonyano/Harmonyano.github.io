@@ -346,224 +346,34 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/06/16/P1219 八皇后/" >
+        <a class="abstract-title" href = "/2019/10/17/2019-10-17-Designing-and-documenting-interfaces-and-implementations/" >
             
-                <span>P1219 八皇后</span>
+                <span>Designing and documenting interfaces and implementations</span>
         </a>
         <div class="abstract-content">
-            <p>题目来源：<a href="https://www.luogu.org/problemnew/show/P1219" target="_blank" rel="noopener">洛谷P1219 八皇后</a></p>
-<hr>
-<h2 id="我的解法"><a href="#我的解法" class="headerlink" title="我的解法"></a>我的解法</h2><p>自己的程序出现的几个问题：</p>
-<ol>
-<li>对角线表达式太过复杂，各层绝对值都可以简化，应该相信大部分情况下复杂的都是错误的</li>
-<li>不需要记录这一行放没放过棋子，因为我们是按照一行一行的顺序放过来的，上一行必定有棋子，下一行必定无棋子
+            <h2 id="An-Example-of-Writing-Interface"><a href="#An-Example-of-Writing-Interface" class="headerlink" title="An Example of Writing Interface"></a>An Example of Writing Interface</h2><h3 id="1-Overview-what-concerns"><a href="#1-Overview-what-concerns" class="headerlink" title="1. Overview: what concerns?"></a>1. Overview: what concerns?</h3>   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** An n*n mutable 2048 puzzle. */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Puzzle</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/16</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/17</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "NOI">NOI</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Cornell">Cornell</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "19FA">19FA</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CS2112">CS2112</a>
     
 </div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/06/04/P1031 均分纸牌/" >
-            
-                <span>P1031 均分纸牌</span>
-        </a>
-        <div class="abstract-content">
-            <p>题目来源：<a href="https://www.luogu.org/problemnew/show/P1031" target="_blank" rel="noopener">洛谷P1031 均分纸牌</a></p>
-<hr>
-<h2 id="标解"><a href="#标解" class="headerlink" title="标解"></a>标解</h2><p><strong>注意本题中平均数的运用</strong></p>
-<p>首先，一定要想到每堆排的张数减去平均张数，这样，题目就变成了移动正数，加到负数中，是大家都变成了0，这就意味着成功了60%！！！！（关键）。以例题来说，平均张数为10，原张数变为-1，-2,+7，-4，因为没有为0的数，所以从最左边出发，将-1移动到-2中，变为0，-3，+7,4，再讲-3向右移动……一次类推，直到全为0为止。没移动一次，步数便加1。关键是，负数怎么移动，其实，移动-x张牌，其实就是从另一堆中移动x张牌，步数相同。还有就是要过滤0，如排数为4，4,2,6，则减去平均数后为0,0，-2,2，就要从第三对开始移动。注意有些0是不能过滤的，如1,0,1，-2中的0。还有就是每次移动好都要过滤。如-2，2,1,3，-4，第一步后变为0,0,1,3，-4，可以省略第二堆的移动。
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/04</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "NOI">NOI</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/06/03/P2678 跳石头/" >
-            
-                <span>P2678 跳石头</span>
-        </a>
-        <div class="abstract-content">
-            <p>题目来源：<a href="https://www.luogu.org/problemnew/show/P2678" target="_blank" rel="noopener">洛谷P2678 跳石头</a></p>
-<hr>
-<p>这是一道标准的 “最大值最小”或“最小值最大“ 的题，遇到这种题，我们就可以使用 <strong>贪心+二分查找</strong> 的方法来做</p>
-<h2 id="二分答案-二分查找"><a href="#二分答案-二分查找" class="headerlink" title="二分答案/二分查找"></a>二分答案/二分查找</h2><p>有序（单调）的，有界的就可以用二分法查找。
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/03</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "NOI">NOI</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/05/30/P1090 合并果子/" >
-            
-                <span>P1090 合并果子</span>
-        </a>
-        <div class="abstract-content">
-            <p>题目来源： <a href="https://www.luogu.org/problemnew/show/P1090" target="_blank" rel="noopener">洛谷P1090 合并果子</a></p>
-<hr>
-<h2 id="一维数组做法"><a href="#一维数组做法" class="headerlink" title="一维数组做法"></a>一维数组做法</h2><p>本题是一个简单的 <a href="https://www.cnblogs.com/kubixuesheng/p/4397798.html" target="_blank" rel="noopener">Huffman树</a>。Huffman编码 在 UTF-8 &amp; Unicode 中都有它思想的体现，即出现频率高的编码长度短，出现频率低的编码长度长，用以缩短整体编码长度</p>
-<p>这里我也运用了前面 P1309 的思想：因为每次需要重新排序的时候只有一个数据需要被插入整个数列当中,所以并不需要假定数据无序的 quick sort，反而是线性的排序更快</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/30</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "NOI">NOI</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/05/30/P1309 瑞士轮/" >
-            
-                <span>P1309 瑞士轮</span>
-        </a>
-        <div class="abstract-content">
-            <p>题目来源：<a href="https://www.luogu.org/problemnew/show/P1309" target="_blank" rel="noopener">洛谷P1309 瑞士轮</a></p>
-<hr>
-<ol>
-<li>胜者组和败者组分别是有序的，使用 <em>mergesort</em> 将两个有序同向数组进行归并（严格上来说不是归并排序），大大降低了时间复杂度 = O(n)。如果我们使用 <em>quicksort</em>，则默认整个数据是无序的，对每个数据都重新排序所以会超时
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/30</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "NOI">NOI</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/02/10/Intro-to-Git-Command/" >
-            
-                <span>Introduction to Git Command</span>
-        </a>
-        <div class="abstract-content">
-            <h2 id="Creating-repository"><a href="#Creating-repository" class="headerlink" title="Creating repository"></a><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013743256916071d599b3aed534aaab22a0db6c4e07fd0000" target="_blank" rel="noopener">Creating repository</a></h2><ul>
-<li><code>git init</code>: creat a repository</li>
-<li><code>git add File_Name</code>: add “File_Name” to repository</li>
-<li><code>git add .</code> : add all files </li>
-<li><code>git commit -m &quot;message&quot;</code>: commit changes and tell others what changes have been made </li>
-</ul>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/10</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Git">Git</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/02/09/hello-world/" >
-            
-                <span>Hello World</span>
-        </a>
-        <div class="abstract-content">
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/09</span>
-            </div>
-            <!-- tags  -->
             
         </div>
     </article>
     
     <!-- paginator  -->
-    
-    <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/archives/2019/">&#60; PREV</a><a class="page-number" href="/archives/2019/">1</a><span class="page-number current">2</span>
-    </nav>
     
 </main>
             <!-- profile -->
