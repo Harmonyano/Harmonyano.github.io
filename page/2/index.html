@@ -359,6 +359,211 @@ height:50vh;
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2019/09/30/2019-09-30-Value-Representation,-Hashing,-and-Generics/" >
+            
+                <span>Value Representation, Hashing, and Generics</span>
+        </a>
+        <div class="abstract-content">
+            <p>From Lecture: </p>
+<ul>
+<li><a href="https://www.cs.cornell.edu/courses/cs2112/2019fa/recitations/recitation.html?id=02java_rep" target="_blank" rel="noopener">representing Java values</a></li>
+<li><a href="https://www.cs.cornell.edu/courses/cs2112/2019fa/lectures/lecture.html?id=generics" target="_blank" rel="noopener">Generics, more lists</a></li>
+<li><a href="https://www.cs.cornell.edu/courses/cs2112/2019fa/lectures/lecture.html?id=hashtables" target="_blank" rel="noopener">Hash tables</a></li>
+</ul>
+<p>Download my notes in OneNote <a href="/pdf/2019-09-30-Value-Representation,-Hashing,-and-Generics.pdf">here </a></p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/09/30</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Cornell">Cornell</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CS2112">CS2112</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "FA19">FA19</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/07/07/2019-07-07-P1162-填涂颜色/" >
+            
+                <span>P1162 填涂颜色</span>
+        </a>
+        <div class="abstract-content">
+            <p>题目来源：<a href="https://www.luogu.org/problemnew/show/P1162" target="_blank" rel="noopener">洛谷P1162 填涂颜色</a></p>
+<hr>
+<ol>
+<li>如果被包围的部分没什么特点，那么就可以看看其他部分有没有什么特点，本题中就是可以从外围开始搜索，搜到墙就停下，最后没被搜到的部分就是被墙包围的部分</li>
+<li>为了防止外围起点就是墙，或者是外围的0被墙分为好几部分导致我们无法搜索到被分割的部分，可以多开一圈数组，使得外围相互连接起来，确保不被包围的0一定可以被搜到</li>
+</ol>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/07</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "NOI">NOI</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/07/04/2019-07-04-P1141-01迷宫/" >
+            
+                <span>P1141 01迷宫</span>
+        </a>
+        <div class="abstract-content">
+            <p>题目来源：<a href="https://www.luogu.org/problemnew/show/P1141" target="_blank" rel="noopener">洛谷P1141 01迷宫</a></p>
+<hr>
+<h2 id="BFS找连通块"><a href="#BFS找连通块" class="headerlink" title="BFS找连通块"></a>BFS找连通块</h2><ol>
+<li><p>连通块肯定还是<strong>DFS</strong>找得快，因为一开始不知道什么是连通块所以写了个BFS</p>
+</li>
+<li><p>搜索<strong>连通块</strong>不需要记录从某一个点出发最远能到达哪个点（BFS搜索最短距离），只需要记录从某一个点出发一共经过了多少个符合条件的点就行了（BFS搜索连通块），因为如果A和B联通，B和C联通，那么A和C必然联通，所以一次搜索能达到的所有点必定在同一个连通块内</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/04</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "NOI">NOI</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/07/02/2019-07-02-P1118-Backward-Digital-Sums/" >
+            
+                <span>P1118 Backward Digital Sums</span>
+        </a>
+        <div class="abstract-content">
+            <p>题目来源：<a href="https://www.luogu.org/problemnew/show/P1118" target="_blank" rel="noopener">洛谷P1118 数字三角形</a></p>
+<hr>
+<h2 id="暴力搜索"><a href="#暴力搜索" class="headerlink" title="暴力搜索"></a>暴力搜索</h2><p>看到题目的第一眼想的就是直接搜，发现不少TLE，我还减了不少枝…</p>
+<p>超时，只有20分，通过几个运行结果来看，写法应该对了，只是全都TLE而已</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/02</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "NOI">NOI</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/06/26/P1019 单词接龙/" >
+            
+                <span>P1019 单词接龙</span>
+        </a>
+        <div class="abstract-content">
+            <p>题目来源：<a href="https://www.luogu.org/problemnew/show/P1019" target="_blank" rel="noopener">洛谷P1019 单词接龙</a></p>
+<hr>
+<p>调了好几天，最后请教了醉神(@magolor)，十分钟给我调好了…</p>
+<ol>
+<li>这个程序一个问题就是循环根本就不会吧<code>dict</code>全循环一遍，那可能就是初始化出了问题： <code>m=pointer</code> 的位置，当时记得应该写一个副本 <code>m</code> 代替 <code>pointer</code> 被改变，但是写着写着忘了 <code>m</code> 具体应该在哪被初始化了，问题就出现在这</li>
+<li>回溯的状态：一定要明确回溯应当回溯到具体那个状态，是<code>ans_temp</code>已经被改变的状态吗？还是未改变的状态？本题中是<code>ans_temp</code>未改变的状态</li>
+</ol>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/26</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "NOI">NOI</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/06/17/P1101 单词方阵/" >
+            
+                <span>P1101 单词方阵</span>
+        </a>
+        <div class="abstract-content">
+            <p>题目来源：<a href="https://www.luogu.org/problemnew/show/P1101" target="_blank" rel="noopener">洛谷P1101 单词方阵</a></p>
+<hr>
+<p><code>dir</code> 这个数组是很好用的，不需要为8个方向特意写8个不同的函数，只需要写一个函数但是改变取哪一个<code>dir[i]</code>来判定哪一个方向符合条件就行了
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/17</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "NOI">NOI</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2019/06/16/P1219 八皇后/" >
             
                 <span>P1219 八皇后</span>
@@ -457,38 +662,6 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/05/30/P1090 合并果子/" >
-            
-                <span>P1090 合并果子</span>
-        </a>
-        <div class="abstract-content">
-            <p>题目来源： <a href="https://www.luogu.org/problemnew/show/P1090" target="_blank" rel="noopener">洛谷P1090 合并果子</a></p>
-<hr>
-<h2 id="一维数组做法"><a href="#一维数组做法" class="headerlink" title="一维数组做法"></a>一维数组做法</h2><p>本题是一个简单的 <a href="https://www.cnblogs.com/kubixuesheng/p/4397798.html" target="_blank" rel="noopener">Huffman树</a>。Huffman编码 在 UTF-8 &amp; Unicode 中都有它思想的体现，即出现频率高的编码长度短，出现频率低的编码长度长，用以缩短整体编码长度</p>
-<p>这里我也运用了前面 P1309 的思想：因为每次需要重新排序的时候只有一个数据需要被插入整个数列当中,所以并不需要假定数据无序的 quick sort，反而是线性的排序更快</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/30</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "NOI">NOI</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
         <a class="abstract-title" href = "/2019/05/30/P1309 瑞士轮/" >
             
                 <span>P1309 瑞士轮</span>
@@ -515,67 +688,10 @@ height:50vh;
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/02/10/Intro-to-Git-Command/" >
-            
-                <span>Introduction to Git Command</span>
-        </a>
-        <div class="abstract-content">
-            <h2 id="Creating-repository"><a href="#Creating-repository" class="headerlink" title="Creating repository"></a><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013743256916071d599b3aed534aaab22a0db6c4e07fd0000" target="_blank" rel="noopener">Creating repository</a></h2><ul>
-<li><code>git init</code>: creat a repository</li>
-<li><code>git add File_Name</code>: add “File_Name” to repository</li>
-<li><code>git add .</code> : add all files </li>
-<li><code>git commit -m &quot;message&quot;</code>: commit changes and tell others what changes have been made </li>
-</ul>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/10</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Git">Git</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/02/09/hello-world/" >
-            
-                <span>Hello World</span>
-        </a>
-        <div class="abstract-content">
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/09</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+        <a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">NEXT &#62;</a>
     </nav>
     
 </main>
@@ -649,6 +765,10 @@ height:50vh;
     
         
     
+        
+            
+                <a href="/magolor.github.io/" class="iconfont-archer friendA" target="_blank" title=friendA></a>
+            
         
     
         
@@ -729,6 +849,10 @@ height:50vh;
     
         
     
+        
+            
+                <a href="/magolor.github.io/" class="iconfont-archer friendA" target="_blank" title=friendA></a>
+            
         
     
         
@@ -961,9 +1085,101 @@ height:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 17
+        Total : 23
         </div>
         <!-- search  -->
         
@@ -976,6 +1192,31 @@ height:50vh;
     
     <div class="archive-year"> 2019 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/05</span><a class="archive-post-title" href= "/2019/12/05/2019-12-05-Problem-Analysis/" >Problem Analysis</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/26</span><a class="archive-post-title" href= "/2019/11/26/2019-11-26-Priority-Queue-and-Heap/" >Priority Queue and Heap</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/23</span><a class="archive-post-title" href= "/2019/11/23/2019-11-23-Android-Basics-User-Interface/" >Udacity: Android Basics</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/21</span><a class="archive-post-title" href= "/2019/11/21/2019-11-21-shortest-path-algorithm/" >Shortest path algorithm</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/21</span><a class="archive-post-title" href= "/2019/11/21/2019-11-21-import-Junit-and-JavaFx-into-VSCode/" >Import Junit and JavaFx into VSCode</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1000,6 +1241,11 @@ height:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">10/17</span><a class="archive-post-title" href= "/2019/10/17/2019-10-17-Designing-and-documenting-interfaces-and-implementations/" >Designing and documenting interfaces and implementations</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/30</span><a class="archive-post-title" href= "/2019/09/30/2019-09-30-Value-Representation,-Hashing,-and-Generics/" >Value Representation, Hashing, and Generics</a>
         </li>
     
     
@@ -1044,12 +1290,12 @@ height:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2019/05/30/P1309 瑞士轮/" >P1309 瑞士轮</a>
+            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2019/05/30/P1090 合并果子/" >P1090 合并果子</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2019/05/30/P1090 合并果子/" >P1090 合并果子</a>
+            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2019/05/30/P1309 瑞士轮/" >P1309 瑞士轮</a>
         </li>
     
     
@@ -1075,7 +1321,15 @@ height:50vh;
     
         <span class="sidebar-tag-name" data-tags="CS2112"><span class="iconfont-archer">&#xe606;</span>CS2112</span>
     
+        <span class="sidebar-tag-name" data-tags="Logistics"><span class="iconfont-archer">&#xe606;</span>Logistics</span>
+    
+        <span class="sidebar-tag-name" data-tags="Java"><span class="iconfont-archer">&#xe606;</span>Java</span>
+    
         <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
+    
+        <span class="sidebar-tag-name" data-tags="FA19"><span class="iconfont-archer">&#xe606;</span>FA19</span>
+    
+        <span class="sidebar-tag-name" data-tags="Android"><span class="iconfont-archer">&#xe606;</span>Android</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
