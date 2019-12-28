@@ -22,7 +22,7 @@
     <meta name="description" content>
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Designing and documenting interfaces and implementations · Harmonyano&#39;s Blog</title>
+    <title>Cornell 19FA 总结 · Harmonyano&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/" >Harmonyano&#39;s Blog</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">Designing and documenting interfaces and implementations</a>
+                <a href="#" class="post-name">Cornell 19FA 总结</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Designing and documenting interfaces and implementations
+            Cornell 19FA 总结
             <!-- 404 -->
             
         </h1>
@@ -270,14 +270,12 @@ height:50vh;
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "19FA">19FA</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CS2112">CS2112</a>
-    
 </div>
                 
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2019/10/17</span>
+                    <span class="post-intro-time">2019/12/22</span>
                     
                     <span class="shareWrapper">
                         <span class="iconfont-archer shareIcon">&#xe71d;</span>
@@ -396,67 +394,42 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>From Lecture: <a href="https://www.cs.cornell.edu/courses/cs2112/2019fa/lectures/lecture.html?id=intf_design" target="_blank" rel="noopener">Designing and documenting interfaces and implementations</a></p>
-<hr>
-<h2 id="An-Example-of-Writing-Interface"><a href="#An-Example-of-Writing-Interface" class="headerlink" title="An Example of Writing Interface"></a>An Example of Writing Interface</h2><h3 id="1-Overview-what-concerns"><a href="#1-Overview-what-concerns" class="headerlink" title="1. Overview: what concerns?"></a>1. Overview: what concerns?</h3>   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** An n*n mutable 2048 puzzle. */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Puzzle</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="CS2112-OO-Design-Data-Structs-Honors"><a href="#CS2112-OO-Design-Data-Structs-Honors" class="headerlink" title="CS2112 OO Design Data Structs (Honors)"></a>CS2112 OO Design Data Structs (Honors)</h2><blockquote>
+<p>My goal in teaching this course has been to make you guys fearless about taking ideas and turning them into systems of codes that work</p>
+<p>– Andrew Myers, 2019/12/10</p>
+</blockquote>
+<a id="more"></a>从A1到A7肉眼可见自己的成长，真的想学CS的话一定要上这个课，因为这个课所以我觉得这一学期过得特别快，两周一个project，一学期就这样过去了。
 
-<a id="more"></a>
-
-<h3 id="2-Choose-operations"><a href="#2-Choose-operations" class="headerlink" title="2. Choose operations"></a>2. Choose operations</h3><ul>
-<li><p>creators create objects</p>
+<p><img src="/images/2019-12-22-Cornell-19FA-%E6%80%BB%E7%BB%93/CS2112.jpg" alt="A4-A7 Git Commit History"></p>
 <ul>
-<li>constructors</li>
-<li>factory methods (usually static, loose coupling; don’t expose the choice of which class is being constructed)</li>
+<li>A1: 什么嘛，还是挺简单的吗（结果拿了低于一个deviation）</li>
+<li>A2(Isaac)：因为亲爱的中国朋友们自己有自己的队友，只有一个黑哥找我当队友。这个黑哥好像是课上唯一一个黑哥，真的非常努力。但是说实话有的时候忙不到点上去，忙了白忙。最后RSA因为一个莫名其妙的bug，又是低于一个median (128 commits)</li>
+<li>A3(Ralph)：我最爱的数据结构，Chinese American 队友，强是真的强。可以直接无障碍读Java源码，他的hashTable估计就是这样写出来的，不然更强，因为他的hashTable写得实在太好了。基本上被他带了，我就写了个trie而已。但有可能是因为这次作业太简单，而且相对独立，我俩都觉得不需要和对方交流，结果没什么团队合作的感觉，做的还不如A2带感 (152 commits)</li>
+<li>A4(Xinyu &amp; Faizaan)：终于有中国人没有队友了（，所以是一个中国妹子和一个美国人做得队友。这个美国人，真的不正经，明明能提前做完非要拖到最后一秒写。幸亏因为A4整个结构是我写的，我几乎对它有绝对了解和掌控，进行得还是很顺利的。这个中国小姑娘是真的强，给她讲明白了就能写，写出来还一点都没bug</li>
+<li>A5(Xinyu &amp; Faizaan)：因为A4我要关心的东西太多，整个给我整虚脱了，于是我把A5全权交给了美国人，结果作为代码量最大的project之一，他又没写完，应该是我做的最差的一次作业。但是最后成绩没有想象的那么差，主要批的松。</li>
+<li>A6(Xinyu &amp; Faizaan)：因为我懒得学习JavaFx一堆乱七八糟的语法，所以我又全权交给了美国人，这个时候其实有点破罐子破摔的感觉。同时我把A5用不了的地方整个重写了一遍。最后一晚上非常刺激，虽然我们deadline之前一个小时做完了，但是最后一刻我改了改一些错误信息展示的代码让整个GUI更好看，结果在测试的时候发现了一个bug。我以为是我的错误，于是<code>git reset</code>回去，交上了以前的版本。刺激在于我卡着deadline交上的，更刺激的是我交完以后发现我交的仍然是最新版本，所以bug仍然存在，心情起伏最大的一晚上。（不过最后发现和我那一个小时的改动没关系，是model不是GUI出了问题）</li>
+<li>A7(Xinyu &amp; Faizaan)：server我觉得还是要学一下的，和A4一样试着写了个结构。小姑娘帮我把server全写完了，最可怕的是一个bug都没有，真的吓人。美国人可能因为要准备自己的Final，所以这一次竟然在deadline之前六七个小时就写完了，然后早早提交上去了。非常满意的一次作业（也是除A3外唯一的高于median的作业）(475 commits in total)</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Puzzle</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;&#125;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Puzzle <span class="title">create</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>observers(queries):</p>
-<ul>
-<li>primary purpose: report the state of object</li>
-<li>no side effect (doesn’t change anything)</li>
-</ul>
-</li>
-<li><p>mutators (command): </p>
-<ul>
-<li>primary purpose: side effect on the state of the object</li>
-<li>only makes sense when the object is mutable </li>
-<li>should maintain class invariants </li>
-</ul>
-</li>
-</ul>
-<p>   <strong>Command-Query Separation</strong>: You have to decide whether this class belongs to command or query, don’t write both of these things in a single method </p>
-<p>   <strong>Problem with getters</strong>: </p>
-<p>   representation exposure in Mutable Objects (sometimes you directly return the reference to this object and now doing modification to the returned object and unintendedly change the original object)</p>
-<h3 id="3-Write-Specifications"><a href="#3-Write-Specifications" class="headerlink" title="3. Write Specifications:"></a>3. Write Specifications:</h3><ul>
-<li><p>Returns/Creates: postcondition</p>
-</li>
-<li><p>Requires/Checks: precondition</p>
-</li>
-<li><p>Effects/Modifies: side effects</p>
-</li>
-<li><p>Examples: (as needed)</p>
-</li>
-<li><p>Exceptions: </p>
-<pre><code>- in return clause: when there is a client error (not programmer error)
-      - in checks clause: when precondition violated </code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** Returns: the puzzle size n*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Effects: adds a random tile to the board*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addRandomTile</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Effects: adds a random tile to the board</span></span><br><span class="line"><span class="comment">	Returns: true if there was room*/</span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">addRandomTile</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Effects: adds a random tile to the board</span></span><br><span class="line"><span class="comment">	Throws: BoardFull if there is no room*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addRandomTile</span><span class="params">()</span> <span class="keyword">throws</span> BoardFull</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Effects: shifts the tiles in direction d*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">shiftTile</span><span class="params">(Direction d)</span></span>;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<hr>
-<h3 id="4-Documenting-Impls"><a href="#4-Documenting-Impls" class="headerlink" title="4. Documenting Impls:"></a>4. Documenting Impls:</h3><p><strong>Audience</strong>: maintainers, not clients</p>
-<p><strong>Goals</strong>: keep impl details out of the spec (abstraction barrier)</p>
-<ol>
-<li><p><code>Represents</code>: an abstraction function: concrete fields -&gt; client view</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** A rational number */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rational</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> num,dem;</span><br><span class="line">    <span class="comment">//Represents: the rational number num/dem</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Class Invariant: </p>
-</li>
-<li><p>Spec for private/protected methods </p>
-</li>
-<li><p>Algorithms Explanations: (If sometimes the spec is not enough to understand the method(specific algorithm), you should write algorithm explanations inside the method(This would be something client doesn’t have to know but maintainers may want to know so you don’t write them in the spec))</p>
-<p>Write paragraphs instead of interleave comments </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** revtrieves the greatest common demoninator of x and y*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(x,y)</span></span>&#123;</span><br><span class="line">    <span class="comment">/**This method uses Euclid's to find the ...    */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
+<p>本来指着Final里面擅长的算法和数据结构提提分，结果Final出点过于简单，并拉不开分差。要是出到和给的example同一个难度，我是有信心这节课拿A的。</p>
+<h2 id="MATH-2210-Linear-Algebra"><a href="#MATH-2210-Linear-Algebra" class="headerlink" title="MATH 2210 Linear Algebra"></a>MATH 2210 Linear Algebra</h2><p>我的教授是个老爷子(James West) ，老爷子快九十了吧，一句话说到最后一个词的时候我已经忘了他第一个说的词是什么了，人真的很好，可是脑子确实老化了，并不是那个最好的讲师。</p>
+<p>后来换到 Myer 的 session，讲得确实不错（West 那里的人全跑她那去了），最后一个 OH 还多留了三十分钟专门给我把 Inner Product Space 讲明白了，一位优雅又善良的女老师。</p>
+<h2 id="DEA-1500-Intro-to-Environ-Psychology"><a href="#DEA-1500-Intro-to-Environ-Psychology" class="headerlink" title="DEA 1500 Intro to Environ. Psychology"></a>DEA 1500 Intro to Environ. Psychology</h2><p>本专业唯一一节我觉得可以上的课，而且评价也很好，于是就上了。Gary Evans 绝对是数一数二的讲师，清晰有条理，课程内容也很有趣（虽然后期有些同质化）。如果说美国1%的人掌握着99%的财富，那我也要说美国1%的聪明并真正有着人文情怀的人领到了99%的傻子，就是这1%的人构建了部分人心目中的人类文明灯塔。Gary 就是那个1%。能从他的课中感受到他对这个星球甚至整个人类的爱。</p>
+<blockquote>
+<p>Sometimes we focus on China’s carbon footprint and says it should regulate more. However, look at the data of the United States per capita. I’m not saying China shouldn’t regulate more, but isn’t it a little hypocritical to ask China to do more regulations while we are producing more than them?</p>
+</blockquote>
+<p>虽然不想捧一踩一，但是Gary其实应该也很老了。即使如此却一直用饱满的精神为大家呈现这门课，最后几个lecture不知道他怎么了，有的时候会失掉自己的声音，整个声音突然就变哑了，那个时候真的是心疼他。他的最后一课我会永远记在心里。</p>
+<blockquote>
+<p>我知道你们中有很多人是各方面的积极分子，比如环保主义者，你有的时候也觉得为什么大家都不理解我在做的事都是为了他们好，你有的时候也会觉得自己非常无助。我要向大家展示这一句话：这些做出巨大改变的运动，往往是由一小群人领导的。回想一下，他（甘地）当时是大多数吗？他（马丁路德金）也不是。你可能觉得这些人都是一开始就非常伟大的 … 这个当时只有十二岁的小女孩，向世界揭露了纳粹的罪行，她当时有多么强大的能力吗？… 有时你可能会觉得很无力，但是记住Margaret说了什么：永远都是那一小部分人。</p>
+<p>– Gary Evans, 2019/12/09</p>
+</blockquote>
+<p><img src="/images/2019-12-22-Cornell-19FA-%E6%80%BB%E7%BB%93/DEA1500.jpg" alt="Don&#39;t Feel Helpless"></p>
+<h2 id="WRIT-1370-FWS-Elements-of-Acad-Wtg"><a href="#WRIT-1370-FWS-Elements-of-Acad-Wtg" class="headerlink" title="WRIT 1370 FWS: Elements of Acad Wtg"></a>WRIT 1370 FWS: Elements of Acad Wtg</h2><p>Brad是个稍微带点痞气的不错的人，虽然这课叫做 Metaphor in Art, Science and Culture 但我实际上觉得他其实这三个都并不很懂…</p>
+<blockquote>
+<p>Don’t be Strangers.</p>
+<p>– Brad Zukovic, 2019/12/06</p>
+</blockquote>
+<h2 id="CS5199-Comp-Program-amp-Problem-Solving"><a href="#CS5199-Comp-Program-amp-Problem-Solving" class="headerlink" title="CS5199 Comp Program &amp; Problem Solving"></a>CS5199 Comp Program &amp; Problem Solving</h2><p>狗屎课，课程都进行了一大半了才告诉别人用什么方式计算attendance，幸亏最后运气好刚刚好到了pass的线，不然要是第一学期成绩单上就有个fail或者withdraw，那是真的难看。</p>
+<h2 id="PE1395-Self-Defense"><a href="#PE1395-Self-Defense" class="headerlink" title="PE1395 Self Defense"></a>PE1395 Self Defense</h2><p>挺好玩的</p>
 
     </article>
     <!-- license  -->
@@ -465,17 +438,12 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2019/11/07/2019-11-07-Concurrency/" title= "Concurrency">
-                    <div class="nextTitle">Concurrency</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2019/09/30/2019-09-30-Value-Representation,-Hashing,-and-Generics/" title= "Value Representation, Hashing, and Generics">
-                    <div class="prevTitle">Value Representation, Hashing, and Generics</div>
+                <a href= "/2019/12/17/2019-12-17-add-pdf-file-to-hexo/" title= "Add pdf file to hexo">
+                    <div class="prevTitle">Add pdf file to hexo</div>
                 </a>
             
         </li>
@@ -598,7 +566,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#An-Example-of-Writing-Interface"><span class="toc-number">1.</span> <span class="toc-text">An Example of Writing Interface</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Overview-what-concerns"><span class="toc-number">1.1.</span> <span class="toc-text">1. Overview: what concerns?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Choose-operations"><span class="toc-number">1.2.</span> <span class="toc-text">2. Choose operations</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Write-Specifications"><span class="toc-number">1.3.</span> <span class="toc-text">3. Write Specifications:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Documenting-Impls"><span class="toc-number">1.4.</span> <span class="toc-text">4. Documenting Impls:</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CS2112-OO-Design-Data-Structs-Honors"><span class="toc-number">1.</span> <span class="toc-text">CS2112 OO Design Data Structs (Honors)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MATH-2210-Linear-Algebra"><span class="toc-number">2.</span> <span class="toc-text">MATH 2210 Linear Algebra</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DEA-1500-Intro-to-Environ-Psychology"><span class="toc-number">3.</span> <span class="toc-text">DEA 1500 Intro to Environ. Psychology</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WRIT-1370-FWS-Elements-of-Acad-Wtg"><span class="toc-number">4.</span> <span class="toc-text">WRIT 1370 FWS: Elements of Acad Wtg</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CS5199-Comp-Program-amp-Problem-Solving"><span class="toc-number">5.</span> <span class="toc-text">CS5199 Comp Program &amp; Problem Solving</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PE1395-Self-Defense"><span class="toc-number">6.</span> <span class="toc-text">PE1395 Self Defense</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
