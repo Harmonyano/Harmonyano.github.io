@@ -78,6 +78,8 @@
     <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
     
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -201,10 +203,8 @@
 </head>
 
     
-        <body class="home-body">
     
-    
-<header class="header index-header">
+<header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
@@ -220,34 +220,21 @@
 
 
 
-
-height:50vh;
 ">
     
     <!-- 主页  -->
-    
-    
-    <!-- 文章页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/index-bg.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Harmonyano's Blog
-            <!-- 文章页  -->
-            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
-            
-            
-                Die Proletarier haben nichts in ihr zu verlieren als ihre Ketten. Sie haben eine Welt zu gewinnen.
-            
-            <!-- 文章页  -->
             
         </p>
         <!-- 文章页meta -->
@@ -359,150 +346,18 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/06/04/P1031 均分纸牌/" >
+        <a class="abstract-title" href = "/2020/01/20/2020-01-20-Installing-Ocaml-on-Linux/" >
             
-                <span>P1031 均分纸牌</span>
+                <span>Installing and Configuring Ocaml on Linux</span>
         </a>
         <div class="abstract-content">
-            <p>题目来源：<a href="https://www.luogu.org/problemnew/show/P1031" target="_blank" rel="noopener">洛谷P1031 均分纸牌</a></p>
-<hr>
-<h2 id="标解"><a href="#标解" class="headerlink" title="标解"></a>标解</h2><p><strong>注意本题中平均数的运用</strong></p>
-<p>首先，一定要想到每堆排的张数减去平均张数，这样，题目就变成了移动正数，加到负数中，是大家都变成了0，这就意味着成功了60%！！！！（关键）。以例题来说，平均张数为10，原张数变为-1，-2,+7，-4，因为没有为0的数，所以从最左边出发，将-1移动到-2中，变为0，-3，+7,4，再讲-3向右移动……一次类推，直到全为0为止。没移动一次，步数便加1。关键是，负数怎么移动，其实，移动-x张牌，其实就是从另一堆中移动x张牌，步数相同。还有就是要过滤0，如排数为4，4,2,6，则减去平均数后为0,0，-2,2，就要从第三对开始移动。注意有些0是不能过滤的，如1,0,1，-2中的0。还有就是每次移动好都要过滤。如-2，2,1,3，-4，第一步后变为0,0,1,3，-4，可以省略第二堆的移动。
+            <h2 id="Install-Ocaml"><a href="#Install-Ocaml" class="headerlink" title="Install Ocaml"></a><a href="https://opam.ocaml.org/doc/Install.html#Binary-distribution" target="_blank" rel="noopener">Install Ocaml</a></h2><p>run <code>sh &lt;(curl -sL https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh)</code> and install opam at <code>/usr/local/bin/opam</code></p>
+<p>run <code>export PATH=$PATH:/usr/local/bin/opam</code> to add opam to <code>PATH</code></p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/04</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "NOI">NOI</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/06/03/P2678 跳石头/" >
-            
-                <span>P2678 跳石头</span>
-        </a>
-        <div class="abstract-content">
-            <p>题目来源：<a href="https://www.luogu.org/problemnew/show/P2678" target="_blank" rel="noopener">洛谷P2678 跳石头</a></p>
-<hr>
-<p>这是一道标准的 “最大值最小”或“最小值最大“ 的题，遇到这种题，我们就可以使用 <strong>贪心+二分查找</strong> 的方法来做</p>
-<h2 id="二分答案-二分查找"><a href="#二分答案-二分查找" class="headerlink" title="二分答案/二分查找"></a>二分答案/二分查找</h2><p>有序（单调）的，有界的就可以用二分法查找。
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/03</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "NOI">NOI</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/05/30/P1090 合并果子/" >
-            
-                <span>P1090 合并果子</span>
-        </a>
-        <div class="abstract-content">
-            <p>题目来源： <a href="https://www.luogu.org/problemnew/show/P1090" target="_blank" rel="noopener">洛谷P1090 合并果子</a></p>
-<hr>
-<h2 id="一维数组做法"><a href="#一维数组做法" class="headerlink" title="一维数组做法"></a>一维数组做法</h2><p>本题是一个简单的 <a href="https://www.cnblogs.com/kubixuesheng/p/4397798.html" target="_blank" rel="noopener">Huffman树</a>。Huffman编码 在 UTF-8 &amp; Unicode 中都有它思想的体现，即出现频率高的编码长度短，出现频率低的编码长度长，用以缩短整体编码长度</p>
-<p>这里我也运用了前面 P1309 的思想：因为每次需要重新排序的时候只有一个数据需要被插入整个数列当中,所以并不需要假定数据无序的 quick sort，反而是线性的排序更快</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/30</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "NOI">NOI</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/05/30/P1309 瑞士轮/" >
-            
-                <span>P1309 瑞士轮</span>
-        </a>
-        <div class="abstract-content">
-            <p>题目来源：<a href="https://www.luogu.org/problemnew/show/P1309" target="_blank" rel="noopener">洛谷P1309 瑞士轮</a></p>
-<hr>
-<ol>
-<li>胜者组和败者组分别是有序的，使用 <em>mergesort</em> 将两个有序同向数组进行归并（严格上来说不是归并排序），大大降低了时间复杂度 = O(n)。如果我们使用 <em>quicksort</em>，则默认整个数据是无序的，对每个数据都重新排序所以会超时
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/30</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "NOI">NOI</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/02/10/Intro-to-Git-Command/" >
-            
-                <span>Introduction to Git Command</span>
-        </a>
-        <div class="abstract-content">
-            <h2 id="Creating-repository"><a href="#Creating-repository" class="headerlink" title="Creating repository"></a><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013743256916071d599b3aed534aaab22a0db6c4e07fd0000" target="_blank" rel="noopener">Creating repository</a></h2><ul>
-<li><code>git init</code>: create a repository</li>
-<li><code>git add File_Name</code>: add “File_Name” to repository</li>
-<li><code>git add .</code> : add all files </li>
-<li><code>git commit -m &quot;message&quot;</code>: commit changes and tell others what changes have been made </li>
-</ul>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/10</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/01/20</span>
             </div>
             <!-- tags  -->
             
@@ -510,36 +365,7 @@ height:50vh;
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "Logistics">Logistics</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Git">Git</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/02/09/hello-world/" >
-            
-                <span>Hello World</span>
-        </a>
-        <div class="abstract-content">
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/09</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Hexo">Hexo</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CS3110">CS3110</a>
     
 </div>
             
@@ -548,101 +374,8 @@ height:50vh;
     
     <!-- paginator  -->
     
-    <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/page/2/">&#60; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
-    </nav>
-    
 </main>
             <!-- profile -->
-            
-            <div class="profile">
-    <img class="profile-avatar" alt="avatar" src= /avatar/Ruyi.jpg >
-    <div class="profile-name">Harmonyano</div>
-    
-    <div class="profile-signature">
-        O ever weeping
-    </div>
-    
-    
-    <div class="profile-social">
-        
-    
-        
-            
-                <a href="mailto:Harmonyanop@gmail.com" class="iconfont-archer email" title=email ></a>
-            
-        
-    
-        
-            
-                <a href="//github.com/Harmonyano" class="iconfont-archer github" target="_blank" title=github></a>
-            
-        
-    
-        
-            
-                <a href="//twitter.com/Harmonyanop" class="iconfont-archer twitter" target="_blank" title=twitter></a>
-            
-        
-    
-        
-            
-                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title=rss></a>
-            
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-            
-                <a href="/magolor.github.io/" class="iconfont-archer friendA" target="_blank" title=friendA></a>
-            
-        
-    
-        
-    
-        
-    
-
-    </div>
-    
-    
-    
-        <div class="about-me">
-            <a href = "/about" >ABOUT ME</a>
-        </div>
-    
-</div>
             
         </div>
         <footer class="footer footer-unloaded">
