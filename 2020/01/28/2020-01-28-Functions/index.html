@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="John Doe">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="John Doe">
+    
+    <meta name="keywords" content="Cornell,Programming">
+    
+    <meta name="description" content>
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Functions · Harmonyano&#39;s Blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/assets/favicon.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Harmonyano&#39;s Blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Functions</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Harmonyano's Blog</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            Functions
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Cornell">Cornell</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "20SP">20SP</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CS3110">CS3110</a>
+    
+</div>
+                
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2020/01/28</span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>From Textbook: <a href="https://www.cs.cornell.edu/courses/cs3110/2020sp/textbook/basics/functions.html" target="_blank" rel="noopener">Functions</a></p>
+<hr>
+<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><p><strong>Definition</strong>: <code>let f x1 x2 ... xn = e</code> (f is the function name; xi is input, and there can be multiple inputs; e is the output)</p>
+<p>We can think of <code>t1 -&gt; t2 -&gt; u</code> as the type of a function that takes two inputs, the first of type <code>t1</code> and the second of type <code>t2</code>, and returns an output of type <code>u</code>. Likewise for a function that takes <code>n</code> arguments.</p>
+<p>A function is already a value (that’s how you assign the value “function” to a variable name), so there is nothing to be evaluated when we evaluate its dynamic semantic.</p>
+<a id="more"></a>
+
+<h3 id="Anonymous-Function"><a href="#Anonymous-Function" class="headerlink" title="Anonymous Function"></a>Anonymous Function</h3><p><strong>Definition</strong>: <code>fun x -&gt; x+1</code> (<code>fun</code> is a keyword indicating an anonymous function)</p>
+<blockquote>
+<p>Anonymous functions are also called <em>lambda expressions</em>, a term that comes out of the <em>lambda calculus</em>, which is a mathematical model of computation in the same sense that Turing machines are a model of computation. In the lambda calculus, <code>fun x -&gt; e</code> would be written $λx.e.$ The λ denotes an anonymous function.</p>
+</blockquote>
+<h3 id="Function-Application"><a href="#Function-Application" class="headerlink" title="Function Application"></a>Function Application</h3><ul>
+<li>Normal way:<code>(fun x -&gt; e3) ((fun x -&gt; e2) e1);;</code></li>
+<li>Pipeline: <code>e1 |&gt; fun x-&gt;e2 |&gt; fun x-&gt;e3;;</code></li>
+</ul>
+<p>They are semantically the same as “let expressions” : <code>let x = e1 in let x = e2 in e3</code> (In fact, the let expression is just a syntactic sugar of function application)</p>
+<p>Function application is left-associative: <code>g f x = g(f x)</code>, while function types are right-associative: <code>g -&gt; f -&gt; x = g -&gt; (f -&gt; x)</code></p>
+<h3 id="Polymorphic-Functions"><a href="#Polymorphic-Functions" class="headerlink" title="Polymorphic Functions"></a>Polymorphic Functions</h3><p>The <code>&#39;a</code> is a <em>type variable</em>: it stands for an unknown type, just like a regular variable stands for an unknown value.</p>
+<h3 id="Labeled-Arguments"><a href="#Labeled-Arguments" class="headerlink" title="Labeled Arguments"></a>Labeled Arguments</h3><p>OCaml supports labeled arguments to functions. You can declare this kind of function using the following syntax:</p>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># <span class="keyword">let</span> f ~name1:arg1 ~name2:arg2 = arg1 + arg2;;</span><br><span class="line"><span class="keyword">val</span> f : name1:<span class="built_in">int</span> -&gt; name2:<span class="built_in">int</span> -&gt; <span class="built_in">int</span> = &lt;<span class="keyword">fun</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>This function can be called by passing the labeled arguments in either order:</p>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f ~name2:<span class="number">3</span> ~name1:<span class="number">4</span>;;</span><br></pre></td></tr></table></figure>
+
+<p>A sugar of declaring function with labeled arguments is </p>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> f ~name1 ~name2 = name1 + name2</span><br></pre></td></tr></table></figure>
+
+<h3 id="Partial-Application"><a href="#Partial-Application" class="headerlink" title="Partial Application"></a>Partial Application</h3><p>A function of two variables: <code>let add x y = x + y</code></p>
+<p>A composite function: <code>let addx x = fun y -&gt; x + y</code></p>
+<hr>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> add x y = x+y</span><br><span class="line"><span class="keyword">let</span> add x = <span class="keyword">fun</span> y -&gt; x+y</span><br><span class="line"><span class="keyword">let</span> add = <span class="keyword">fun</span> x -&gt; (<span class="keyword">fun</span> y -&gt; x+y)</span><br></pre></td></tr></table></figure>
+
+<p>The top two are just syntactic sugar for the last statement. Now, think about what does the last line mean? Does the <code>fun y -&gt; x+y</code> actually knows that there exists an <code>x</code>? The answer is yes. That’s because the statement <code>fun y -&gt; x+y</code> is in the scope of <code>x</code>‘s declaration. </p>
+<hr>
+<p>For the codes below, the outermost function actually takes in a value of type t1 and produces a <strong>function</strong> that is of type t2 -&gt; (t3 -&gt; t4)</p>
+<p>And the type of such a function</p>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">t1 -&gt; t2 -&gt; t3 -&gt; t4</span><br></pre></td></tr></table></figure>
+
+<p>really means the same as</p>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">t1 -&gt; (t2 -&gt; (t3 -&gt; t4))</span><br></pre></td></tr></table></figure>
+
+<p>That is, function types are <strong>right associative</strong>: there are implicit parentheses around function types, from right to left. The intuition here is that a function takes a single argument and returns a new function that expects the remaining arguments.</p>
+<hr>
+<p>Below is an example of Partial Application: The bottom two are syntactic sugars of the first statement </p>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> comp = <span class="keyword">fun</span> f g -&gt; <span class="keyword">fun</span> x -&gt; g(f x);;</span><br><span class="line"><span class="keyword">let</span> compa f g = <span class="keyword">fun</span> x -&gt; g(f x);;</span><br><span class="line"><span class="keyword">let</span> compb f g x = g(f x);;</span><br></pre></td></tr></table></figure>
+
+<p>Applying <code>comp</code> to other functions:</p>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">utop # <span class="keyword">let</span> inc x = x+<span class="number">1</span>;;</span><br><span class="line"><span class="keyword">val</span> inc : <span class="built_in">int</span> -&gt; <span class="built_in">int</span> = &lt;<span class="keyword">fun</span>&gt;</span><br><span class="line">────────────────────────────────────────────────────────</span><br><span class="line">utop # <span class="keyword">let</span> inc2 = comp inc inc;;</span><br><span class="line"><span class="keyword">val</span> inc2 : <span class="built_in">int</span> -&gt; <span class="built_in">int</span> = &lt;<span class="keyword">fun</span>&gt;</span><br><span class="line">────────────────────────────────────────────────────────</span><br><span class="line">utop # inc <span class="number">1</span>;;</span><br><span class="line">- : <span class="built_in">int</span> = <span class="number">2</span></span><br><span class="line">────────────────────────────────────────────────────────</span><br><span class="line">utop # inc2 <span class="number">1</span>;;</span><br><span class="line">- : <span class="built_in">int</span> = <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p>A useful application of Partial Application is precomputation: When we want to use a process multiple times, we can just write a function that takes in other function and do that job. g. predefine <code>comp</code> so that when we want to composite two functions, we only need to apply it to the function <code>comp</code> instead of writing out the composite function on ourselves every time. </p>
+<h3 id="Unit-Function"><a href="#Unit-Function" class="headerlink" title="Unit Function"></a>Unit Function</h3><p>There is only one value of this type, which is written <code>()</code> and is also pronounced “unit”. So <code>unit</code> is like <code>bool</code>, except there is one fewer value of type <code>unit</code> than there is of <code>bool</code>. Unit is therefore used when you need to take an argument or return a value, but there’s no interesting value to pass or return.</p>
+<h3 id="Type-Inference"><a href="#Type-Inference" class="headerlink" title="Type Inference"></a>Type Inference</h3><p>How to determine the type of a very complicated function?</p>
+<ol>
+<li>Add right-associative parameters; Rewrite the function as a more understandable <code>let expression</code></li>
+<li>Find out which variables have to take in a value (then it must be a function), which doesn’t (then it can be anything)</li>
+<li>Determine the type of each variable from the last statement, and write their types from left to right in the sequence they were taken in.</li>
+</ol>
+<p>Take <code>fun f g -&gt; fun x -&gt; g(f x)</code> as an example:</p>
+<ol>
+<li><p><code>let h = fun f g -&gt; ( fun x -&gt; g(f x) )</code> </p>
+</li>
+<li><ul>
+<li>x doesn’t take in a value, so x is a variable of type a’<ul>
+<li>f takes in x, so f must be a function of type a’ -&gt; b’</li>
+<li>g takes in the output of f, so g must be a function of type b’ -&gt; c’</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>The type of this function is</p>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">	f			  g			x	(output:g(f x))</span><br><span class="line">(a' -&gt; b') -&gt; (b' -&gt; c') -&gt; a' -&gt; c'</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>Take <code>fun f g -&gt; fun x -&gt; (g f) x</code> as another example:</p>
+<ol>
+<li><p><code>let h = fun f g -&gt; (fun x -&gt; (g f) x)</code></p>
+</li>
+<li><ul>
+<li>x doesn’t take in a value, so x is a variable of type a’</li>
+<li>f doesn’t take in a value, so f is a variable of type b’</li>
+<li>g takes in f, so g must be a function whose input is of type b’; plus its output takes in another variable x, so its output is also a function, which takes in a type a’. Therefore, g is of type <code>b&#39; -&gt; (a&#39; -&gt; c&#39;)</code> </li>
+</ul>
+</li>
+<li><p>The type of this function is</p>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f 			g			  x  (output:(g f) x)</span><br><span class="line">b' -&gt; (b' -&gt; a' -&gt; c') -&gt; a' -&gt; c'</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+
+    </article>
+    <!-- license  -->
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2020/01/30/2020-01-30-Standard-Data-Types/" title= "Standard Data Types">
+                    <div class="nextTitle">Standard Data Types</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2020/01/20/2020-01-20-Installing-Ocaml-on-Linux/" title= "Installing and Configuring Ocaml on Linux">
+                    <div class="prevTitle">Installing and Configuring Ocaml on Linux</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:Harmonyanop@gmail.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Harmonyano" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <a href="//twitter.com/Harmonyanop" class="iconfont-archer twitter" target="_blank" title=twitter></a>
+            
+        
+    
+        
+            
+                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title=rss></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="/magolor.github.io/" class="iconfont-archer friendA" target="_blank" title=friendA></a>
+            
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Functions"><span class="toc-number">1.</span> <span class="toc-text">Functions</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Anonymous-Function"><span class="toc-number">1.1.</span> <span class="toc-text">Anonymous Function</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Function-Application"><span class="toc-number">1.2.</span> <span class="toc-text">Function Application</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Polymorphic-Functions"><span class="toc-number">1.3.</span> <span class="toc-text">Polymorphic Functions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Labeled-Arguments"><span class="toc-number">1.4.</span> <span class="toc-text">Labeled Arguments</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Partial-Application"><span class="toc-number">1.5.</span> <span class="toc-text">Partial Application</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Unit-Function"><span class="toc-number">1.6.</span> <span class="toc-text">Unit Function</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Type-Inference"><span class="toc-number">1.7.</span> <span class="toc-text">Type Inference</span></a></li></ol></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 35
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/03</span><a class="archive-post-title" href= "/2020/03/03/2020-03-03-Mutability/" >Mutability</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/20</span><a class="archive-post-title" href= "/2020/02/20/2020-02-20-testing/" >testing</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/18</span><a class="archive-post-title" href= "/2020/02/18/2020-02-18-Specifications/" >Specifications</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/13</span><a class="archive-post-title" href= "/2020/02/13/2020-02-13-Code-Reuse-with-Modules/" >Code Reuse with Modules</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/11</span><a class="archive-post-title" href= "/2020/02/11/2020-02-11-Modules/" >Modules</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/06</span><a class="archive-post-title" href= "/2020/02/06/2020-02-06-Higher-Order-Functions/" >Higher-Order Functions</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/04</span><a class="archive-post-title" href= "/2020/02/04/2020-02-04-Advanced-Data-Types/" >Advanced Data Types</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/30</span><a class="archive-post-title" href= "/2020/01/30/2020-01-30-Standard-Data-Types/" >Standard Data Types</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/28</span><a class="archive-post-title" href= "/2020/01/28/2020-01-28-Functions/" >Functions</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/20</span><a class="archive-post-title" href= "/2020/01/20/2020-01-20-Installing-Ocaml-on-Linux/" >Installing and Configuring Ocaml on Linux</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/22</span><a class="archive-post-title" href= "/2019/12/22/2019-12-22-Cornell-19FA-总结/" >Cornell 19FA 总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/17</span><a class="archive-post-title" href= "/2019/12/17/2019-12-17-add-pdf-file-to-hexo/" >Add pdf file to hexo</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/05</span><a class="archive-post-title" href= "/2019/12/05/2019-12-05-Problem-Analysis/" >Problem Analysis</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/26</span><a class="archive-post-title" href= "/2019/11/26/2019-11-26-Priority-Queue-and-Heap/" >Priority Queue and Heap</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/23</span><a class="archive-post-title" href= "/2019/11/23/2019-11-23-Android-Basics-User-Interface/" >Udacity: Android Basics</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/21</span><a class="archive-post-title" href= "/2019/11/21/2019-11-21-import-Junit-and-JavaFx-into-VSCode/" >Import Junit and JavaFx into VSCode</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/21</span><a class="archive-post-title" href= "/2019/11/21/2019-11-21-shortest-path-algorithm/" >Shortest path algorithm</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/20</span><a class="archive-post-title" href= "/2019/11/20/2019-11-20-Graph-(Recitation)/" >Graph (Recitation)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/19</span><a class="archive-post-title" href= "/2019/11/19/2019-11-19-Graph-Traversal/" >Graph Traversal</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/12</span><a class="archive-post-title" href= "/2019/11/12/2019-11-12-synchronization/" >Synchronization</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/07</span><a class="archive-post-title" href= "/2019/11/07/2019-11-07-Concurrency/" >Concurrency</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/17</span><a class="archive-post-title" href= "/2019/10/17/2019-10-17-Designing-and-documenting-interfaces-and-implementations/" >Designing and documenting interfaces and implementations</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/30</span><a class="archive-post-title" href= "/2019/09/30/2019-09-30-Value-Representation,-Hashing,-and-Generics/" >Value Representation, Hashing, and Generics</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/07</span><a class="archive-post-title" href= "/2019/07/07/2019-07-07-P1162-填涂颜色/" >P1162 填涂颜色</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/04</span><a class="archive-post-title" href= "/2019/07/04/2019-07-04-P1141-01迷宫/" >P1141 01迷宫</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/02</span><a class="archive-post-title" href= "/2019/07/02/2019-07-02-P1118-Backward-Digital-Sums/" >P1118 Backward Digital Sums</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/26</span><a class="archive-post-title" href= "/2019/06/26/P1019 单词接龙/" >P1019 单词接龙</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/17</span><a class="archive-post-title" href= "/2019/06/17/P1101 单词方阵/" >P1101 单词方阵</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href= "/2019/06/16/P1219 八皇后/" >P1219 八皇后</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/04</span><a class="archive-post-title" href= "/2019/06/04/P1031 均分纸牌/" >P1031 均分纸牌</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/03</span><a class="archive-post-title" href= "/2019/06/03/P2678 跳石头/" >P2678 跳石头</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2019/05/30/P1090 合并果子/" >P1090 合并果子</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2019/05/30/P1309 瑞士轮/" >P1309 瑞士轮</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/10</span><a class="archive-post-title" href= "/2019/02/10/Intro-to-Git-Command/" >Introduction to Git Command</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/09</span><a class="archive-post-title" href= "/2019/02/09/hello-world/" >Hello World</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="NOI"><span class="iconfont-archer">&#xe606;</span>NOI</span>
+    
+        <span class="sidebar-tag-name" data-tags="Cornell"><span class="iconfont-archer">&#xe606;</span>Cornell</span>
+    
+        <span class="sidebar-tag-name" data-tags="19FA"><span class="iconfont-archer">&#xe606;</span>19FA</span>
+    
+        <span class="sidebar-tag-name" data-tags="CS2112"><span class="iconfont-archer">&#xe606;</span>CS2112</span>
+    
+        <span class="sidebar-tag-name" data-tags="Logistics"><span class="iconfont-archer">&#xe606;</span>Logistics</span>
+    
+        <span class="sidebar-tag-name" data-tags="Java"><span class="iconfont-archer">&#xe606;</span>Java</span>
+    
+        <span class="sidebar-tag-name" data-tags="Android"><span class="iconfont-archer">&#xe606;</span>Android</span>
+    
+        <span class="sidebar-tag-name" data-tags="Hexo"><span class="iconfont-archer">&#xe606;</span>Hexo</span>
+    
+        <span class="sidebar-tag-name" data-tags="20SP"><span class="iconfont-archer">&#xe606;</span>20SP</span>
+    
+        <span class="sidebar-tag-name" data-tags="CS3110"><span class="iconfont-archer">&#xe606;</span>CS3110</span>
+    
+        <span class="sidebar-tag-name" data-tags="SP20"><span class="iconfont-archer">&#xe606;</span>SP20</span>
+    
+        <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "John Doe"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+

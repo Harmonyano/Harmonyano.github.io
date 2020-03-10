@@ -394,8 +394,7 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h2 id="Install-Ocaml"><a href="#Install-Ocaml" class="headerlink" title="Install Ocaml"></a><a href="https://opam.ocaml.org/doc/Install.html#Binary-distribution" target="_blank" rel="noopener">Install Ocaml</a></h2><p>run <code>sh &lt;(curl -sL https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh)</code> and install opam at <code>/usr/local/bin/opam</code></p>
-<p>run <code>export PATH=$PATH:/usr/local/bin/opam</code> to add opam to <code>PATH</code></p>
+        <h2 id="Install-Ocaml"><a href="#Install-Ocaml" class="headerlink" title="Install Ocaml"></a><a href="https://opam.ocaml.org/doc/Install.html#Binary-distribution" target="_blank" rel="noopener">Install Ocaml</a></h2><p>run <code>sh &lt;(curl -sL https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh)</code> and install opam at <code>/usr/bin</code> (Caution: install it under this directory to ensure you can also access opam at user’s directory)</p>
 <a id="more"></a>
 
 <h2 id="Configure-Ocaml-and-VSCode"><a href="#Configure-Ocaml-and-VSCode" class="headerlink" title="Configure Ocaml and VSCode"></a><a href="https://www.cs.cornell.edu/courses/cs3110/2020sp/install.html#opam-configuration" target="_blank" rel="noopener">Configure Ocaml and VSCode</a></h2><ol>
@@ -403,6 +402,9 @@ height:50vh;
 </li>
 <li><p>switch OPAM to the OCaml 4.09.0 compiler:</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Note: do NOT prefix these commands with sudo</span></span><br><span class="line">opam <span class="keyword">switch</span> create <span class="number">4.09</span>.<span class="number">0</span> ocaml-base-compiler.<span class="number">4.09</span>.<span class="number">0</span></span><br><span class="line">eval $(opam env)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>install OPAM packages needed</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">opam install -y utop ounit qtest yojson lwt lwt_ppx menhir ansiterminal lambda-term merlin ocp-indent user-setup bisect_ppx-ocamlbuild</span><br><span class="line">opam user-setup install</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>install “OCaml and Reason IDE” and configure <code>settings.json</code> in vscode as such:</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"workbench.colorTheme"</span>: <span class="string">"Solarized Light"</span>,</span><br><span class="line">    <span class="attr">"editor.tabSize"</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="attr">"editor.rulers"</span>: [</span><br><span class="line">        <span class="number">80</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"editor.formatOnSave"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"reason.path.ocamlmerlin"</span>: <span class="string">"/home/mint/.opam/4.09.0/bin/ocamlmerlin"</span>,</span><br><span class="line">    <span class="attr">"reason.path.ocamlfind"</span>: <span class="string">"/home/mint/.opam/4.09.0/bin/ocamlfind"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -417,6 +419,11 @@ height:50vh;
     <!-- paginator  -->
     <ul class="post-paginator">
         <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2020/01/28/2020-01-28-Functions/" title= "Functions">
+                    <div class="nextTitle">Functions</div>
+                </a>
             
         </li>
         <li class="previous">
@@ -889,9 +896,148 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 26
+        Total : 35
         </div>
         <!-- search  -->
         
@@ -904,6 +1050,51 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/03</span><a class="archive-post-title" href= "/2020/03/03/2020-03-03-Mutability/" >Mutability</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/20</span><a class="archive-post-title" href= "/2020/02/20/2020-02-20-testing/" >testing</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/18</span><a class="archive-post-title" href= "/2020/02/18/2020-02-18-Specifications/" >Specifications</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/13</span><a class="archive-post-title" href= "/2020/02/13/2020-02-13-Code-Reuse-with-Modules/" >Code Reuse with Modules</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/11</span><a class="archive-post-title" href= "/2020/02/11/2020-02-11-Modules/" >Modules</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/06</span><a class="archive-post-title" href= "/2020/02/06/2020-02-06-Higher-Order-Functions/" >Higher-Order Functions</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/04</span><a class="archive-post-title" href= "/2020/02/04/2020-02-04-Advanced-Data-Types/" >Advanced Data Types</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/30</span><a class="archive-post-title" href= "/2020/01/30/2020-01-30-Standard-Data-Types/" >Standard Data Types</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/28</span><a class="archive-post-title" href= "/2020/01/28/2020-01-28-Functions/" >Functions</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -946,12 +1137,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">11/21</span><a class="archive-post-title" href= "/2019/11/21/2019-11-21-shortest-path-algorithm/" >Shortest path algorithm</a>
+            <span class="archive-post-date">11/21</span><a class="archive-post-title" href= "/2019/11/21/2019-11-21-import-Junit-and-JavaFx-into-VSCode/" >Import Junit and JavaFx into VSCode</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">11/21</span><a class="archive-post-title" href= "/2019/11/21/2019-11-21-import-Junit-and-JavaFx-into-VSCode/" >Import Junit and JavaFx into VSCode</a>
+            <span class="archive-post-date">11/21</span><a class="archive-post-title" href= "/2019/11/21/2019-11-21-shortest-path-algorithm/" >Shortest path algorithm</a>
         </li>
     
     
@@ -1026,12 +1217,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2019/05/30/P1309 瑞士轮/" >P1309 瑞士轮</a>
+            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2019/05/30/P1090 合并果子/" >P1090 合并果子</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2019/05/30/P1090 合并果子/" >P1090 合并果子</a>
+            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2019/05/30/P1309 瑞士轮/" >P1309 瑞士轮</a>
         </li>
     
     
@@ -1065,9 +1256,13 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="Hexo"><span class="iconfont-archer">&#xe606;</span>Hexo</span>
     
-        <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
+        <span class="sidebar-tag-name" data-tags="20SP"><span class="iconfont-archer">&#xe606;</span>20SP</span>
     
         <span class="sidebar-tag-name" data-tags="CS3110"><span class="iconfont-archer">&#xe606;</span>CS3110</span>
+    
+        <span class="sidebar-tag-name" data-tags="SP20"><span class="iconfont-archer">&#xe606;</span>SP20</span>
+    
+        <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
