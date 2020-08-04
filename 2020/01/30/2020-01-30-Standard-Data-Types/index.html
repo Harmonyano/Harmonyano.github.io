@@ -437,7 +437,7 @@ height:50vh;
 <figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> length_is lst n =</span><br><span class="line">  <span class="keyword">match</span> length lst <span class="keyword">with</span></span><br><span class="line">  | m -&gt; <span class="keyword">if</span> m=n <span class="keyword">then</span> <span class="literal">true</span> <span class="keyword">else</span> <span class="literal">false</span></span><br><span class="line">  | _ -&gt; <span class="literal">false</span></span><br><span class="line">  </span><br><span class="line"><span class="keyword">let</span> length_is lst n =</span><br><span class="line">  <span class="keyword">match</span> length lst <span class="keyword">with</span></span><br><span class="line">  | m -&gt; m=n</span><br><span class="line">  | _ -&gt; <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> length_is lst n =</span><br><span class="line">  length lst = n</span><br></pre></td></tr></table></figure>
 
 <p>However, this doesn’t mean patterns are not the variable values as in <code>switch</code> statement. Yes they are general “patterns”. But you can match them to specific values. e.g.</p>
-<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">match</span> <span class="number">5</span> <span class="keyword">with</span></span><br><span class="line">| <span class="number">6</span> -&gt; <span class="literal">true</span></span><br><span class="line">| _ -&gt; <span class="literal">false</span>;;</span><br><span class="line">- : <span class="built_in">bool</span> = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">match</span> <span class="number">5</span> <span class="keyword">with</span></span><br><span class="line">| <span class="number">5</span> -&gt; <span class="literal">true</span></span><br><span class="line">| _ -&gt; <span class="literal">false</span>;;</span><br><span class="line">- : <span class="built_in">bool</span> = <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">match</span> <span class="number">5</span> <span class="keyword">with</span></span><br><span class="line">| <span class="number">6</span> -&gt; <span class="literal">true</span></span><br><span class="line">| _ -&gt; <span class="literal">false</span>;;</span><br><span class="line">- : <span class="built_in">bool</span> = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">match</span> <span class="number">5</span> <span class="keyword">with</span></span><br><span class="line">| <span class="number">5</span> -&gt; <span class="literal">true</span></span><br><span class="line">| _ -&gt; <span class="literal">false</span>;;</span><br><span class="line">- : <span class="built_in">bool</span> = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="Advanced-Pattern-Matching"><a href="#Advanced-Pattern-Matching" class="headerlink" title="Advanced Pattern Matching"></a>Advanced Pattern Matching</h4><blockquote>
 <ul>
@@ -1083,9 +1083,33 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 35
+        Total : 37
         </div>
         <!-- search  -->
         
@@ -1101,12 +1125,17 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/03</span><a class="archive-post-title" href= "/2020/03/03/2020-03-03-Mutability/" >Mutability</a>
+            <span class="archive-post-date">06/24</span><a class="archive-post-title" href= "/2020/06/24/2020-06-24-Kinekt-as-Web-Cam/" >Kinect as Web Cam</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/20</span><a class="archive-post-title" href= "/2020/02/20/2020-02-20-testing/" >testing</a>
+            <span class="archive-post-date">05/27</span><a class="archive-post-title" href= "/2020/05/27/2020-05-27-Cornell-20SP-总结/" >Cornell 20SP 总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/03</span><a class="archive-post-title" href= "/2020/03/03/2020-03-03-Mutability/" >Mutability</a>
         </li>
     
     
@@ -1142,6 +1171,11 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">01/28</span><a class="archive-post-title" href= "/2020/01/28/2020-01-28-Functions/" >Functions</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/24</span><a class="archive-post-title" href= "/2020/01/24/2020-01-24-CS2043-Unix-Tools-and-Scripting/" >CS2043 Unix Tools and Scripting</a>
         </li>
     
     
@@ -1265,12 +1299,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2019/05/30/P1090 合并果子/" >P1090 合并果子</a>
+            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2019/05/30/P1309 瑞士轮/" >P1309 瑞士轮</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2019/05/30/P1309 瑞士轮/" >P1309 瑞士轮</a>
+            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2019/05/30/P1090 合并果子/" >P1090 合并果子</a>
         </li>
     
     
@@ -1300,15 +1334,15 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="Java"><span class="iconfont-archer">&#xe606;</span>Java</span>
     
-        <span class="sidebar-tag-name" data-tags="Android"><span class="iconfont-archer">&#xe606;</span>Android</span>
-    
-        <span class="sidebar-tag-name" data-tags="Hexo"><span class="iconfont-archer">&#xe606;</span>Hexo</span>
-    
         <span class="sidebar-tag-name" data-tags="20SP"><span class="iconfont-archer">&#xe606;</span>20SP</span>
     
         <span class="sidebar-tag-name" data-tags="CS3110"><span class="iconfont-archer">&#xe606;</span>CS3110</span>
     
-        <span class="sidebar-tag-name" data-tags="SP20"><span class="iconfont-archer">&#xe606;</span>SP20</span>
+        <span class="sidebar-tag-name" data-tags="Android"><span class="iconfont-archer">&#xe606;</span>Android</span>
+    
+        <span class="sidebar-tag-name" data-tags="CS2043"><span class="iconfont-archer">&#xe606;</span>CS2043</span>
+    
+        <span class="sidebar-tag-name" data-tags="Hexo"><span class="iconfont-archer">&#xe606;</span>Hexo</span>
     
         <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
     

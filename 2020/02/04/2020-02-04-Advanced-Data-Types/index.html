@@ -404,7 +404,7 @@ height:50vh;
 <figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">(*definition*)</span></span><br><span class="line"><span class="keyword">type</span> t = <span class="type">C1</span> | <span class="type">C2</span> <span class="keyword">of</span> t2| ... | <span class="type">Cn</span> <span class="comment">(*of tn*)</span></span><br><span class="line"><span class="comment">(* t: 'a * 'a * ... *)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">(*expression*)</span></span><br><span class="line"><span class="type">C</span> e</span><br><span class="line">---<span class="keyword">or</span>---</span><br><span class="line"><span class="type">C</span></span><br><span class="line"><span class="comment">(* e: (e1:'a, e2:'a, ...) *)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">(*pattern matching*)</span></span><br><span class="line"><span class="type">C</span> p</span><br><span class="line"><span class="comment">(* p: (e1:'a, e2:'a, ...) *)</span></span><br></pre></td></tr></table></figure>
 
 <p>examples: </p>
-<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> area = <span class="keyword">function</span></span><br><span class="line">  | <span class="type">Point</span> _ -&gt; <span class="number">0.0</span></span><br><span class="line">  | <span class="type">Circle</span> (_,r) -&gt; pi *. (r ** <span class="number">2.0</span>)</span><br><span class="line">  | <span class="type">Rect</span> ((x1,y1),(x2,y2)) -&gt;</span><br><span class="line">      <span class="keyword">let</span> w = x2 -. x1 <span class="keyword">in</span></span><br><span class="line">      <span class="keyword">let</span> h = y2 -. y1 <span class="keyword">in</span></span><br><span class="line">        w *. h</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> string_or_int_list = string_or_int <span class="built_in">list</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="keyword">rec</span> sum : string_or_int <span class="built_in">list</span> -&gt; <span class="built_in">int</span> = <span class="keyword">function</span></span><br><span class="line">  | <span class="literal">[]</span> -&gt; <span class="number">0</span></span><br><span class="line">  | (<span class="type">String</span> s)::t -&gt; int_of_string s + sum t</span><br><span class="line">  | (<span class="type">Int</span> i)::t -&gt; i + sum t</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> three = sum [<span class="type">String</span> <span class="string">"1"</span>; <span class="type">Int</span> <span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> point = <span class="built_in">float</span> * <span class="built_in">float</span> </span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> shape =</span><br><span class="line">  | <span class="type">Point</span>  <span class="keyword">of</span> point</span><br><span class="line">  | <span class="type">Circle</span> <span class="keyword">of</span> point * <span class="built_in">float</span> <span class="comment">(* center and radius *)</span></span><br><span class="line">  | <span class="type">Rect</span>   <span class="keyword">of</span> point * point <span class="comment">(* lower-left and </span></span><br><span class="line"><span class="comment">                               upper-right corners *)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> area = <span class="keyword">function</span></span><br><span class="line">  | <span class="type">Point</span> _ -&gt; <span class="number">0.0</span></span><br><span class="line">  | <span class="type">Circle</span> (_,r) -&gt; pi *. (r ** <span class="number">2.0</span>)</span><br><span class="line">  | <span class="type">Rect</span> ((x1,y1),(x2,y2)) -&gt;</span><br><span class="line">      <span class="keyword">let</span> w = x2 -. x1 <span class="keyword">in</span></span><br><span class="line">      <span class="keyword">let</span> h = y2 -. y1 <span class="keyword">in</span></span><br><span class="line">        w *. h</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> string_or_int =</span><br><span class="line">| <span class="type">String</span> <span class="keyword">of</span> <span class="built_in">string</span></span><br><span class="line">| <span class="type">Int</span> <span class="keyword">of</span> <span class="built_in">int</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> string_or_int_list = string_or_int <span class="built_in">list</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="keyword">rec</span> sum : string_or_int <span class="built_in">list</span> -&gt; <span class="built_in">int</span> = <span class="keyword">function</span></span><br><span class="line">  | <span class="literal">[]</span> -&gt; <span class="number">0</span></span><br><span class="line">  | (<span class="type">String</span> s)::t -&gt; int_of_string s + sum t</span><br><span class="line">  | (<span class="type">Int</span> i)::t -&gt; i + sum t</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> three = sum [<span class="type">String</span> <span class="string">"1"</span>; <span class="type">Int</span> <span class="number">2</span>]</span><br></pre></td></tr></table></figure>
 
 <p>When do we need <code>[],(),{} | of</code>?</p>
 <figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> node = &#123;<span class="keyword">value</span>:<span class="built_in">int</span>; next:mylist&#125;</span><br><span class="line"><span class="keyword">and</span> mylist = <span class="type">Nil</span> | <span class="type">Node</span> <span class="keyword">of</span> node</span><br></pre></td></tr></table></figure>
@@ -413,11 +413,13 @@ height:50vh;
 <li><code>[]</code>: list</li>
 <li><code>()</code>: Constructor of a tuple </li>
 <li><code>{}</code>: Constructor of a record</li>
+<li><code>|</code>: delineate different variants inside a type</li>
+<li><code>of</code>: defining the construction of an algebraic type </li>
 </ul>
-<h3 id="Recursive-Variants"><a href="#Recursive-Variants" class="headerlink" title="Recursive Variants"></a>Recursive Variants</h3><figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> intlist = <span class="type">Nil</span> | <span class="type">Cons</span> <span class="keyword">of</span> <span class="built_in">int</span> * intlist</span><br><span class="line"></span><br><span class="line"><span class="comment">(* [Option] makes it safer to return nothing*)</span></span><br><span class="line"><span class="keyword">type</span> <span class="symbol">'a</span> option = <span class="type">None</span> | <span class="type">Some</span> <span class="keyword">of</span> <span class="symbol">'a</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="symbol">'a</span> tree = </span><br><span class="line">  | <span class="type">Leaf</span> </span><br><span class="line">  | <span class="type">Node</span> <span class="keyword">of</span> <span class="symbol">'a</span> node</span><br><span class="line"><span class="keyword">and</span> <span class="symbol">'a</span> node = &#123; </span><br><span class="line">  <span class="keyword">value</span>: <span class="symbol">'a</span>; </span><br><span class="line">  left:  <span class="symbol">'a</span> tree; </span><br><span class="line">  right: <span class="symbol">'a</span> tree</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Recursive-Variants"><a href="#Recursive-Variants" class="headerlink" title="Recursive Variants"></a>Recursive Variants</h3><figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> intlist = <span class="type">Nil</span> | <span class="type">Cons</span> <span class="keyword">of</span> <span class="built_in">int</span> * intlist</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="symbol">'a</span> tree = </span><br><span class="line">  | <span class="type">Leaf</span> </span><br><span class="line">  | <span class="type">Node</span> <span class="keyword">of</span> <span class="symbol">'a</span> node</span><br><span class="line"><span class="keyword">and</span> <span class="symbol">'a</span> node = &#123; </span><br><span class="line">  <span class="keyword">value</span>: <span class="symbol">'a</span>; </span><br><span class="line">  left:  <span class="symbol">'a</span> tree; </span><br><span class="line">  right: <span class="symbol">'a</span> tree</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="Parametrized-Variants"><a href="#Parametrized-Variants" class="headerlink" title="Parametrized Variants"></a>Parametrized Variants</h3><p>No matter what kind of types we define, either a variant, a record, or a tuple. We need the type parameter <code>&#39;a or (&#39;a,&#39;b)</code> when we define it. </p>
-<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="symbol">'a</span> option = <span class="type">None</span> | <span class="type">Some</span> <span class="keyword">of</span> <span class="symbol">'a</span></span><br><span class="line"><span class="keyword">type</span> <span class="symbol">'a</span> mylist = <span class="type">Nil</span> | <span class="type">Cons</span> <span class="keyword">of</span> <span class="symbol">'a</span> * <span class="symbol">'a</span> mylist</span><br><span class="line"><span class="keyword">type</span> (<span class="symbol">'a</span>,<span class="symbol">'b</span>) pair = &#123;first: <span class="symbol">'a</span>; second: <span class="symbol">'b</span>&#125;</span><br><span class="line"><span class="keyword">type</span> (<span class="symbol">'a</span>,<span class="symbol">'b</span>) test = <span class="symbol">'a</span> * <span class="symbol">'b</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">(* [Option] makes it safer to return nothing*)</span></span><br><span class="line"><span class="keyword">type</span> <span class="symbol">'a</span> option = <span class="type">None</span> | <span class="type">Some</span> <span class="keyword">of</span> <span class="symbol">'a</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="symbol">'a</span> mylist = <span class="type">Nil</span> | <span class="type">Cons</span> <span class="keyword">of</span> <span class="symbol">'a</span> * <span class="symbol">'a</span> mylist</span><br><span class="line"><span class="keyword">type</span> (<span class="symbol">'a</span>,<span class="symbol">'b</span>) pair = &#123;first: <span class="symbol">'a</span>; second: <span class="symbol">'b</span>&#125;</span><br><span class="line"><span class="keyword">type</span> (<span class="symbol">'a</span>,<span class="symbol">'b</span>) test = <span class="symbol">'a</span> * <span class="symbol">'b</span></span><br></pre></td></tr></table></figure>
 
 <p>Similarly, when you want to declare a variable that has a parametrized type, you also need to give the type parameter.</p>
 <figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="symbol">'a</span> tree = <span class="type">Leaf</span> <span class="keyword">of</span> <span class="symbol">'a</span> | <span class="type">Node</span> <span class="keyword">of</span> (<span class="symbol">'a</span> * <span class="symbol">'a</span> tree * <span class="symbol">'a</span> tree)</span><br><span class="line"><span class="keyword">let</span> x:<span class="symbol">'a</span> tree = <span class="type">Leaf</span> <span class="number">5</span></span><br><span class="line"><span class="keyword">let</span> x:<span class="built_in">int</span> tree = <span class="type">Leaf</span> <span class="number">5</span></span><br></pre></td></tr></table></figure>
@@ -427,7 +429,7 @@ height:50vh;
 <p>The constructor of polymorphic variants start with a “ ` “</p>
 <figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">(* note: no type definition *)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> f = <span class="keyword">function</span></span><br><span class="line">  | <span class="number">0</span> -&gt; <span class="type">`Infinity</span></span><br><span class="line">  | <span class="number">1</span> -&gt; <span class="type">`Finite</span> <span class="number">1</span></span><br><span class="line">  | n -&gt; <span class="type">`Finite</span> (-n)</span><br><span class="line">  </span><br><span class="line"><span class="keyword">val</span> f : <span class="built_in">int</span> -&gt; [&gt; <span class="type">`Finite</span> <span class="keyword">of</span> <span class="built_in">int</span> | <span class="type">`Infinity</span> ]</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> lst = [<span class="type">`Pos</span> <span class="number">5</span>; <span class="type">`Zero</span>; <span class="type">`Neg</span> (~-<span class="number">4</span>); <span class="type">`Pos</span> <span class="number">3</span>];;</span><br><span class="line"><span class="keyword">val</span> lst : [&gt; <span class="type">`Neg</span> <span class="keyword">of</span> <span class="built_in">int</span> | <span class="type">`Pos</span> <span class="keyword">of</span> <span class="built_in">int</span> | <span class="type">`Zero</span> ] <span class="built_in">list</span> =</span><br><span class="line">  [<span class="type">`Pos</span> <span class="number">5</span>; <span class="type">`Zero</span>; <span class="type">`Neg</span> (-<span class="number">4</span>); <span class="type">`Pos</span> <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
 
-<h3 id="Pattern-Matching"><a href="#Pattern-Matching" class="headerlink" title="Pattern Matching"></a>Pattern Matching</h3><figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">(* [mem x t] returns [true] if and only if [x] is a value at some</span></span><br><span class="line"><span class="comment"> * node in tree [t]. </span></span><br><span class="line"><span class="comment"> *)</span></span><br><span class="line"><span class="keyword">let</span> <span class="keyword">rec</span> mem x = <span class="keyword">function</span></span><br><span class="line">  | <span class="type">Leaf</span> -&gt; <span class="literal">false</span></span><br><span class="line">  | <span class="type">Node</span> &#123;<span class="keyword">value</span>; left; right&#125; -&gt; <span class="keyword">value</span> = x || mem x left || mem x right</span><br></pre></td></tr></table></figure>
+<h3 id="Pattern-Matching"><a href="#Pattern-Matching" class="headerlink" title="Pattern Matching"></a>Pattern Matching</h3><figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="symbol">'a</span> tree = </span><br><span class="line">  | <span class="type">Leaf</span> </span><br><span class="line">  | <span class="type">Node</span> <span class="keyword">of</span> <span class="symbol">'a</span> node</span><br><span class="line"></span><br><span class="line"><span class="keyword">and</span> <span class="symbol">'a</span> node = &#123; </span><br><span class="line">  <span class="keyword">value</span>: <span class="symbol">'a</span>; </span><br><span class="line">  left:  <span class="symbol">'a</span> tree; </span><br><span class="line">  right: <span class="symbol">'a</span> tree</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">(* [mem x t] returns [true] if and only if [x] is a value at some</span></span><br><span class="line"><span class="comment"> * node in tree [t]. </span></span><br><span class="line"><span class="comment"> *)</span></span><br><span class="line"><span class="keyword">let</span> <span class="keyword">rec</span> mem x = <span class="keyword">function</span></span><br><span class="line">  | <span class="type">Leaf</span> -&gt; <span class="literal">false</span></span><br><span class="line">  | <span class="type">Node</span> &#123;<span class="keyword">value</span>; left; right&#125; -&gt; <span class="keyword">value</span> = x || mem x left || mem x right</span><br></pre></td></tr></table></figure>
 
 <h2 id="Exceptions"><a href="#Exceptions" class="headerlink" title="Exceptions"></a>Exceptions</h2><h3 id="The-Basics"><a href="#The-Basics" class="headerlink" title="The Basics"></a>The Basics</h3><figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">(*Definition: it is just a special kind of "type"*)</span></span><br><span class="line"><span class="keyword">exception</span> <span class="type">E</span> <span class="keyword">of</span> t</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">(*Call an Exception*)</span></span><br><span class="line">raise e</span><br><span class="line"></span><br><span class="line"><span class="comment">(*syntactic sugar*)</span></span><br><span class="line">failwith <span class="string">"Not Good"</span></span><br><span class="line">raise (<span class="type">Failure</span> (<span class="string">"Not Good"</span>))</span><br></pre></td></tr></table></figure>
 
@@ -1055,9 +1057,33 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 35
+        Total : 37
         </div>
         <!-- search  -->
         
@@ -1073,12 +1099,17 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/03</span><a class="archive-post-title" href= "/2020/03/03/2020-03-03-Mutability/" >Mutability</a>
+            <span class="archive-post-date">06/24</span><a class="archive-post-title" href= "/2020/06/24/2020-06-24-Kinekt-as-Web-Cam/" >Kinect as Web Cam</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/20</span><a class="archive-post-title" href= "/2020/02/20/2020-02-20-testing/" >testing</a>
+            <span class="archive-post-date">05/27</span><a class="archive-post-title" href= "/2020/05/27/2020-05-27-Cornell-20SP-总结/" >Cornell 20SP 总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/03</span><a class="archive-post-title" href= "/2020/03/03/2020-03-03-Mutability/" >Mutability</a>
         </li>
     
     
@@ -1114,6 +1145,11 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">01/28</span><a class="archive-post-title" href= "/2020/01/28/2020-01-28-Functions/" >Functions</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/24</span><a class="archive-post-title" href= "/2020/01/24/2020-01-24-CS2043-Unix-Tools-and-Scripting/" >CS2043 Unix Tools and Scripting</a>
         </li>
     
     
@@ -1237,12 +1273,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2019/05/30/P1090 合并果子/" >P1090 合并果子</a>
+            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2019/05/30/P1309 瑞士轮/" >P1309 瑞士轮</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2019/05/30/P1309 瑞士轮/" >P1309 瑞士轮</a>
+            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2019/05/30/P1090 合并果子/" >P1090 合并果子</a>
         </li>
     
     
@@ -1272,15 +1308,15 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="Java"><span class="iconfont-archer">&#xe606;</span>Java</span>
     
-        <span class="sidebar-tag-name" data-tags="Android"><span class="iconfont-archer">&#xe606;</span>Android</span>
-    
-        <span class="sidebar-tag-name" data-tags="Hexo"><span class="iconfont-archer">&#xe606;</span>Hexo</span>
-    
         <span class="sidebar-tag-name" data-tags="20SP"><span class="iconfont-archer">&#xe606;</span>20SP</span>
     
         <span class="sidebar-tag-name" data-tags="CS3110"><span class="iconfont-archer">&#xe606;</span>CS3110</span>
     
-        <span class="sidebar-tag-name" data-tags="SP20"><span class="iconfont-archer">&#xe606;</span>SP20</span>
+        <span class="sidebar-tag-name" data-tags="Android"><span class="iconfont-archer">&#xe606;</span>Android</span>
+    
+        <span class="sidebar-tag-name" data-tags="CS2043"><span class="iconfont-archer">&#xe606;</span>CS2043</span>
+    
+        <span class="sidebar-tag-name" data-tags="Hexo"><span class="iconfont-archer">&#xe606;</span>Hexo</span>
     
         <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
     

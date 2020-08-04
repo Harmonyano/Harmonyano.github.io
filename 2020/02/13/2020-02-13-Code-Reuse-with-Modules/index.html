@@ -268,9 +268,9 @@ height:50vh;
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "Cornell">Cornell</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CS3110">CS3110</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "20SP">20SP</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "SP20">SP20</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "CS3110">CS3110</a>
     
 </div>
                 
@@ -397,6 +397,7 @@ height:50vh;
             <main class="main post-page">
     <article class="article-entry">
         <p>From Textbook: <a href="https://www.cs.cornell.edu/courses/cs3110/2020sp/textbook/modules/reuse.html" target="_blank" rel="noopener">Code Reuse with Modules</a></p>
+<hr>
 <h2 id="Includes"><a href="#Includes" class="headerlink" title="Includes"></a>Includes</h2><p><strong>Def</strong>: <code>includes</code> enables a structure to include all the values defined by another structure, or a signature to include all the names declared by another signature.</p>
 <a id="more"></a>
 
@@ -404,7 +405,7 @@ height:50vh;
 
 <h3 id="Encapsulation"><a href="#Encapsulation" class="headerlink" title="Encapsulation"></a>Encapsulation</h3><figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> <span class="type">ListSetDupsImpl</span> = <span class="keyword">struct</span></span><br><span class="line">  <span class="keyword">type</span> <span class="symbol">'a</span> t   = <span class="symbol">'a</span> <span class="built_in">list</span></span><br><span class="line">  <span class="keyword">let</span> empty   = <span class="literal">[]</span></span><br><span class="line">  <span class="keyword">let</span> mem     = <span class="type">List</span>.mem</span><br><span class="line">  <span class="keyword">let</span> add x s = x::s</span><br><span class="line">  <span class="keyword">let</span> elts s  = <span class="type">List</span>.sort_uniq <span class="type">Stdlib</span>.compare s</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span> <span class="type">ListSetDups</span> : <span class="type">Set</span> = <span class="type">ListSetDupsImpl</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span> <span class="type">ListSetDupsExtended</span> = <span class="keyword">struct</span></span><br><span class="line">  <span class="keyword">include</span> <span class="type">ListSetDupsImpl</span></span><br><span class="line">  <span class="keyword">let</span> of_list lst = lst</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 
-<p>The important change is that <code>ListSetDupsImpl</code> is not sealed, so its type <code>&#39;a t</code> is not abstract. When we include it in <code>ListSetDupsExtended</code>, we can therefore exploit the fact that it’s a synonym for <code>&#39;a list</code>.</p>
+<p>The important change is that <code>ListSetDupsImpl</code> is not sealed, so its type <code>&#39;a t</code> is not abstract. Plus, OCaml compiler can infer it is an implementation of <code>Set</code> .When we include it in <code>ListSetDupsExtended</code>, we can therefore exploit the fact that it’s a synonym for <code>&#39;a list</code>.</p>
 <p>The clients should use <code>ListSetDups</code>, but when we use List to implement other things, we should use <code>ListSetDupsImpl</code> instead. </p>
 <h3 id="Includes-vs-Open"><a href="#Includes-vs-Open" class="headerlink" title="Includes vs. Open"></a>Includes vs. Open</h3><figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> <span class="type">M</span> = <span class="keyword">struct</span></span><br><span class="line">  <span class="keyword">let</span> x = <span class="number">0</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span> <span class="type">N</span> = <span class="keyword">struct</span></span><br><span class="line">  <span class="keyword">include</span> <span class="type">M</span></span><br><span class="line">  <span class="keyword">let</span> y = x + <span class="number">1</span></span><br><span class="line">  <span class="keyword">let</span> z = <span class="number">1</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span> <span class="type">O</span> = <span class="keyword">struct</span></span><br><span class="line">  <span class="keyword">open</span> <span class="type">M</span></span><br><span class="line">  <span class="keyword">let</span> y = x + <span class="number">1</span></span><br><span class="line">  <span class="keyword">let</span> z = <span class="number">1</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span> <span class="type">M</span> : <span class="keyword">sig</span> <span class="keyword">val</span> x : <span class="built_in">int</span> <span class="keyword">end</span></span><br><span class="line"><span class="keyword">module</span> <span class="type">N</span> : <span class="keyword">sig</span> <span class="keyword">val</span> x : <span class="built_in">int</span> <span class="keyword">val</span> y : <span class="built_in">int</span> <span class="keyword">val</span> z : <span class="built_in">int</span> <span class="keyword">end</span></span><br><span class="line"><span class="keyword">module</span> <span class="type">O</span> : <span class="keyword">sig</span> <span class="keyword">val</span> y : <span class="built_in">int</span> <span class="keyword">val</span> z : <span class="built_in">int</span> <span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 
@@ -1042,9 +1043,33 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 35
+        Total : 37
         </div>
         <!-- search  -->
         
@@ -1060,12 +1085,17 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/03</span><a class="archive-post-title" href= "/2020/03/03/2020-03-03-Mutability/" >Mutability</a>
+            <span class="archive-post-date">06/24</span><a class="archive-post-title" href= "/2020/06/24/2020-06-24-Kinekt-as-Web-Cam/" >Kinect as Web Cam</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/20</span><a class="archive-post-title" href= "/2020/02/20/2020-02-20-testing/" >testing</a>
+            <span class="archive-post-date">05/27</span><a class="archive-post-title" href= "/2020/05/27/2020-05-27-Cornell-20SP-总结/" >Cornell 20SP 总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/03</span><a class="archive-post-title" href= "/2020/03/03/2020-03-03-Mutability/" >Mutability</a>
         </li>
     
     
@@ -1101,6 +1131,11 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">01/28</span><a class="archive-post-title" href= "/2020/01/28/2020-01-28-Functions/" >Functions</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/24</span><a class="archive-post-title" href= "/2020/01/24/2020-01-24-CS2043-Unix-Tools-and-Scripting/" >CS2043 Unix Tools and Scripting</a>
         </li>
     
     
@@ -1224,12 +1259,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2019/05/30/P1090 合并果子/" >P1090 合并果子</a>
+            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2019/05/30/P1309 瑞士轮/" >P1309 瑞士轮</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2019/05/30/P1309 瑞士轮/" >P1309 瑞士轮</a>
+            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2019/05/30/P1090 合并果子/" >P1090 合并果子</a>
         </li>
     
     
@@ -1259,15 +1294,15 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="Java"><span class="iconfont-archer">&#xe606;</span>Java</span>
     
-        <span class="sidebar-tag-name" data-tags="Android"><span class="iconfont-archer">&#xe606;</span>Android</span>
-    
-        <span class="sidebar-tag-name" data-tags="Hexo"><span class="iconfont-archer">&#xe606;</span>Hexo</span>
-    
         <span class="sidebar-tag-name" data-tags="20SP"><span class="iconfont-archer">&#xe606;</span>20SP</span>
     
         <span class="sidebar-tag-name" data-tags="CS3110"><span class="iconfont-archer">&#xe606;</span>CS3110</span>
     
-        <span class="sidebar-tag-name" data-tags="SP20"><span class="iconfont-archer">&#xe606;</span>SP20</span>
+        <span class="sidebar-tag-name" data-tags="Android"><span class="iconfont-archer">&#xe606;</span>Android</span>
+    
+        <span class="sidebar-tag-name" data-tags="CS2043"><span class="iconfont-archer">&#xe606;</span>CS2043</span>
+    
+        <span class="sidebar-tag-name" data-tags="Hexo"><span class="iconfont-archer">&#xe606;</span>Hexo</span>
     
         <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
     

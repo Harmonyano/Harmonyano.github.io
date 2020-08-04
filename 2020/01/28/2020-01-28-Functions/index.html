@@ -412,7 +412,7 @@ height:50vh;
 <li>Pipeline: <code>e1 |&gt; fun x-&gt;e2 |&gt; fun x-&gt;e3;;</code></li>
 </ul>
 <p>They are semantically the same as “let expressions” : <code>let x = e1 in let x = e2 in e3</code> (In fact, the let expression is just a syntactic sugar of function application)</p>
-<p>Function application is left-associative: <code>g f x = g(f x)</code>, while function types are right-associative: <code>g -&gt; f -&gt; x = g -&gt; (f -&gt; x)</code></p>
+<p>Function application is left-associative: <code>g f x = (g f) x</code>, while function types are right-associative: <code>g -&gt; f -&gt; x = g -&gt; (f -&gt; x)</code></p>
 <h3 id="Polymorphic-Functions"><a href="#Polymorphic-Functions" class="headerlink" title="Polymorphic Functions"></a>Polymorphic Functions</h3><p>The <code>&#39;a</code> is a <em>type variable</em>: it stands for an unknown type, just like a regular variable stands for an unknown value.</p>
 <h3 id="Labeled-Arguments"><a href="#Labeled-Arguments" class="headerlink" title="Labeled Arguments"></a>Labeled Arguments</h3><p>OCaml supports labeled arguments to functions. You can declare this kind of function using the following syntax:</p>
 <figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># <span class="keyword">let</span> f ~name1:arg1 ~name2:arg2 = arg1 + arg2;;</span><br><span class="line"><span class="keyword">val</span> f : name1:<span class="built_in">int</span> -&gt; name2:<span class="built_in">int</span> -&gt; <span class="built_in">int</span> = &lt;<span class="keyword">fun</span>&gt;</span><br></pre></td></tr></table></figure>
@@ -502,8 +502,8 @@ height:50vh;
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2020/01/20/2020-01-20-Installing-Ocaml-on-Linux/" title= "Installing and Configuring Ocaml on Linux">
-                    <div class="prevTitle">Installing and Configuring Ocaml on Linux</div>
+                <a href= "/2020/01/24/2020-01-24-CS2043-Unix-Tools-and-Scripting/" title= "CS2043 Unix Tools and Scripting">
+                    <div class="prevTitle">CS2043 Unix Tools and Scripting</div>
                 </a>
             
         </li>
@@ -1108,9 +1108,33 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 35
+        Total : 37
         </div>
         <!-- search  -->
         
@@ -1126,12 +1150,17 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/03</span><a class="archive-post-title" href= "/2020/03/03/2020-03-03-Mutability/" >Mutability</a>
+            <span class="archive-post-date">06/24</span><a class="archive-post-title" href= "/2020/06/24/2020-06-24-Kinekt-as-Web-Cam/" >Kinect as Web Cam</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/20</span><a class="archive-post-title" href= "/2020/02/20/2020-02-20-testing/" >testing</a>
+            <span class="archive-post-date">05/27</span><a class="archive-post-title" href= "/2020/05/27/2020-05-27-Cornell-20SP-总结/" >Cornell 20SP 总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/03</span><a class="archive-post-title" href= "/2020/03/03/2020-03-03-Mutability/" >Mutability</a>
         </li>
     
     
@@ -1167,6 +1196,11 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">01/28</span><a class="archive-post-title" href= "/2020/01/28/2020-01-28-Functions/" >Functions</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/24</span><a class="archive-post-title" href= "/2020/01/24/2020-01-24-CS2043-Unix-Tools-and-Scripting/" >CS2043 Unix Tools and Scripting</a>
         </li>
     
     
@@ -1290,12 +1324,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2019/05/30/P1090 合并果子/" >P1090 合并果子</a>
+            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2019/05/30/P1309 瑞士轮/" >P1309 瑞士轮</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2019/05/30/P1309 瑞士轮/" >P1309 瑞士轮</a>
+            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2019/05/30/P1090 合并果子/" >P1090 合并果子</a>
         </li>
     
     
@@ -1325,15 +1359,15 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="Java"><span class="iconfont-archer">&#xe606;</span>Java</span>
     
-        <span class="sidebar-tag-name" data-tags="Android"><span class="iconfont-archer">&#xe606;</span>Android</span>
-    
-        <span class="sidebar-tag-name" data-tags="Hexo"><span class="iconfont-archer">&#xe606;</span>Hexo</span>
-    
         <span class="sidebar-tag-name" data-tags="20SP"><span class="iconfont-archer">&#xe606;</span>20SP</span>
     
         <span class="sidebar-tag-name" data-tags="CS3110"><span class="iconfont-archer">&#xe606;</span>CS3110</span>
     
-        <span class="sidebar-tag-name" data-tags="SP20"><span class="iconfont-archer">&#xe606;</span>SP20</span>
+        <span class="sidebar-tag-name" data-tags="Android"><span class="iconfont-archer">&#xe606;</span>Android</span>
+    
+        <span class="sidebar-tag-name" data-tags="CS2043"><span class="iconfont-archer">&#xe606;</span>CS2043</span>
+    
+        <span class="sidebar-tag-name" data-tags="Hexo"><span class="iconfont-archer">&#xe606;</span>Hexo</span>
     
         <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
     

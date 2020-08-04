@@ -359,6 +359,72 @@ height:50vh;
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2019/06/16/P1219 八皇后/" >
+            
+                <span>P1219 八皇后</span>
+        </a>
+        <div class="abstract-content">
+            <p>题目来源：<a href="https://www.luogu.org/problemnew/show/P1219" target="_blank" rel="noopener">洛谷P1219 八皇后</a></p>
+<hr>
+<h2 id="我的解法"><a href="#我的解法" class="headerlink" title="我的解法"></a>我的解法</h2><p>自己的程序出现的几个问题：</p>
+<ol>
+<li>对角线表达式太过复杂，各层绝对值都可以简化，应该相信大部分情况下复杂的都是错误的</li>
+<li>不需要记录这一行放没放过棋子，因为我们是按照一行一行的顺序放过来的，上一行必定有棋子，下一行必定无棋子
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/16</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "NOI">NOI</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/06/04/P1031 均分纸牌/" >
+            
+                <span>P1031 均分纸牌</span>
+        </a>
+        <div class="abstract-content">
+            <p>题目来源：<a href="https://www.luogu.org/problemnew/show/P1031" target="_blank" rel="noopener">洛谷P1031 均分纸牌</a></p>
+<hr>
+<h2 id="标解"><a href="#标解" class="headerlink" title="标解"></a>标解</h2><p><strong>注意本题中平均数的运用</strong></p>
+<p>首先，一定要想到每堆排的张数减去平均张数，这样，题目就变成了移动正数，加到负数中，是大家都变成了0，这就意味着成功了60%！！！！（关键）。以例题来说，平均张数为10，原张数变为-1，-2,+7，-4，因为没有为0的数，所以从最左边出发，将-1移动到-2中，变为0，-3，+7,4，再讲-3向右移动……一次类推，直到全为0为止。没移动一次，步数便加1。关键是，负数怎么移动，其实，移动-x张牌，其实就是从另一堆中移动x张牌，步数相同。还有就是要过滤0，如排数为4，4,2,6，则减去平均数后为0,0，-2,2，就要从第三对开始移动。注意有些0是不能过滤的，如1,0,1，-2中的0。还有就是每次移动好都要过滤。如-2，2,1,3，-4，第一步后变为0,0,1,3，-4，可以省略第二堆的移动。
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/04</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "NOI">NOI</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2019/06/03/P2678 跳石头/" >
             
                 <span>P2678 跳石头</span>
@@ -391,15 +457,15 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/05/30/P1090 合并果子/" >
+        <a class="abstract-title" href = "/2019/05/30/P1309 瑞士轮/" >
             
-                <span>P1090 合并果子</span>
+                <span>P1309 瑞士轮</span>
         </a>
         <div class="abstract-content">
-            <p>题目来源： <a href="https://www.luogu.org/problemnew/show/P1090" target="_blank" rel="noopener">洛谷P1090 合并果子</a></p>
+            <p>题目来源：<a href="https://www.luogu.org/problemnew/show/P1309" target="_blank" rel="noopener">洛谷P1309 瑞士轮</a></p>
 <hr>
-<h2 id="一维数组做法"><a href="#一维数组做法" class="headerlink" title="一维数组做法"></a>一维数组做法</h2><p>本题是一个简单的 <a href="https://www.cnblogs.com/kubixuesheng/p/4397798.html" target="_blank" rel="noopener">Huffman树</a>。Huffman编码 在 UTF-8 &amp; Unicode 中都有它思想的体现，即出现频率高的编码长度短，出现频率低的编码长度长，用以缩短整体编码长度</p>
-<p>这里我也运用了前面 P1309 的思想：因为每次需要重新排序的时候只有一个数据需要被插入整个数列当中,所以并不需要假定数据无序的 quick sort，反而是线性的排序更快</p>
+<ol>
+<li>胜者组和败者组分别是有序的，使用 <em>mergesort</em> 将两个有序同向数组进行归并（严格上来说不是归并排序），大大降低了时间复杂度 = O(n)。如果我们使用 <em>quicksort</em>，则默认整个数据是无序的，对每个数据都重新排序所以会超时
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -423,15 +489,15 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/05/30/P1309 瑞士轮/" >
+        <a class="abstract-title" href = "/2019/05/30/P1090 合并果子/" >
             
-                <span>P1309 瑞士轮</span>
+                <span>P1090 合并果子</span>
         </a>
         <div class="abstract-content">
-            <p>题目来源：<a href="https://www.luogu.org/problemnew/show/P1309" target="_blank" rel="noopener">洛谷P1309 瑞士轮</a></p>
+            <p>题目来源： <a href="https://www.luogu.org/problemnew/show/P1090" target="_blank" rel="noopener">洛谷P1090 合并果子</a></p>
 <hr>
-<ol>
-<li>胜者组和败者组分别是有序的，使用 <em>mergesort</em> 将两个有序同向数组进行归并（严格上来说不是归并排序），大大降低了时间复杂度 = O(n)。如果我们使用 <em>quicksort</em>，则默认整个数据是无序的，对每个数据都重新排序所以会超时
+<h2 id="一维数组做法"><a href="#一维数组做法" class="headerlink" title="一维数组做法"></a>一维数组做法</h2><p>本题是一个简单的 <a href="https://www.cnblogs.com/kubixuesheng/p/4397798.html" target="_blank" rel="noopener">Huffman树</a>。Huffman编码 在 UTF-8 &amp; Unicode 中都有它思想的体现，即出现频率高的编码长度短，出现频率低的编码长度长，用以缩短整体编码长度</p>
+<p>这里我也运用了前面 P1309 的思想：因为每次需要重新排序的时候只有一个数据需要被插入整个数列当中,所以并不需要假定数据无序的 quick sort，反而是线性的排序更快</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -1177,9 +1243,33 @@ height:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 35
+        Total : 37
         </div>
         <!-- search  -->
         
@@ -1195,12 +1285,17 @@ height:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/03</span><a class="archive-post-title" href= "/2020/03/03/2020-03-03-Mutability/" >Mutability</a>
+            <span class="archive-post-date">06/24</span><a class="archive-post-title" href= "/2020/06/24/2020-06-24-Kinekt-as-Web-Cam/" >Kinect as Web Cam</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/20</span><a class="archive-post-title" href= "/2020/02/20/2020-02-20-testing/" >testing</a>
+            <span class="archive-post-date">05/27</span><a class="archive-post-title" href= "/2020/05/27/2020-05-27-Cornell-20SP-总结/" >Cornell 20SP 总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/03</span><a class="archive-post-title" href= "/2020/03/03/2020-03-03-Mutability/" >Mutability</a>
         </li>
     
     
@@ -1236,6 +1331,11 @@ height:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">01/28</span><a class="archive-post-title" href= "/2020/01/28/2020-01-28-Functions/" >Functions</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/24</span><a class="archive-post-title" href= "/2020/01/24/2020-01-24-CS2043-Unix-Tools-and-Scripting/" >CS2043 Unix Tools and Scripting</a>
         </li>
     
     
@@ -1359,12 +1459,12 @@ height:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2019/05/30/P1090 合并果子/" >P1090 合并果子</a>
+            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2019/05/30/P1309 瑞士轮/" >P1309 瑞士轮</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2019/05/30/P1309 瑞士轮/" >P1309 瑞士轮</a>
+            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2019/05/30/P1090 合并果子/" >P1090 合并果子</a>
         </li>
     
     
@@ -1394,15 +1494,15 @@ height:50vh;
     
         <span class="sidebar-tag-name" data-tags="Java"><span class="iconfont-archer">&#xe606;</span>Java</span>
     
-        <span class="sidebar-tag-name" data-tags="Android"><span class="iconfont-archer">&#xe606;</span>Android</span>
-    
-        <span class="sidebar-tag-name" data-tags="Hexo"><span class="iconfont-archer">&#xe606;</span>Hexo</span>
-    
         <span class="sidebar-tag-name" data-tags="20SP"><span class="iconfont-archer">&#xe606;</span>20SP</span>
     
         <span class="sidebar-tag-name" data-tags="CS3110"><span class="iconfont-archer">&#xe606;</span>CS3110</span>
     
-        <span class="sidebar-tag-name" data-tags="SP20"><span class="iconfont-archer">&#xe606;</span>SP20</span>
+        <span class="sidebar-tag-name" data-tags="Android"><span class="iconfont-archer">&#xe606;</span>Android</span>
+    
+        <span class="sidebar-tag-name" data-tags="CS2043"><span class="iconfont-archer">&#xe606;</span>CS2043</span>
+    
+        <span class="sidebar-tag-name" data-tags="Hexo"><span class="iconfont-archer">&#xe606;</span>Hexo</span>
     
         <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
     
