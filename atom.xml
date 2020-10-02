@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-06-24T04:55:23.561Z</updated>
+  <updated>2020-10-02T12:57:07.733Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,71 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Add &quot;Open with Windows Terminal&quot; to Right-Click Menu</title>
+    <link href="http://yoursite.com/2020/09/29/2020-09-29-Add-Open-with-Windows-Terminalto-Right-Click-Menu/"/>
+    <id>http://yoursite.com/2020/09/29/2020-09-29-Add-Open-with-Windows-Terminalto-Right-Click-Menu/</id>
+    <published>2020-09-28T16:00:00.000Z</published>
+    <updated>2020-10-02T12:57:07.733Z</updated>
+    
+    <content type="html"><![CDATA[<p>Windows Terminal Preview now provides native support of this feature.</p><a id="more"></a><ol><li><p>Download the icon <a href="https://raw.githubusercontent.com/microsoft/terminal/master/res/terminal.ico" target="_blank" rel="noopener">here</a></p></li><li><p>Move the icon to directory <code>C:\Users\&lt;your username&gt;\AppData\Local\WindowsTerminal</code></p></li><li><p>Create a <code>.reg</code> file and run it.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\wt]</span><br><span class="line">@=&quot;Open with Windows Terminal&quot;</span><br><span class="line">&quot;Icon&quot;=&quot;C:\\Users\\&lt;your username&gt;\\AppData\\Local\\WindowsTerminal\\terminal.ico&quot;</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\wt\command]</span><br><span class="line">@=&quot;C:\\Users\\harmo\\&lt;your username&gt;\\Local\\Microsoft\\WindowsApps\\wt.exe&quot;</span><br></pre></td></tr></table></figure></li><li><p>In Windows Terminal’s settings, Add <code>&quot;startingDirectory&quot; : &quot;.&quot;</code> into <code>defaults</code> list:</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">"defaults":</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">"startingDirectory"</span> : <span class="string">"."</span></span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure></li></ol><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol><li><p><a href="https://windowsloop.com/add-open-windows-terminal-here-option-to-right-click-menu/" target="_blank" rel="noopener">How to Add Open Windows Terminal Here Option to Right-click Menu</a></p></li><li><p><a href="https://github.com/microsoft/terminal/issues/1060#issuecomment-497539461" target="_blank" rel="noopener">Add “open Windows terminal here” to right-click context menu</a></p></li><li><p><a href="https://www.cnblogs.com/lbz007oi/p/12669015.html" target="_blank" rel="noopener">将”在此处启动Windows Terminal”添加到右键菜单</a></p></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Windows Terminal Preview now provides native support of this feature.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Logistics" scheme="http://yoursite.com/tags/Logistics/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Windows下配置PostgreSQL</title>
+    <link href="http://yoursite.com/2020/09/05/2020-09-05-Windows%E4%B8%8B%E9%85%8D%E7%BD%AEPostgreSQL/"/>
+    <id>http://yoursite.com/2020/09/05/2020-09-05-Windows下配置PostgreSQL/</id>
+    <published>2020-09-04T16:00:00.000Z</published>
+    <updated>2020-10-02T12:55:09.373Z</updated>
+    
+    <content type="html"><![CDATA[<p>如果你在纠结要不要装，别装了吧，对自己好一点</p><a id="more"></a><ol><li><p>Download and Install PostgreSQL. During the process, PostgreSQL will ask you to create a username and password, the default username is “postgres” and password is up to you.</p></li><li><p>Run the <code>pg_env.bat</code> under installation folder or the following <code>env.vbs</code> file if that <code>bat</code> doesn’t work</p><figure class="highlight vbscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">on</span> <span class="keyword">error</span> <span class="keyword">resume</span> <span class="keyword">next</span></span><br><span class="line"><span class="keyword">set</span> sysenv=<span class="built_in">CreateObject</span>(<span class="string">"WScript.Shell"</span>).Environment(<span class="string">"system"</span>) <span class="comment">'系统环境变量的数组对象</span></span><br><span class="line">Path = <span class="built_in">CreateObject</span>(<span class="string">"Scripting.FileSystemObject"</span>).GetFolder(<span class="string">"."</span>).Path</span><br><span class="line"><span class="comment">'添加变量</span></span><br><span class="line">sysenv(<span class="string">"PGHOME"</span>)=<span class="string">"C:\Hacking\PostgreSQL"</span> <span class="comment">'!!!change to your own directory!!!'</span></span><br><span class="line">sysenv(<span class="string">"PGHOST"</span>)=<span class="string">"localhost"</span></span><br><span class="line">sysenv(<span class="string">"Path"</span>)=sysenv(<span class="string">"PGHOME"</span>)+<span class="string">"\bin;"</span>+sysenv(<span class="string">"Path"</span>)</span><br><span class="line">sysenv(<span class="string">"PGLIB"</span>)=sysenv(<span class="string">"PGHOME"</span>)+<span class="string">"\lib"</span></span><br><span class="line">sysenv(<span class="string">"PGDATA"</span>)=sysenv(<span class="string">"PGHOME"</span>)+<span class="string">"\data"</span></span><br><span class="line">  </span><br><span class="line">wscript.echo <span class="string">"PostgreSQL Environment Variable Successfully set"</span></span><br></pre></td></tr></table></figure></li><li><p>Initialize database by running <code>initdb -D C:\Hacking\PostgreSQL\data</code></p></li><li><p>Start Server by running <code>pg_ctl -D C:\Hacking\PostgreSQL\data start</code></p></li><li><p>Register a server service by running <code>pg_ctl register -N &quot;PostgreSQL&quot; -D C:\Hacking\PostgreSQL\data</code> (If not working, run terminal as administrator) You should then be able to see a service called “PostgreSQL” in Windows Services (Win+R services.msc)</p></li><li><p>Create Database by running <code>createdb -U postgres &lt;DatabaseName&gt;</code> and entering the password you entered in step 1. </p><p>Note it will give a “Password Authentication Failure” if you try <code>createdb &lt;DatabaseName&gt;</code> and enter the password that way. That is because PostgreSQL uses your computer username as default and no such use is registered in PostgreSQL in the first place. You have to use <code>-U</code> option to specify the user you want to log in as.</p></li><li><p>Allow operations on database without password by changing authentication method in <code>PostgreSQL\data\pg_hba.conf</code> all from <code>md5</code> to <code>trust</code>: (might take effect after a reboot)</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># TYPE  DATABASE        USER            ADDRESS                 METHOD</span><br><span class="line"></span><br><span class="line"># IPv4 local connections:</span><br><span class="line">host    all             all             127.0.0.1/32            trust (was md5)</span><br><span class="line"># IPv6 local connections:</span><br><span class="line">host    all             all             ::1/128                 trust</span><br><span class="line"># Allow replication connections from localhost, by a user with the</span><br><span class="line"># replication privilege.</span><br><span class="line">host    replication     all             127.0.0.1/32            trust</span><br><span class="line">host    replication     all             ::1/128                 trust</span><br></pre></td></tr></table></figure></li><li><p>Now when we run command <code>createdb db</code>, we may get a message <code>Fatel Error: User &quot;harmo&quot; does not exist</code>. This is a similar problem as in step 6. We want to create a user called “harmo” by running <code>createuser -s -r -U postgres harmo</code>. </p><p>Note simply <code>creatuser -s -r harmo</code> will not work because the default user to use to create such a user harmo is also harmo, which doesn’t exist in the first place. <strong>What a stupid logic PostgreSQL applies.</strong></p></li><li><p>Now PostgreSQL is ready to use.</p></li></ol><p>过了一天服务启动不起来了，查了一堆没有结果，我还用你妈了个嗨，小爷一个周末就整你这傻逼玩意，草了真的是</p><p>好像是启动 <code>pgAdmin</code> 之后，又可以用了。刚刚启动的服务本身就是为了让 local server 运作的，而 <code>pgAdmin</code> 可以帮我们完成这个任务。于是我们登录进 <code>pgAdmin</code> 就相当于让那个服务运作起来了，也就可以正常在终端中使用命令了</p><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol><li><a href="https://blog.csdn.net/ywg_1994/article/details/82391531" target="_blank" rel="noopener">主要：Windows下在命令行安装postgresql，并注册成window服务</a></li><li><a href="https://www.cnblogs.com/scwbky/p/9841502.html" target="_blank" rel="noopener">Windows上PostgreSQL安装配置教程</a></li><li><a href="https://www.jb51.net/article/114332.htm" target="_blank" rel="noopener">Windows下Postgresql下载与配置方法</a></li><li><a href="https://www.cnblogs.com/liuye1990/p/10544086.html" target="_blank" rel="noopener">postgresql 口令： psql: 致命错误: 用户 认证失败</a></li><li><a href="https://blog.csdn.net/ghostliming/article/details/53314911" target="_blank" rel="noopener">本机psql设置需要/不需要密码</a></li><li><a href="https://www.cnblogs.com/heenhui2016/p/11613384.html" target="_blank" rel="noopener">Postgres psql: 致命错误:  角色 “postgres” 不存在</a></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;如果你在纠结要不要装，别装了吧，对自己好一点&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Logistics" scheme="http://yoursite.com/tags/Logistics/"/>
+    
+      <category term="CS4320" scheme="http://yoursite.com/tags/CS4320/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>圣诞之吻</title>
+    <link href="http://yoursite.com/2020/08/03/2020-08-03-%E5%9C%A3%E8%AF%9E%E4%B9%8B%E5%90%BB/"/>
+    <id>http://yoursite.com/2020/08/03/2020-08-03-圣诞之吻/</id>
+    <published>2020-08-02T16:00:00.000Z</published>
+    <updated>2020-10-02T12:54:18.377Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ol><li>经由委员长(<a href="https://twitter.com/MitoTsukino" target="_blank" rel="noopener">@MitoTsukino</a>)的推荐，把圣诞之吻从我的“想玩的古老Galgame”列表中提到了第一位。衷心感谢委员长。</li><li>略带精神洁癖的纯爱玩家一定要在S1就确认下来到底想攻略谁，不要让除心仪对象以外的人进入到仲良し及以上状态，不这样做在最后一夜你必定会难受一会</li></ol><a id="more"></a><h2 id="七咲逢"><a href="#七咲逢" class="headerlink" title="七咲逢"></a>七咲逢</h2><h3 id="Best-End"><a href="#Best-End" class="headerlink" title="Best End"></a>Best End</h3><p>第一次见面中6个人物2个留给我印象最深，其中一个就是被看到内裤但却做出了惊人的“我倒是无所谓”这种反映的七咲逢。也幸亏了七咲逢这种有点冷酷而且无所谓的态度，让本来应该社会性死亡加每次见到她都要夹着尾巴的“我”，可以厚着脸皮去找她聊天或是吃午饭，然后一路高歌猛进到 S2.</p><p>从第一次见面开始，七咲的形象简直过于理想：小恶魔+黑短发+冷酷+运动少女，让人感觉这角色完全就是我做梦的时候会出现的形象。反之七咲对于我的印象就是“干啥啥不行的变态前辈”，每次我想要干什么坏事（偷看游泳部训练，在图书馆大声说话，…）七咲总会出现在我身边，让人不禁觉得她就是为了看我出丑一直在跟踪我（。甚至怂恿我服从自己的欲望，去和高桥老师告白，导致我第一次知道 Galgame 还可能有三个选项全是死项的，真是感到了人世间的黑暗。</p><p>第一个 attack 直接就开大，上来就是“前辈，这么想看就给你看个够啊”，激动的我就差把摇杆按烂了。我看上的女人果然不一般，虽然是泳衣也不能直接把裙子掀起来给人看吧（</p><p>放学后的 attack 更是让人控制不住的海边约会，虽然冷静一想对于七咲来说其实就是“啊，今天想去捡垃圾了，既然前辈说想一起回家的话就顺便拉着他去捡垃圾吧”。即使如此，在夕阳西下的海边漫步简直是逼着人自爆“我其实喜欢你很久了”。</p><p>S2更注重描写七咲逢作为普通女高中生的一面：不太擅长的数学和要照顾的弟弟，兼顾家庭和学业的时候还想要冲击下游泳的区域名次。在互相了解的过程中她也对我建立起“虽然非常废柴但是偶尔还是会有一点点用的前辈”形象，在原来的小学被恶狗攻击的夜晚，“我”不顾自己的安危保护了七咲，也总算让她见识到了作为前辈帅气的一面。</p><p>S3就是各种被七咲玩弄的情侣日常了，看到“我”还是对高桥老师不死心，直接就偷偷跟踪着跟踪者高桥老师的“我”，等我上去套近乎的时候直接打断，甜到不能再甜了。话说不要在自己以为没人的地方亲嘴啊，被老师看到以后两个人绝对要吃处分的。这期间七咲又拒绝了同班一个男生的圣诞邀请，而且说出了“作为一个男人我不信任你”这种伤人的话，让人回想起如果那天去海边的时候就和她自爆的话，绝对也会被说同样的话，“真的只是拿你当朋友”这种。</p><p>但是整个2和3我最关注的并不是这些恋爱戏，反而是七咲因为和“我”的关系出现的游泳成绩下滑。冢原学姐更是直接找到“我”说最近七咲在训练时经常发呆，成绩有所下滑，问我作为朋友知不知道些什么。最后在省选中七咲也无缘名次，即使这样还是坚强地挺着选择自由泳转游泳二战，虽然冢原学姐表示理解而且觉得勇气可嘉，但是也从实际可行性的角度出发给了“我”非常现实的担心。这时的七咲就是拼不过但又不想放弃，每天在游泳池里无意义地游着，唯一能给的就是自己仍在努力的自我安慰。最后也并没有交代成绩到底如何，只能希望“我”跳下水关心她可以成为她萎靡不振的转机。</p><p>因为是游戏，所以不需要考虑太多现实的因素，但没办法不联想到在这时候的恋爱会占用越来越多二人本就有限的精力，其他事业学习都越发下滑的两人最后只有互相作为依靠；又或是“我”上了高三渐渐不再联系，大学身处异地失去音信的现实情节。因为是游戏，就让它停留在那个发现逢实际上是个坐拥一整座山的富婆，并且我还和富婆一起泡了温泉的夜晚吧。</p><h2 id="絢辻詞"><a href="#絢辻詞" class="headerlink" title="絢辻詞"></a>絢辻詞</h2><h3 id="仲良し"><a href="#仲良し" class="headerlink" title="仲良し"></a>仲良し</h3><p>序章的时候就把我打入大贤者模式的可怕女人。班级里的第一幕就是因为要举行圣诞庆典，需要有人胜任圣诞委员的工作，但是这种出力的活当然没有人想干，最后是班长举手然后说出了经典的班长会说的发言，“啊，如果没有人干的话就我来吧，虽然我也不知道我能不能干好”。真的是我在学校会听到的班长会说的话，而且每次听，每次都会来气。您不知道能不能干好就乖乖坐着别干，起来BB一通不就是想显示你多么牛逼。然后高桥老师作为一个也很典型的教师人物，也假意关心了一下班长“可以吗？毕竟要兼任班长的职责”实际上这个B心里多么暗爽大家都知道，终于有个人化解了尴尬的气氛然后你也可以开完班会早点回办公室了你说你开不开心，还要再在这来一句，就nm离谱。更离谱的是班长还回她一个“没关系的，班长的工作最近也慢慢熟悉了”，我看你TM明明就是把自己的工作全分给下面的几个班委，自己跟个收租的似的然后成天在老师面前邀功就是了，接下来的台词更是让我无限回想起了学校里的那个班长，明明就没人选然后就职了还要发表个新就职演讲，什么”一起办一届能留下回忆的晚会“ ”虽然会有许多做的不好的地方，但是希望大家多多包涵，一起努力“，就差一边说还要一边回过头来看看同学完了以后鞠个躬了。第一次见面更加离谱，我要找她交个东西，看了我的未来志愿表以后又在那fufu的笑，你觉得我梦想也好志愿也罢不切实际您可以偷着笑怎么笑我都没意见，别当着我面说我志愿很有意思好吗？你是内心有多缺安全感才能毫不自知地当面嘲笑别人的志愿？一般来说紧接着下一个事件就是你看见高桥老师在感叹絢辻工作效率之高，然后班长又在老师顺势面前装逼，“哎呀其实也没那么厉害啦”，我只要听你说两句话就能感受到你心里多傲，咱就别搁这装了行吗？</p><p>其实班长越让我气，就说明这角色刻画得越好，因为她让我想到了班里的那个女人。或者说她烦人到让我感觉她就是那个女人。贤者也不是其他的，只是觉得絢辻詞太真了，像是真在我身边的人，而我也曾在这个现实世界的Galgame里担任过背景板以外的主要角色。其实有“班长”在的班，无非就两种人。一种知道班长到底有多恶心的人，搞小圈子排挤她；另一种是不明真相的吃瓜群众，只会觉得班长很厉害。无论哪一搓人都不可能成为班长的朋友，她的 “朋友”，用她自己的话说，不过是“为了利益围绕在她身边罢了”。</p><p>圣诞节慢慢近了，天气转凉，班长不巧地感冒了。我，一个Galgame男主，成了唯一一个去探望班长的人。其实无论是不是Galgame，如果我不去的话，都不会有人去。因为我总是不能把絢辻和那个班长分开来看，假若是现实中，我是绝对不回去管的。只是因为是Galgame，所以“我”才会做出去这个决定。</p><blockquote><p>唯独不想对那个人说谎。</p></blockquote><p>班长是个十几年来都生活在苦中的女孩。对于她来说，不需要蜜瓜包来品尝到甜味，只是卖蜜瓜包车旁落下的雪花的味道，也足够甜了。这第一次的甜味她可以记很久。一直以来行动就是为了达到目的的她这一次向我这个和她完全不熟的人袒露了自己最大的秘密：”其实我一直在装乖”。天下无敌的假面优等生的防御膜破了，只是因为一个最简单的探望。</p><p>接下来的S3不是我“攻略”班长，而是班长自我攻略而且顺带着攻略我。后期的整个剧情里，班长还是像以往那样霸道，威逼利诱美也问出我的生日和喜欢的东西，单枪匹马赴会市议员，我问她既然一个人能干为什么要带着我来，她却对我说：“你只要人来就好了”。</p><p>仲良し线在我心目中是 Best End，因为这是最适合班长的剧情。如果我不去碰触班长的话，她会永远一个人走下去，如果被别人围攻的话，会像在另一条线里那样孤立无援。而且即使我成为了班长的那个“可以依靠的人”，我其实并没有对她产生什么太大的影响，她还是那样霸道，那样自立。最后一幕的时候，她对我说我是“打开心门的钥匙”，或许这样一个外在文武双全，内在可以坦然面对自己的委员长，才是那个天下无敌优等生的完全体吧。</p><h3 id="Best-End-1"><a href="#Best-End-1" class="headerlink" title="Best End"></a>Best End</h3><p>虽然这个线是我心中的 True End，但是这个线的S1其实也挺离谱的。就是我每天都为班长当工具人，然后成功地引起了班长的注意而已。细想的话，其实和仲良し线一样，都是班长从来没被别人提供过帮助这个情节作祟。这条线进入 S2 以后能够突然感觉到制作组在这条线上花了大笔墨，让班长不愧为圣诞之吻的封面人物。</p><p>班长是一个不喜欢水族馆的人，她觉得水族馆是“想把美丽的东西只掌握在自己手中的”浅薄的自我主义；她渴望两个人能够激发出对方心中潜在优点的恋爱，鄙夷只是互相撒娇的关系；但是她同时也害怕恋爱，害怕“自我被重新塑造”。她对感情的渴望是最理想化的，迎接她的却是最现实的一段感情。在S2的结尾，她只是因为我先去找了兄弟而不是先找她而崩溃，我想这是班长从未想过自己会做出来的事，她一边哭一边抱着我说她不想这样，“祈求他人的安慰的话，就没法自己独立支撑下去了。” 班长希望的二人相互鼓励，一起进步成长的关系没有出现，她所陷入的反而是自己一直不齿的对另一个人的无限依赖。一贯敏锐的班长意识到，自己已经被关心他人的情感束缚而且无法逃脱，于是聪明的她选择接受。我的存在会对她造成影响，“我”是她生活中最不可控的因素，如果我离去，她会不知所措，然而她也对于这种可能性无能为力，因为情感是一种很虚幻的东西，不能被量化，不能被推理。所以她想把两个人连接起来，所以“我把自己献给你”。</p><blockquote><p>所以，我把自己献给你</p></blockquote><p>S3是内外原本都无可动摇的班长一点点地变得敏感，变得柔和。圣诞节马上就到了，可是因为记恨班长的人搞鬼，市里下来通知，圣诞树市里统一发放，学校无权参与了。班里一下又炸了锅，圣诞委员组代理组长肯定第一个背锅，尤其是身兼数职还要成天和“我”腻在一起，绝对难辞其咎。要是以前，班长肯定会向同学们鞠躬赔礼道歉，承认自己工作的失职，不管是不是自己的错责任先揽下来，饼先画好，后面再把仇人记到小本本上报复。但是恋爱中的班长完全变了个人，在班里面高喊质疑她的同学，嘲讽他们都高中生了一点推断能力都没有，只会人云亦云见风使舵，造谣都不会造，自己什么活不干但是贬低出力的人倒是勤快，一边讥笑着一边宣布“今年的圣诞老娘不仅要办好，还要给你们安一个比往年更大的圣诞树”。其实班里面人早就看她不爽，用班长的话说，本来就是为了利益聚在身边的人，现在一想：你都跟我们翻脸了，我们也不藏着掖着了。接下来的几天，班长一个人吃饭，一个人去图书馆，体育课分组也变成了全班所有女生对她一个人，被我问起来的时候，她还笑着跟我说“我原本就没什么朋友的哦，和现在一样一直是一个人。”</p><p>班长最后用自己的代理组长位置，换来了学校对圣诞树的选择权。有的时候觉得看懂班长了，但好像又读不透，一个总是想着自己能获什么利的人，到底为什么决心为同学和整个社区办这个圣诞晚会呢？平安夜，她拿着备用钥匙拉我进校舍，在圣诞树下告诉我，现在她的目标是为能留在我身边而努力，因为我的存在对她来说比任何东西都重要。可能许久之后，我们不在一起，她会为自己曾说过这样的话而觉得好笑，但是在那一刻絢辻詞是认真的。在那个瞬间，她愿意放弃自己的一切，将这时刻定住，她明白，她需要我的支撑才能走得下去。</p><p>班长变了，能够压制住自己所有欲望的班长无法抑制住地想和“我”在一起。这大概是最真实的恋爱，最深情的吻吧。</p><h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>七咲逢是梦中的理想女友，而絢辻詞在我的脑子里像那个人，我真正的班长，还有我自己的一个杂糅，所以班长这个角色显得异常真实。随着游戏的深入，我觉得我变得更理解，更包容了，即使是当我回想起我和原来那个十恶不赦的班长的故事时，我脑海里的第一个想法也变成了“其实我当时也有许多不对的地方”。或许是好事吧</p><p>在问问题的时候偶入了圣诞之吻的贴吧，吧里面还有几个活跃的人一直在给别人解答着问题，当我看到这个贴吧除了答疑帖没什么别的东西时，才会意识到这原来是一款10年前的游戏，其他没有它出名的PSP游戏，下载链接早就失效了；而当你找到一个可以用的下载链接时，你会惊讶的发现原来这个世界上还存在直链下载这种东西，一个1G的游戏，跑满带宽几秒钟就完成了。我于是才觉得在几年间，互联网的环境竟然变得如此之快，好像我对一切东西的认知都停留在5,6年前，我也想到就在3年前还活跃的那个匿名版，在那里曾经有一群和我几乎有着一样爱好的人；4年前的vtuber，是一个小众到不能在小众的话题；5年前的vocaloid china，是创作者们最积极的一个时代… 学生生活离我远去，连互联网最终也将我抛弃。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;经由委员长(&lt;a href=&quot;https://twitter.com/MitoTsukino&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;@MitoTsukino&lt;/a&gt;)的推荐，把圣诞之吻从我的“想玩的古老Galgame”列表中提到了第一位。衷心感谢委员长。&lt;/li&gt;
+&lt;li&gt;略带精神洁癖的纯爱玩家一定要在S1就确认下来到底想攻略谁，不要让除心仪对象以外的人进入到仲良し及以上状态，不这样做在最后一夜你必定会难受一会&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+    
+      <category term="Game" scheme="http://yoursite.com/tags/Game/"/>
+    
+  </entry>
   
   <entry>
     <title>Kinect as Web Cam</title>
@@ -78,9 +143,9 @@
     
       <category term="Cornell" scheme="http://yoursite.com/tags/Cornell/"/>
     
-      <category term="20SP" scheme="http://yoursite.com/tags/20SP/"/>
-    
       <category term="CS3110" scheme="http://yoursite.com/tags/CS3110/"/>
+    
+      <category term="20SP" scheme="http://yoursite.com/tags/20SP/"/>
     
   </entry>
   
@@ -104,9 +169,9 @@
     
       <category term="Cornell" scheme="http://yoursite.com/tags/Cornell/"/>
     
-      <category term="20SP" scheme="http://yoursite.com/tags/20SP/"/>
-    
       <category term="CS3110" scheme="http://yoursite.com/tags/CS3110/"/>
+    
+      <category term="20SP" scheme="http://yoursite.com/tags/20SP/"/>
     
   </entry>
   
@@ -130,9 +195,9 @@
     
       <category term="Cornell" scheme="http://yoursite.com/tags/Cornell/"/>
     
-      <category term="20SP" scheme="http://yoursite.com/tags/20SP/"/>
-    
       <category term="CS3110" scheme="http://yoursite.com/tags/CS3110/"/>
+    
+      <category term="20SP" scheme="http://yoursite.com/tags/20SP/"/>
     
   </entry>
   
@@ -157,9 +222,9 @@
     
       <category term="Cornell" scheme="http://yoursite.com/tags/Cornell/"/>
     
-      <category term="20SP" scheme="http://yoursite.com/tags/20SP/"/>
-    
       <category term="CS3110" scheme="http://yoursite.com/tags/CS3110/"/>
+    
+      <category term="20SP" scheme="http://yoursite.com/tags/20SP/"/>
     
   </entry>
   
@@ -188,9 +253,9 @@
     
       <category term="Cornell" scheme="http://yoursite.com/tags/Cornell/"/>
     
-      <category term="20SP" scheme="http://yoursite.com/tags/20SP/"/>
-    
       <category term="CS3110" scheme="http://yoursite.com/tags/CS3110/"/>
+    
+      <category term="20SP" scheme="http://yoursite.com/tags/20SP/"/>
     
   </entry>
   
@@ -214,9 +279,9 @@
     
       <category term="Cornell" scheme="http://yoursite.com/tags/Cornell/"/>
     
-      <category term="20SP" scheme="http://yoursite.com/tags/20SP/"/>
-    
       <category term="CS3110" scheme="http://yoursite.com/tags/CS3110/"/>
+    
+      <category term="20SP" scheme="http://yoursite.com/tags/20SP/"/>
     
   </entry>
   
@@ -242,9 +307,9 @@
     
       <category term="Cornell" scheme="http://yoursite.com/tags/Cornell/"/>
     
-      <category term="20SP" scheme="http://yoursite.com/tags/20SP/"/>
-    
       <category term="CS3110" scheme="http://yoursite.com/tags/CS3110/"/>
+    
+      <category term="20SP" scheme="http://yoursite.com/tags/20SP/"/>
     
   </entry>
   
@@ -270,9 +335,9 @@
     
       <category term="Cornell" scheme="http://yoursite.com/tags/Cornell/"/>
     
-      <category term="20SP" scheme="http://yoursite.com/tags/20SP/"/>
-    
       <category term="CS3110" scheme="http://yoursite.com/tags/CS3110/"/>
+    
+      <category term="20SP" scheme="http://yoursite.com/tags/20SP/"/>
     
   </entry>
   
@@ -448,86 +513,6 @@
     
     
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Import Junit and JavaFx into VSCode</title>
-    <link href="http://yoursite.com/2019/11/21/2019-11-21-import-Junit-and-JavaFx-into-VSCode/"/>
-    <id>http://yoursite.com/2019/11/21/2019-11-21-import-Junit-and-JavaFx-into-VSCode/</id>
-    <published>2019-11-20T16:00:00.000Z</published>
-    <updated>2019-12-18T03:05:06.747Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="The-import-javafx-cannot-be-resolved"><a href="#The-import-javafx-cannot-be-resolved" class="headerlink" title="The import javafx cannot be resolved"></a>The import javafx cannot be resolved</h2><p>I have java 11 installed on my computer. JavaFx was not bundled with Java 11 so I have to first download it from <a href="https://openjfx.io/" target="_blank" rel="noopener">here</a> and put it at the same directory as Java jdk. But VScode still gives me the error “The import javafx cannot be resolved”. This was resolved after I ran <code>Java: Clean the Java Language Server workspace</code>, though I have no idea how VSCode magically found the directory of JavaFx.</p><a id="more"></a><h2 id="The-import-Junit-Jupiter-cannot-be-resolved"><a href="#The-import-Junit-Jupiter-cannot-be-resolved" class="headerlink" title="The import Junit.Jupiter cannot be resolved"></a>The import Junit.Jupiter cannot be resolved</h2><p>I downloaded Junit.Jupiter.api (the package I used for my tests) from <a href="https://junit.org/junit5/" target="_blank" rel="noopener">here</a> and put the jar file under <code>workspace\lib</code>. Then problem was solved. Tests are now runnable.</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;The-import-javafx-cannot-be-resolved&quot;&gt;&lt;a href=&quot;#The-import-javafx-cannot-be-resolved&quot; class=&quot;headerlink&quot; title=&quot;The import javafx cannot be resolved&quot;&gt;&lt;/a&gt;The import javafx cannot be resolved&lt;/h2&gt;&lt;p&gt;I have java 11 installed on my computer. JavaFx was not bundled with Java 11 so I have to first download it from &lt;a href=&quot;https://openjfx.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;here&lt;/a&gt; and put it at the same directory as Java jdk. But VScode still gives me the error “The import javafx cannot be resolved”. This was resolved after I ran &lt;code&gt;Java: Clean the Java Language Server workspace&lt;/code&gt;, though I have no idea how VSCode magically found the directory of JavaFx.&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Logistics" scheme="http://yoursite.com/tags/Logistics/"/>
-    
-      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Shortest path algorithm</title>
-    <link href="http://yoursite.com/2019/11/21/2019-11-21-shortest-path-algorithm/"/>
-    <id>http://yoursite.com/2019/11/21/2019-11-21-shortest-path-algorithm/</id>
-    <published>2019-11-20T16:00:00.000Z</published>
-    <updated>2019-12-18T03:24:39.397Z</updated>
-    
-    <content type="html"><![CDATA[<p>From Lecture: <a href="https://www.cs.cornell.edu/courses/cs2112/2019fa/lectures/lecture.html?id=ssp" target="_blank" rel="noopener">Dijkstra’s shortest path algorithm</a></p><hr><h2 id="Dijkstra"><a href="#Dijkstra" class="headerlink" title="Dijkstra"></a>Dijkstra</h2><ul><li>white: <code>dist == infinity</code></li><li>gray: <code>dist &lt; infinity</code>, in queue</li><li>black: <code>dist &lt; infinity</code>, not in queue</li></ul><a id="more"></a><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">root.dist = <span class="number">0</span>; <span class="comment">//root is the source</span></span><br><span class="line">frontier.push(root); <span class="comment">//root is now grey</span></span><br><span class="line"><span class="keyword">while</span>(!frontier.empty())&#123;</span><br><span class="line">    Node g = frontier.pop();</span><br><span class="line">    <span class="keyword">for</span> (g -&gt; v)&#123;</span><br><span class="line">        <span class="keyword">if</span>(v.dist==infinity)&#123; <span class="comment">//found a new white node</span></span><br><span class="line">            v.dist = g.dist + d;</span><br><span class="line">            frontier.push(v);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123; <span class="comment">// v is grey</span></span><br><span class="line">            v.dist = min(v.dist, g.dist+d);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//g is now black</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><code>v1</code> and <code>v2</code> is on the best path iff <code>v1.dist+d=v2.dist</code></p><p>Therefore, if we want to get the shortest path, we can use this algorithm to walk straight back to the graph from destination. </p><h3 id="Performance"><a href="#Performance" class="headerlink" title="Performance"></a>Performance</h3><p>Total: <code>O((V+E)lgV)</code></p><ul><li>outer loop: O(V lgV)<ul><li>once per vertex, O(V) iterations </li><li>finding min element in the queue once: O(lg V) - BST or heap</li></ul></li><li>inneer loop: O(E lgV)<ul><li>O(E) iterations</li><li>time to push/update priority queue: O(lg V)</li></ul></li></ul><h3 id="Correctness"><a href="#Correctness" class="headerlink" title="Correctness"></a>Correctness</h3><h4 id="Loop-Invariant"><a href="#Loop-Invariant" class="headerlink" title="Loop Invariant:"></a>Loop Invariant:</h4><ol><li>For every black node b, gray g: <code>b.dist&lt;=g.dist</code></li><li>v.dist is length of shortest interior path to v (or infinity if none) (interior path means it stays in the black region, which means it only uses black nodes)</li></ol><h4 id="Establishment"><a href="#Establishment" class="headerlink" title="Establishment:"></a>Establishment:</h4><p>no black nodes</p><h4 id="PostCondition"><a href="#PostCondition" class="headerlink" title="PostCondition:"></a>PostCondition:</h4><ol><li>no gray nodes </li><li>all the nodes are black -&gt; All paths are interior path -&gt; shortest: interior path is actual answer</li></ol><h4 id="Preservation"><a href="#Preservation" class="headerlink" title="Preservation:"></a>Preservation:</h4><p><a href="https://www.cs.cornell.edu/courses/cs2112/2019fa/lectures/lecture.html?id=ssp" target="_blank" rel="noopener">不写了，👴 后面看不懂了。</a></p><h2 id="Application"><a href="#Application" class="headerlink" title="Application:"></a>Application:</h2><p>if you have something like condition probability which has to be multiplied to produce the correct result. But so you want to know the shortest probability there. You can just take the log of probability. </p><blockquote><p> For example, suppose that we had a state machine that transitioned to new states with some given probability on each outgoing edge. The probability of taking a particular path through the graph would then be the <em>product</em> of the probabilities on edges along that path. We can then answer questions such as, “What is the most likely path that the system will follow in order to arrive at a given state?” by solving a shortest path problem in a weighted graph in which the weights are the negative logarithms of the probabilities, since $(−log a) + (−log b) = −log ab$.</p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;From Lecture: &lt;a href=&quot;https://www.cs.cornell.edu/courses/cs2112/2019fa/lectures/lecture.html?id=ssp&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Dijkstra’s shortest path algorithm&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&quot;Dijkstra&quot;&gt;&lt;a href=&quot;#Dijkstra&quot; class=&quot;headerlink&quot; title=&quot;Dijkstra&quot;&gt;&lt;/a&gt;Dijkstra&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;white: &lt;code&gt;dist == infinity&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;gray: &lt;code&gt;dist &amp;lt; infinity&lt;/code&gt;, in queue&lt;/li&gt;
-&lt;li&gt;black: &lt;code&gt;dist &amp;lt; infinity&lt;/code&gt;, not in queue&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="Cornell" scheme="http://yoursite.com/tags/Cornell/"/>
-    
-      <category term="19FA" scheme="http://yoursite.com/tags/19FA/"/>
-    
-      <category term="CS2112" scheme="http://yoursite.com/tags/CS2112/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Graph (Recitation)</title>
-    <link href="http://yoursite.com/2019/11/20/2019-11-20-Graph-(Recitation)/"/>
-    <id>http://yoursite.com/2019/11/20/2019-11-20-Graph-(Recitation)/</id>
-    <published>2019-11-19T16:00:00.000Z</published>
-    <updated>2019-11-23T17:13:46.747Z</updated>
-    
-    <content type="html"><![CDATA[<p>From Recitation: <a href="https://www.cs.cornell.edu/courses/cs2112/2019fa/recitations/11graphs/euler_paths_full.pdf" target="_blank" rel="noopener">Euler paths, planar graphs, and Hamiltonian paths</a></p><h2 id="Edge-Classification"><a href="#Edge-Classification" class="headerlink" title="Edge Classification"></a>Edge Classification</h2><p>We have an edge <code>e=(v,child)</code>, where v is always grey</p><ul><li><p>Tree edge:</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (child.color==white)</span><br><span class="line">e = TreeEdge;</span><br></pre></td></tr></table></figure><a id="more"></a></li><li><p>Back edge:</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (child.color==grey)</span><br><span class="line">    e = BackEdge;</span><br></pre></td></tr></table></figure></li><li><p>Forward edge:</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (child.color==black &amp;&amp; v.timeStamp&lt;child.timeStamp)</span><br><span class="line">    e = ForwardEdge;</span><br></pre></td></tr></table></figure></li><li><p>Cross edge:</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (child.color==black &amp;&amp; v.timeStamp &gt; child.timeStamp)</span><br><span class="line">    e = ForwardEdge;</span><br></pre></td></tr></table></figure></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;From Recitation: &lt;a href=&quot;https://www.cs.cornell.edu/courses/cs2112/2019fa/recitations/11graphs/euler_paths_full.pdf&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Euler paths, planar graphs, and Hamiltonian paths&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;Edge-Classification&quot;&gt;&lt;a href=&quot;#Edge-Classification&quot; class=&quot;headerlink&quot; title=&quot;Edge Classification&quot;&gt;&lt;/a&gt;Edge Classification&lt;/h2&gt;&lt;p&gt;We have an edge &lt;code&gt;e=(v,child)&lt;/code&gt;, where v is always grey&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Tree edge:&lt;/p&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (child.color==white)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	e = TreeEdge;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="Cornell" scheme="http://yoursite.com/tags/Cornell/"/>
-    
-      <category term="19FA" scheme="http://yoursite.com/tags/19FA/"/>
-    
-      <category term="CS2112" scheme="http://yoursite.com/tags/CS2112/"/>
     
   </entry>
   
