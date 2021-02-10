@@ -397,19 +397,19 @@ height:50vh;
         <p>CST数据结构（2020秋）PA2a</p>
 <a id="more"></a>
 
-<h2 id="2-1-Build"><a href="#2-1-Build" class="headerlink" title="2-1 Build"></a>2-1 <a href="/Tsinghua_DSA/2-1.pdf">Build</a></h2><h3 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h3><p>List -&gt; 编号存树</p>
+<h2 id="2-1-Build"><a href="#2-1-Build" class="headerlink" title="2-1 Build"></a>2-1 <a href="/pdf/Tsinghua_DSA/2-1.pdf">Build</a></h2><h3 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h3><p>List -&gt; 编号存树</p>
 <ul>
 <li>我用的是自己写的 List 存树，对于一个节点，它有一个指针指向包含它所有孩子的 List，并有 height size 存储该点的高度及子树规模，当发生节点移动时，递归地向上更新。但是这样的话每次更新时，必须遍历当前节点的所有孩子，才能确认是否需要更新该点的高度或子树规模，这样不符合题目中 “复杂度与 cost 成线性” 的要求。所以会TLE，解决方法是在每一个点都存一个它向后看能看到的最大子树高度以及它后面所有点的子树规模和，这样每次删除某一点时，只需要更新它前面兄弟的这两个值就好了，符合我们对 cost 的定义。</li>
 <li>List 存还会发生 MLE 的问题。既然题目中已经给出每个店的序号，其实我们不需要用 List 存，只需要用多个数组存储相对应的信息（前后节点，父子节点，本书规模及高度，其向后看所有兄弟的最大高度和字数规模和）即可，这样也解决了我们一开始读入时需要自建邻接表的问题</li>
 </ul>
-<h2 id="2-4-2-Kidd"><a href="#2-4-2-Kidd" class="headerlink" title="2-4-2 Kidd"></a>2-4-2 <a href="/Tsinghua_DSA/2-4-2.pdf">Kidd</a></h2><h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><p>线段树，离散化。</p>
+<h2 id="2-4-2-Kidd"><a href="#2-4-2-Kidd" class="headerlink" title="2-4-2 Kidd"></a>2-4-2 <a href="/pdf/Tsinghua_DSA/2-4-2.pdf">Kidd</a></h2><h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><p>线段树，离散化。</p>
 <p>线段树的每个节点所代表的区间必须一闭一开（我的实现中是左闭右开的），如果是闭区间会使同一个点被储存在相邻的区间中两次。</p>
 <p>线段树中每个节点要存两个东西：1. 本节点对应的区间被翻转的次数 2. 本节点所包含的上所有子区间（包括它自己）被翻转的次数。其中 2 通过 <code>本节点被翻转的次数 * 本节点代表的区间的大小 + 两个孩子区间的所有子区间被翻转的次数</code> 得来。</p>
 <p>所以在每次查询时，如果只是单纯的相交，相交部分也在这个区间被当做一个整体翻转时所翻转了，所以我们计算出相交范围的大小，乘上此区间被翻转的次数；如果查询区间包含在当前区间里面（恰好是当前区间），我们只需要加上当前区间及其所有子区间被反转的次数就好了</p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>离散化部分有严重错误，既然第一步就有错所以剩下的对不对咱其实也不知道。但是思路大概就这么个思路（</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sort_cmp</span> <span class="params">(<span class="keyword">const</span> <span class="keyword">void</span> * a, <span class="keyword">const</span> <span class="keyword">void</span> * b)</span> </span>&#123; <span class="keyword">return</span> ( *(<span class="keyword">int</span>*)a - *(<span class="keyword">int</span>*)b );&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">200003</span>;</span><br><span class="line"><span class="comment">// isQuery[i] is true if the ith operation is a query 'Q', is false if the ith operation is a flip 'H'</span></span><br><span class="line"><span class="keyword">bool</span> isQuery[N]; <span class="keyword">int</span> interval[N][<span class="number">2</span>];</span><br><span class="line"><span class="comment">// a stores the unique discretized interval</span></span><br><span class="line"><span class="keyword">int</span> a[N*<span class="number">2</span>], unique_num = <span class="number">0</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">treeNode</span>&#123;</span></span><br><span class="line">    <span class="keyword">bool</span> isNode = <span class="literal">false</span>; <span class="comment">// true if this is a leaf in segment tree</span></span><br><span class="line">    <span class="keyword">int</span> l, r; <span class="comment">// this node represents the interval [l,r)</span></span><br><span class="line">    <span class="keyword">int</span> v; <span class="comment">// this node stores value v; this interval *only* has been flipped v times</span></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> total; <span class="comment">// the points in this interval and all its subintervals have been flipped total times</span></span><br><span class="line">&#125;st[(N*<span class="number">2</span>)&lt;&lt;<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> li, <span class="keyword">int</span> ri, <span class="keyword">int</span> x)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> li, <span class="keyword">int</span> ri, <span class="keyword">int</span> x)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> li, <span class="keyword">int</span> ri, <span class="keyword">int</span> x)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bisearch</span><span class="params">(<span class="keyword">int</span> li, <span class="keyword">int</span> ri, <span class="keyword">int</span> g)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">original_to_discrete</span><span class="params">(<span class="keyword">int</span> x)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">discrete_to_original</span><span class="params">(<span class="keyword">int</span> y)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> temp[N*<span class="number">4</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n, m;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="built_in">cin</span>.ignore(<span class="number">100</span>,<span class="string">'\n'</span>);</span><br><span class="line">    <span class="keyword">char</span> o; <span class="keyword">int</span> l, r;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;m; i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%c%d%d"</span>, &amp;o, &amp;l, &amp;r);</span><br><span class="line"></span><br><span class="line">        isQuery[i] = (o==<span class="string">'Q'</span>);</span><br><span class="line">        interval[i][<span class="number">0</span>] = l;</span><br><span class="line">        interval[i][<span class="number">1</span>] = r;</span><br><span class="line">        temp[i*<span class="number">4</span> + <span class="number">0</span>] = l;</span><br><span class="line">        temp[i*<span class="number">4</span> + <span class="number">1</span>] = l+<span class="number">1</span>;</span><br><span class="line">        temp[i*<span class="number">4</span> + <span class="number">2</span>] = r;</span><br><span class="line">        temp[i*<span class="number">4</span> + <span class="number">3</span>] = r+<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">cin</span>.ignore(<span class="number">100</span>,<span class="string">'\n'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    qsort(temp, <span class="number">4</span>*m, <span class="keyword">sizeof</span>(<span class="keyword">int</span>), sort_cmp);</span><br><span class="line">    a[unique_num++] = temp[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;<span class="number">4</span>*m; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(temp[i]!=temp[i<span class="number">-1</span>])</span><br><span class="line">            a[unique_num++] = temp[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    build(<span class="number">0</span>, unique_num, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;m; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(isQuery[i])&#123;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;query(original_to_discrete(interval[i][<span class="number">0</span>]),</span><br><span class="line">                        original_to_discrete(interval[i][<span class="number">1</span>]),</span><br><span class="line">                        <span class="number">0</span>)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            update(original_to_discrete(interval[i][<span class="number">0</span>]),</span><br><span class="line">                   original_to_discrete(interval[i][<span class="number">1</span>]),</span><br><span class="line">                   <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// node x in s-tree represents the interval [li,ri)</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> li, <span class="keyword">int</span> ri, <span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    st[x].isNode = <span class="literal">true</span>;</span><br><span class="line">    st[x].l = li; st[x].r = ri; st[x].v = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//cout&lt;&lt;"building node "&lt;&lt;x&lt;&lt;"represents ["&lt;&lt;st[x].l&lt;&lt;", "&lt;&lt;st[x].r&lt;&lt;")"&lt;&lt;endl;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(li+<span class="number">1</span> != ri) &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = (li+ri)/<span class="number">2</span>;</span><br><span class="line">        build(li,mid,(x&lt;&lt;<span class="number">1</span>) + <span class="number">1</span>);</span><br><span class="line">        build(mid,ri,(x&lt;&lt;<span class="number">1</span>) + <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// currently at s-tree node x, updating interval [li,ri]</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> li, <span class="keyword">int</span> ri, <span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">int</span> dis = discrete_to_original(st[x].r<span class="number">-1</span>)</span><br><span class="line">           - discrete_to_original(st[x].l) + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(li&lt;=st[x].l &amp;&amp; ri&gt;=st[x].r<span class="number">-1</span>)&#123; <span class="comment">// interval(x) \subseteq [li,ri]</span></span><br><span class="line"></span><br><span class="line">        st[x].v += <span class="number">1</span>;</span><br><span class="line">        st[x].total += dis;</span><br><span class="line">        <span class="keyword">return</span>; <span class="comment">// we should immediately stop updating any children of this node, because that will do a duplicate update</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(!st[(x&lt;&lt;<span class="number">1</span>)+<span class="number">1</span>].isNode) <span class="keyword">return</span>; <span class="comment">// if this is a leaf node, return</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(st[(x&lt;&lt;<span class="number">1</span>)+<span class="number">1</span>].isNode &amp;&amp; li &lt;= st[(x&lt;&lt;<span class="number">1</span>)+<span class="number">1</span>].r<span class="number">-1</span>)&#123; <span class="comment">// intersects left child</span></span><br><span class="line">        update(li, ri, (x&lt;&lt;<span class="number">1</span>)+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(st[(x&lt;&lt;<span class="number">1</span>)+<span class="number">2</span>].isNode &amp;&amp; ri &gt;= st[(x&lt;&lt;<span class="number">1</span>)+<span class="number">2</span>].l)&#123; <span class="comment">// intersects right child</span></span><br><span class="line">        update(li, ri, (x&lt;&lt;<span class="number">1</span>)+<span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 'st[x].v * dis' is the number of flips caused by "this" interval being flipped</span></span><br><span class="line">    <span class="comment">// st[(x&lt;&lt;1)+1].total is the total number of flips this node's left child has</span></span><br><span class="line">    <span class="comment">// st[(x&lt;&lt;1)+2].total is the total number of flips this node's right child has</span></span><br><span class="line">    st[x].total = st[x].v * dis + st[(x&lt;&lt;<span class="number">1</span>)+<span class="number">1</span>].total + st[(x&lt;&lt;<span class="number">1</span>)+<span class="number">2</span>].total;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> li, <span class="keyword">int</span> ri, <span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> res = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(li&lt;=st[x].l &amp;&amp; ri&gt;=st[x].r<span class="number">-1</span>)&#123; <span class="comment">// interval(x) \subseteq [li,ri]</span></span><br><span class="line">        res += st[x].total;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> dis = discrete_to_original(min(st[x].r<span class="number">-1</span>, ri))</span><br><span class="line">            - discrete_to_original(max(st[x].l, li)) + <span class="number">1</span>;</span><br><span class="line">    res += st[x].v * dis;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(st[(x&lt;&lt;<span class="number">1</span>)+<span class="number">1</span>].isNode &amp;&amp; li &lt;= st[(x&lt;&lt;<span class="number">1</span>)+<span class="number">1</span>].r<span class="number">-1</span>)&#123;</span><br><span class="line">        res += query(li, ri, (x&lt;&lt;<span class="number">1</span>)+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(st[(x&lt;&lt;<span class="number">1</span>)+<span class="number">2</span>].isNode &amp;&amp; ri &gt;= st[(x&lt;&lt;<span class="number">1</span>)+<span class="number">2</span>].l)&#123;</span><br><span class="line">        res += query(li, ri, (x&lt;&lt;<span class="number">1</span>)+<span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bisearch</span><span class="params">(<span class="keyword">int</span> li, <span class="keyword">int</span> ri, <span class="keyword">int</span> g)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> mid = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(ri &gt; li+<span class="number">1</span>)&#123;</span><br><span class="line">        mid = (li+ri)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(a[mid]&lt;=g) li = mid;</span><br><span class="line">        <span class="keyword">else</span> ri = mid;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> li;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">discrete_to_original</span><span class="params">(<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a[y];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">original_to_discrete</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> bisearch(<span class="number">0</span>, unique_num, x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="2-7-Virus"><a href="#2-7-Virus" class="headerlink" title="2.7 Virus"></a>2.7 <a href="/Tsinghua_DSA/2-7.pdf">Virus</a></h2><h3 id="心得-1"><a href="#心得-1" class="headerlink" title="心得"></a>心得</h3><p>堆的 <code>sink</code> 的边界条件应该是 </p>
+<h2 id="2-7-Virus"><a href="#2-7-Virus" class="headerlink" title="2.7 Virus"></a>2.7 <a href="/pdf/Tsinghua_DSA/2-7.pdf">Virus</a></h2><h3 id="心得-1"><a href="#心得-1" class="headerlink" title="心得"></a>心得</h3><p>堆的 <code>sink</code> 的边界条件应该是 </p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> l=i*<span class="number">2</span>, r=i*<span class="number">2</span>+<span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span>((l&lt;=n &amp;&amp; a[i]&gt;=a[l]) || (r&lt;=n &amp;&amp; a[i]&gt;=a[r]))&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>而不是</p>
@@ -428,16 +428,16 @@ height:50vh;
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href= "/2021/02/10/2021-02-10-Tsinghua-DSA-作业总结-(1)/" title= "Tsinghua DSA 作业总结 (1)">
-                    <div class="nextTitle">Tsinghua DSA 作业总结 (1)</div>
+                <a href= "/2021/02/11/2021-02-11-Tsinghua-DSA-作业总结-(3)/" title= "Tsinghua DSA 作业总结 (3)">
+                    <div class="nextTitle">Tsinghua DSA 作业总结 (3)</div>
                 </a>
             
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2020/09/29/2020-09-29-Add-Open-with-Windows-Terminalto-Right-Click-Menu/" title= "Add "Open with Windows Terminal" to Right-Click Menu">
-                    <div class="prevTitle">Add "Open with Windows Terminal" to Right-Click Menu</div>
+                <a href= "/2021/02/09/2021-02-09-Tsinghua-DSA-作业总结-(1)/" title= "Tsinghua DSA 作业总结 (1)">
+                    <div class="prevTitle">Tsinghua DSA 作业总结 (1)</div>
                 </a>
             
         </li>
@@ -1158,9 +1158,145 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 43
+        Total : 51
         </div>
         <!-- search  -->
         
@@ -1181,12 +1317,17 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/10</span><a class="archive-post-title" href= "/2021/02/10/2021-02-10-Tsinghua-DSA-作业总结-(1)/" >Tsinghua DSA 作业总结 (1)</a>
+            <span class="archive-post-date">02/10</span><a class="archive-post-title" href= "/2021/02/10/2021-02-10-Tsinghua-DSA-作业总结-(2)/" >Tsinghua DSA 作业总结 (2)</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/10</span><a class="archive-post-title" href= "/2021/02/10/2021-02-10-Tsinghua-DSA-作业总结-(2)/" >Tsinghua DSA 作业总结 (2)</a>
+            <span class="archive-post-date">02/09</span><a class="archive-post-title" href= "/2021/02/09/2021-02-09-Tsinghua-DSA-作业总结-(1)/" >Tsinghua DSA 作业总结 (1)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/11</span><a class="archive-post-title" href= "/2021/01/11/2021-01-11-CornellTsinghua-20FA-总结/" >Cornell/Tsinghua 20FA 总结</a>
         </li>
     
     
@@ -1200,7 +1341,37 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">11/29</span><a class="archive-post-title" href= "/2020/11/29/2020-11-29-C++-常见问题/" >C++ 常见问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/29</span><a class="archive-post-title" href= "/2020/11/29/2020-11-29-Python-常见问题/" >Python 常见问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/23</span><a class="archive-post-title" href= "/2020/11/23/2020-11-23-Latex-实用技巧手册/" >Latex 实用技巧手册</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/13</span><a class="archive-post-title" href= "/2020/10/13/2020-10-13-Algorithm-Design-及-CS4820-一般性内容总结/" >Algorithm Design 及 CS4820 一般性内容总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/02</span><a class="archive-post-title" href= "/2020/10/02/2020-10-02-INFO1998-Intro-to-Machine-Learning/" >INFO1998 Intro to Machine Learning</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">09/29</span><a class="archive-post-title" href= "/2020/09/29/2020-09-29-Add-Open-with-Windows-Terminalto-Right-Click-Menu/" >Add "Open with Windows Terminal" to Right-Click Menu</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/07</span><a class="archive-post-title" href= "/2020/09/07/2020-09-07-CS2024-C++-Programming/" >CS2024 C++ Programming</a>
         </li>
     
     
@@ -1216,6 +1387,11 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">06/24</span><a class="archive-post-title" href= "/2020/06/24/2020-06-24-Kinekt-as-Web-Cam/" >Kinect as Web Cam</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/09</span><a class="archive-post-title" href= "/2020/06/09/2020-06-09-2020-网络日志/" >2020 网络日志</a>
         </li>
     
     
@@ -1426,23 +1602,35 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="Android"><span class="iconfont-archer">&#xe606;</span>Android</span>
     
-        <span class="sidebar-tag-name" data-tags="CS3110"><span class="iconfont-archer">&#xe606;</span>CS3110</span>
+        <span class="sidebar-tag-name" data-tags="Hexo"><span class="iconfont-archer">&#xe606;</span>Hexo</span>
     
         <span class="sidebar-tag-name" data-tags="20SP"><span class="iconfont-archer">&#xe606;</span>20SP</span>
     
+        <span class="sidebar-tag-name" data-tags="CS3110"><span class="iconfont-archer">&#xe606;</span>CS3110</span>
+    
         <span class="sidebar-tag-name" data-tags="CS2043"><span class="iconfont-archer">&#xe606;</span>CS2043</span>
     
-        <span class="sidebar-tag-name" data-tags="Hexo"><span class="iconfont-archer">&#xe606;</span>Hexo</span>
+        <span class="sidebar-tag-name" data-tags="Game"><span class="iconfont-archer">&#xe606;</span>Game</span>
+    
+        <span class="sidebar-tag-name" data-tags="CS4320"><span class="iconfont-archer">&#xe606;</span>CS4320</span>
     
         <span class="sidebar-tag-name" data-tags="Tsinghua"><span class="iconfont-archer">&#xe606;</span>Tsinghua</span>
     
         <span class="sidebar-tag-name" data-tags="20FA"><span class="iconfont-archer">&#xe606;</span>20FA</span>
     
-        <span class="sidebar-tag-name" data-tags="CS4320"><span class="iconfont-archer">&#xe606;</span>CS4320</span>
+        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
-        <span class="sidebar-tag-name" data-tags="Game"><span class="iconfont-archer">&#xe606;</span>Game</span>
+        <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
     
         <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
+    
+        <span class="sidebar-tag-name" data-tags="Latex"><span class="iconfont-archer">&#xe606;</span>Latex</span>
+    
+        <span class="sidebar-tag-name" data-tags="CS2024"><span class="iconfont-archer">&#xe606;</span>CS2024</span>
+    
+        <span class="sidebar-tag-name" data-tags="CS4820"><span class="iconfont-archer">&#xe606;</span>CS4820</span>
+    
+        <span class="sidebar-tag-name" data-tags="网络日志"><span class="iconfont-archer">&#xe606;</span>网络日志</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>

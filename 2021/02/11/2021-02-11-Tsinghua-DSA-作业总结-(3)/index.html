@@ -397,7 +397,7 @@ height:50vh;
         <p>CST数据结构（2020秋）PA3</p>
 <a id="more"></a>
 
-<h2 id="3-1-Not-Found"><a href="#3-1-Not-Found" class="headerlink" title="3.1 Not Found"></a>3.1 <a href="/Tsinghua_DSA/3-1.pdf">Not Found</a></h2><h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><p>要找二进制字符串 A 中最短的未出现过的子串 B，我们先考虑一个比较长的子串，其长度为 24。 注意到 A 的长度最长为 16777216 = 2^24。因为还要掐头去尾，所以 A 中长度为 24 的子串的总数必定小于 2^24 个，而长度为 24 的字符串总共有 2^24 种，所以 A 中必定有某个长度为 24 的字符串是不存在的。</p>
+<h2 id="3-1-Not-Found"><a href="#3-1-Not-Found" class="headerlink" title="3.1 Not Found"></a>3.1 <a href="/pdf/Tsinghua_DSA/3-1.pdf">Not Found</a></h2><h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><p>要找二进制字符串 A 中最短的未出现过的子串 B，我们先考虑一个比较长的子串，其长度为 24。 注意到 A 的长度最长为 16777216 = 2^24。因为还要掐头去尾，所以 A 中长度为 24 的子串的总数必定小于 2^24 个，而长度为 24 的字符串总共有 2^24 种，所以 A 中必定有某个长度为 24 的字符串是不存在的。</p>
 <p>我们用 bitmap 边读入，边记录下所有出现过的长为 24 的子串。这个 bitmap 只存长度为 24 的子串，我们叫它 bitmap24。读入完成后，注意到任何一个在 A 中出现的长为 23 的子串必定是某一 24 子串掐头或去尾得到的，于是我们遍历所有在 24 子串，对他们掐头去尾，将得到的两个结果存入 bitmap23 中，如此做直到 bitmap1 存完。</p>
 <p>最后我们从长度 24 开始遍历，找到<strong>第一个</strong>长度 n 使得所有长度为 n 的子串都在 A 中出现了，那么所要找的“最短未出现子串” B 必然有长度 n+1，我们只需要再遍历一遍 bitmap(n+1) 找到第一个不存在的字符串即可</p>
 <h3 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h3><ol>
@@ -413,7 +413,7 @@ height:50vh;
 <h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ol>
 <li><a href="https://blog.csdn.net/onever_say_love/article/details/50908985" target="_blank" rel="noopener">用C++实现bitmap</a></li>
 </ol>
-<h2 id="3-3-Kth"><a href="#3-3-Kth" class="headerlink" title="3.3 Kth"></a>3.3 <a href="/Tsinghua_DSA/3-3.pdf">Kth</a></h2><h3 id="算法-1"><a href="#算法-1" class="headerlink" title="算法"></a>算法</h3><p>题目要求找出 a,b,c 三个数组对应的三元数对中和为第 k 大的那个三元数对，观察到如果 a,b,c 是有序数对，那么必有 <code>a[i]+b[j]+c[k] &lt; a[i+1]+b[j]+c[k]</code>, <code>a[i]+b[j]+c[k] &lt; a[i]+b[j+1]+c[k]</code>, <code>a[i]+b[j]+c[k] &lt; a[i]+b[j]+c[k+1]</code>. </p>
+<h2 id="3-3-Kth"><a href="#3-3-Kth" class="headerlink" title="3.3 Kth"></a>3.3 <a href="/pdf/Tsinghua_DSA/3-3.pdf">Kth</a></h2><h3 id="算法-1"><a href="#算法-1" class="headerlink" title="算法"></a>算法</h3><p>题目要求找出 a,b,c 三个数组对应的三元数对中和为第 k 大的那个三元数对，观察到如果 a,b,c 是有序数对，那么必有 <code>a[i]+b[j]+c[k] &lt; a[i+1]+b[j]+c[k]</code>, <code>a[i]+b[j]+c[k] &lt; a[i]+b[j+1]+c[k]</code>, <code>a[i]+b[j]+c[k] &lt; a[i]+b[j]+c[k+1]</code>. </p>
 <p>于是，我们维护一个优先队列，每次出队 <code>(i,j,k)</code> 就入队 <code>(i+1,j,k) (i,j+1,k) (i,j,k+1)</code>。如此做 k 次，出队的就是我们要找的三元对。我们现在将“找第 k 大”转变成了一个三维图的遍历问题。</p>
 <p>实现中要注意的是不能让同一个点多次入队，我们可以开一个 vis 数组，但是每个数组最多有 500000 个元素，三维 vis 数组空间绝对不够。于是我们想一种遍历顺序，使得每个点只被遍历一次。首先考虑最简单的一维，单个的 x 轴，就是不停地遍历下一个而已 <code>i, i+1, i+2, ...</code> ；扩展到二维其实就是多个一维情况，我们通过 <code>(0,j), (1,j), ... (i-1,j)</code> 到达 <code>(i,j)</code> 那我们如何到达 <code>(0,j)</code> 呢？通过 <code>(0,0)</code> 的一维扩张，也就是说，当 x 轴为 0 时，我们既向 x 方向扩张，也向 y 方向扩张，而当 x 轴不为 0 时，我们只向 x 方向扩张。</p>
 <p>对于三维情况，想象 x,y,z 正方向为右，前，下。则在任意时刻，我们都向 x 扩张；仅当 x=0 时，我们向 y 方向扩张；仅当 x=0 且 y=0 时，我们向 z 方向扩张。并且由于我们根据优先级选取每一次的扩张边界，我们一定也是优先级最高的先被找到。</p>
@@ -425,7 +425,7 @@ height:50vh;
 <h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"kth.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _CRT_SECURE_NO_WARNINGS</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">500007</span>, K = <span class="number">2000003</span>;</span><br><span class="line"><span class="keyword">int</span> dir[<span class="number">3</span>][<span class="number">3</span>] = &#123; &#123;<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>&#125;, &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>&#125;, &#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>&#125; &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// sort x-axis by only comparing sums along x-axis</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sortx_cmp</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span>* a, <span class="keyword">const</span> <span class="keyword">void</span>* b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (compare(*(<span class="keyword">int</span>*)a, <span class="number">1</span>, <span class="number">1</span>, *(<span class="keyword">int</span>*)b, <span class="number">1</span>, <span class="number">1</span>) == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (compare(*(<span class="keyword">int</span>*)b, <span class="number">1</span>, <span class="number">1</span>, *(<span class="keyword">int</span>*)a, <span class="number">1</span>, <span class="number">1</span>) == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sorty_cmp</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span>* a, <span class="keyword">const</span> <span class="keyword">void</span>* b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (compare(<span class="number">1</span>, *(<span class="keyword">int</span>*)a, <span class="number">1</span>, <span class="number">1</span>, *(<span class="keyword">int</span>*)b, <span class="number">1</span>) == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (compare(<span class="number">1</span>, *(<span class="keyword">int</span>*)b, <span class="number">1</span>, <span class="number">1</span>, *(<span class="keyword">int</span>*)a, <span class="number">1</span>) == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sortz_cmp</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span>* a, <span class="keyword">const</span> <span class="keyword">void</span>* b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (compare(<span class="number">1</span>, <span class="number">1</span>, *(<span class="keyword">int</span>*)a, <span class="number">1</span>, <span class="number">1</span>, *(<span class="keyword">int</span>*)b) == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (compare(<span class="number">1</span>, <span class="number">1</span>, *(<span class="keyword">int</span>*)b, <span class="number">1</span>, <span class="number">1</span>, *(<span class="keyword">int</span>*)a) == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">triple</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> x, y, z;</span><br><span class="line"></span><br><span class="line">    triple() &#123;</span><br><span class="line">        x = <span class="number">0</span>; y = <span class="number">0</span>; z = <span class="number">0</span>;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    triple(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> c) &#123;</span><br><span class="line">        x = a; y = b; z = c;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    triple(<span class="keyword">const</span> triple&amp; from) &#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;x = from.x;</span><br><span class="line">        <span class="keyword">this</span>-&gt;y = from.y;</span><br><span class="line">        <span class="keyword">this</span>-&gt;z = from.z;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// myPQ is my priority queue</span></span><br><span class="line">triple myPQ[K*<span class="number">2</span>];</span><br><span class="line"><span class="keyword">const</span> triple INF = triple(<span class="number">10e7</span>, <span class="number">10e7</span>, <span class="number">10e7</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// a, b, c is the array given in problem </span></span><br><span class="line"><span class="keyword">int</span> a[N], b[N], c[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(<span class="keyword">const</span> triple&amp; t1, <span class="keyword">const</span> triple&amp; t2) &#123;</span><br><span class="line">    <span class="keyword">return</span> compare(a[t1.x], b[t1.y], c[t1.z], a[t2.x], b[t2.y], c[t2.z]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="keyword">operator</span>&gt;(<span class="keyword">const</span> triple&amp; t1, <span class="keyword">const</span> triple&amp; t2) &#123;</span><br><span class="line">    <span class="keyword">return</span> compare(a[t2.x], b[t2.y], c[t2.z], a[t1.x], b[t1.y], c[t1.z]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// refactorred PQ that only uses strictly greater/lesser to be consistent with compare function</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PriorityQueue</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">0</span>;</span><br><span class="line">    triple* a = myPQ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(triple x)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        a[++n] = x;</span><br><span class="line">        swim(n);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">triple <span class="title">extract</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">throw</span> <span class="string">"Nothing to extract"</span>;</span><br><span class="line">        triple result = a[<span class="number">1</span>];</span><br><span class="line">        swap(a[<span class="number">1</span>], a[n]);</span><br><span class="line">        a[n--] = INF;</span><br><span class="line">        sink(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> n == <span class="number">0</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d in heap: (%d, %d, %d)\n"</span>, i, ::a[a[i].x], b[a[i].y], c[a[i].z]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">swim</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (i &gt; <span class="number">1</span> &amp;&amp; !(a[i / <span class="number">2</span>] &lt; a[i])) &#123;</span><br><span class="line">            swap(a[i / <span class="number">2</span>], a[i]);</span><br><span class="line">            i = i / <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sink</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> l = i * <span class="number">2</span>, r = i * <span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> ((l &lt;= n &amp;&amp; !(a[i] &lt; a[l])) || (r &lt;= n &amp;&amp; !(a[i] &lt; a[r]))) &#123;</span><br><span class="line">            <span class="keyword">if</span> (l &lt;= n &amp;&amp; (r &gt; n || !(a[l] &gt; a[r]))) &#123; <span class="comment">// l is in the heap and (r is not in the heap, or l is the better choice compared to r)</span></span><br><span class="line">                swap(a[i], a[l]);</span><br><span class="line">                i = l; l = i * <span class="number">2</span>; r = i * <span class="number">2</span> + <span class="number">1</span>; <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (a[l] &gt; a[r] &amp;&amp; r &lt;= n) &#123;</span><br><span class="line">                swap(a[i], a[r]);</span><br><span class="line">                i = r; l = i * <span class="number">2</span>; r = i * <span class="number">2</span> + <span class="number">1</span>; <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_kth</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k, <span class="keyword">int</span> *x, <span class="keyword">int</span> *y, <span class="keyword">int</span> *z)</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        a[i] = b[i] = c[i] = i;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    qsort(a+<span class="number">1</span>, n, <span class="keyword">sizeof</span>(<span class="keyword">int</span>), sortx_cmp);</span><br><span class="line">    qsort(b+<span class="number">1</span>, n, <span class="keyword">sizeof</span>(<span class="keyword">int</span>), sorty_cmp);</span><br><span class="line">    qsort(c+<span class="number">1</span>, n, <span class="keyword">sizeof</span>(<span class="keyword">int</span>), sortz_cmp);</span><br><span class="line"></span><br><span class="line">    PriorityQueue q;</span><br><span class="line">    q.add(triple(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>));</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; k; i++) &#123; <span class="comment">// extract k-1 triples</span></span><br><span class="line">        triple now = q.extract();</span><br><span class="line">        <span class="keyword">int</span> nowx = now.x, nowy = now.y, nowz = now.z;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; j++) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">int</span> nextx = nowx + dir[j][<span class="number">0</span>], nexty = nowy + dir[j][<span class="number">1</span>], nextz = nowz + dir[j][<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (nextx &gt; n || nexty &gt; n || nextz &gt; n) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span> ((j == <span class="number">1</span> &amp;&amp; nowx != <span class="number">1</span>) || (j == <span class="number">2</span> &amp;&amp; (nowx != <span class="number">1</span> || nowy != <span class="number">1</span>))) <span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">            q.add(triple(nextx, nexty, nextz));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    triple result = q.extract();</span><br><span class="line">    *x = a[result.x];</span><br><span class="line">    *y = b[result.y];</span><br><span class="line">    *z = c[result.z];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="复杂度分析-1"><a href="#复杂度分析-1" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><p>共有三个数组，一个数组中有 n 个元素，找大小为 k 对的三元数对。首先对三个数组进行排序 O(nlogn)，每有一个数对出优先队列，就有最多三个入优先队列，共操作 k 次，每次操作 O(logk)，总共 O(klogk)。总时间 O(nlogn + klogk)</p>
-<h2 id="3-4-Component"><a href="#3-4-Component" class="headerlink" title="3.4 Component"></a>3.4 <a href="/Tsinghua_DSA/3-4.pdf">Component</a></h2><h3 id="算法-2"><a href="#算法-2" class="headerlink" title="算法"></a>算法</h3><p><strong>堆的合并 左偏树</strong></p>
+<h2 id="3-4-Component"><a href="#3-4-Component" class="headerlink" title="3.4 Component"></a>3.4 <a href="/pdf/Tsinghua_DSA/3-4.pdf">Component</a></h2><h3 id="算法-2"><a href="#算法-2" class="headerlink" title="算法"></a>算法</h3><p><strong>堆的合并 左偏树</strong></p>
 <p>题目的询问永远是某一联通分量中第 k 大的点的权值，k 是一个常数。第 k 大又可以看做前 k 个最大元素中最小的元素，即如果我们维护一个小根堆，使它恒有 k 个元素（n&lt;k 时输出 -1，n&gt;k 时弹出 n-k 次最小的元素）那么这 k 个元素必然是连通块中前 k 大的元素，堆顶元素就是我们的询问。</p>
 <p>当加入的新边 (u,v) 联通两个不曾联通的连通块时，对应的两个堆必须合并。支持快速合并操作的优先队列，我们选择左式堆。(u,v) 将块联通，实际上是将其<strong>所在的</strong>堆合并起来，我们必须能够高效找到 (u,v) 所属哪个堆，即其所属堆的根是谁，使用并查集存储这个信息。</p>
 <h3 id="细节-2"><a href="#细节-2" class="headerlink" title="细节"></a>细节</h3><p>每个节点都有编号，我们不用传统的 class 建优先级队列，而直接用数组存每个点对应的信息，速度更快，访问更方便</p>
@@ -448,8 +448,8 @@ height:50vh;
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2021/02/10/2021-02-10-Tsinghua-DSA-作业总结-(1)/" title= "Tsinghua DSA 作业总结 (1)">
-                    <div class="prevTitle">Tsinghua DSA 作业总结 (1)</div>
+                <a href= "/2021/02/10/2021-02-10-Tsinghua-DSA-作业总结-(2)/" title= "Tsinghua DSA 作业总结 (2)">
+                    <div class="prevTitle">Tsinghua DSA 作业总结 (2)</div>
                 </a>
             
         </li>
@@ -1170,9 +1170,145 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 43
+        Total : 51
         </div>
         <!-- search  -->
         
@@ -1193,12 +1329,17 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/10</span><a class="archive-post-title" href= "/2021/02/10/2021-02-10-Tsinghua-DSA-作业总结-(1)/" >Tsinghua DSA 作业总结 (1)</a>
+            <span class="archive-post-date">02/10</span><a class="archive-post-title" href= "/2021/02/10/2021-02-10-Tsinghua-DSA-作业总结-(2)/" >Tsinghua DSA 作业总结 (2)</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/10</span><a class="archive-post-title" href= "/2021/02/10/2021-02-10-Tsinghua-DSA-作业总结-(2)/" >Tsinghua DSA 作业总结 (2)</a>
+            <span class="archive-post-date">02/09</span><a class="archive-post-title" href= "/2021/02/09/2021-02-09-Tsinghua-DSA-作业总结-(1)/" >Tsinghua DSA 作业总结 (1)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/11</span><a class="archive-post-title" href= "/2021/01/11/2021-01-11-CornellTsinghua-20FA-总结/" >Cornell/Tsinghua 20FA 总结</a>
         </li>
     
     
@@ -1212,7 +1353,37 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">11/29</span><a class="archive-post-title" href= "/2020/11/29/2020-11-29-C++-常见问题/" >C++ 常见问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/29</span><a class="archive-post-title" href= "/2020/11/29/2020-11-29-Python-常见问题/" >Python 常见问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/23</span><a class="archive-post-title" href= "/2020/11/23/2020-11-23-Latex-实用技巧手册/" >Latex 实用技巧手册</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/13</span><a class="archive-post-title" href= "/2020/10/13/2020-10-13-Algorithm-Design-及-CS4820-一般性内容总结/" >Algorithm Design 及 CS4820 一般性内容总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/02</span><a class="archive-post-title" href= "/2020/10/02/2020-10-02-INFO1998-Intro-to-Machine-Learning/" >INFO1998 Intro to Machine Learning</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">09/29</span><a class="archive-post-title" href= "/2020/09/29/2020-09-29-Add-Open-with-Windows-Terminalto-Right-Click-Menu/" >Add "Open with Windows Terminal" to Right-Click Menu</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/07</span><a class="archive-post-title" href= "/2020/09/07/2020-09-07-CS2024-C++-Programming/" >CS2024 C++ Programming</a>
         </li>
     
     
@@ -1228,6 +1399,11 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">06/24</span><a class="archive-post-title" href= "/2020/06/24/2020-06-24-Kinekt-as-Web-Cam/" >Kinect as Web Cam</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/09</span><a class="archive-post-title" href= "/2020/06/09/2020-06-09-2020-网络日志/" >2020 网络日志</a>
         </li>
     
     
@@ -1438,23 +1614,35 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="Android"><span class="iconfont-archer">&#xe606;</span>Android</span>
     
-        <span class="sidebar-tag-name" data-tags="CS3110"><span class="iconfont-archer">&#xe606;</span>CS3110</span>
+        <span class="sidebar-tag-name" data-tags="Hexo"><span class="iconfont-archer">&#xe606;</span>Hexo</span>
     
         <span class="sidebar-tag-name" data-tags="20SP"><span class="iconfont-archer">&#xe606;</span>20SP</span>
     
+        <span class="sidebar-tag-name" data-tags="CS3110"><span class="iconfont-archer">&#xe606;</span>CS3110</span>
+    
         <span class="sidebar-tag-name" data-tags="CS2043"><span class="iconfont-archer">&#xe606;</span>CS2043</span>
     
-        <span class="sidebar-tag-name" data-tags="Hexo"><span class="iconfont-archer">&#xe606;</span>Hexo</span>
+        <span class="sidebar-tag-name" data-tags="Game"><span class="iconfont-archer">&#xe606;</span>Game</span>
+    
+        <span class="sidebar-tag-name" data-tags="CS4320"><span class="iconfont-archer">&#xe606;</span>CS4320</span>
     
         <span class="sidebar-tag-name" data-tags="Tsinghua"><span class="iconfont-archer">&#xe606;</span>Tsinghua</span>
     
         <span class="sidebar-tag-name" data-tags="20FA"><span class="iconfont-archer">&#xe606;</span>20FA</span>
     
-        <span class="sidebar-tag-name" data-tags="CS4320"><span class="iconfont-archer">&#xe606;</span>CS4320</span>
+        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
     
-        <span class="sidebar-tag-name" data-tags="Game"><span class="iconfont-archer">&#xe606;</span>Game</span>
+        <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
     
         <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
+    
+        <span class="sidebar-tag-name" data-tags="Latex"><span class="iconfont-archer">&#xe606;</span>Latex</span>
+    
+        <span class="sidebar-tag-name" data-tags="CS2024"><span class="iconfont-archer">&#xe606;</span>CS2024</span>
+    
+        <span class="sidebar-tag-name" data-tags="CS4820"><span class="iconfont-archer">&#xe606;</span>CS4820</span>
+    
+        <span class="sidebar-tag-name" data-tags="网络日志"><span class="iconfont-archer">&#xe606;</span>网络日志</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
